@@ -1,0 +1,41 @@
+11383 classes in minecraft jars
+/home/runner/work/heaven-and-hell/heaven-and-hell/.gradle/loom-cache/minecraftMaven/net/minecraft/minecraft-clientOnly-7e9a32a5b8/26.3/minecraft-clientOnly-7e9a32a5b8-26.3.jar
+/home/runner/work/heaven-and-hell/heaven-and-hell/.gradle/loom-cache/minecraftMaven/net/minecraft/minecraft-common-7e9a32a5b8/26.3/minecraft-common-7e9a32a5b8-26.3.jar
+total 5536
+drwxr-xr-x 2 runner runner    4096 Oct  5 13:36 .
+drwxr-xr-x 3 runner runner    4096 Oct  5 13:35 ..
+-rw-r--r-- 1 runner runner  645677 Oct  5 13:35 all-classes.txt
+-rw-r--r-- 1 runner runner   11150 Oct  5 13:36 net.minecraft.client.Minecraft.txt
+-rw-r--r-- 1 runner runner  173303 Oct  5 13:36 net.minecraft.client.model.txt
+-rw-r--r-- 1 runner runner  319573 Oct  5 13:36 net.minecraft.client.renderer.entity.txt
+-rw-r--r-- 1 runner runner  214112 Oct  5 13:36 net.minecraft.commands.txt
+-rw-r--r-- 1 runner runner  244789 Oct  5 13:36 net.minecraft.core.txt
+-rw-r--r-- 1 runner runner   72893 Oct  5 13:36 net.minecraft.gametest.framework.txt
+-rw-r--r-- 1 runner runner   87678 Oct  5 13:36 net.minecraft.network.chat.txt
+-rw-r--r-- 1 runner runner   22659 Oct  5 13:36 net.minecraft.resources.txt
+-rw-r--r-- 1 runner runner   14057 Oct  5 13:35 net.minecraft.server.MinecraftServer.txt
+-rw-r--r-- 1 runner runner   26797 Oct  5 13:36 net.minecraft.server.dialog.txt
+-rw-r--r-- 1 runner runner   89212 Oct  5 13:35 net.minecraft.server.level.txt
+-rw-r--r-- 1 runner runner    9887 Oct  5 13:36 net.minecraft.server.permissions.txt
+-rw-r--r-- 1 runner runner   19009 Oct  5 13:36 net.minecraft.server.players.txt
+-rw-r--r-- 1 runner runner  150672 Oct  5 13:36 net.minecraft.sounds.txt
+-rw-r--r-- 1 runner runner  110231 Oct  5 13:36 net.minecraft.tags.txt
+-rw-r--r-- 1 runner runner    6641 Oct  5 13:36 net.minecraft.util.Mth.txt
+-rw-r--r-- 1 runner runner    1173 Oct  5 13:36 net.minecraft.util.RandomSource.txt
+-rw-r--r-- 1 runner runner     738 Oct  5 13:35 net.minecraft.world.InteractionHand.txt
+-rw-r--r-- 1 runner runner     626 Oct  5 13:35 net.minecraft.world.InteractionResult.txt
+-rw-r--r-- 1 runner runner   20676 Oct  5 13:35 net.minecraft.world.damagesource.txt
+-rw-r--r-- 1 runner runner   20790 Oct  5 13:35 net.minecraft.world.effect.txt
+-rw-r--r-- 1 runner runner 1198514 Oct  5 13:35 net.minecraft.world.entity.txt
+-rw-r--r-- 1 runner runner  644031 Oct  5 13:35 net.minecraft.world.item.txt
+-rw-r--r-- 1 runner runner   15968 Oct  5 13:35 net.minecraft.world.level.Level.txt
+-rw-r--r-- 1 runner runner    2827 Oct  5 13:35 net.minecraft.world.level.LevelAccessor.txt
+-rw-r--r-- 1 runner runner     422 Oct  5 13:35 net.minecraft.world.level.ServerLevelAccessor.txt
+-rw-r--r-- 1 runner runner  971225 Oct  5 13:35 net.minecraft.world.level.block.txt
+-rw-r--r-- 1 runner runner     728 Oct  5 13:35 net.minecraft.world.level.levelgen.Heightmap.txt
+-rw-r--r-- 1 runner runner   57215 Oct  5 13:35 net.minecraft.world.level.levelgen.structure.templatesystem.txt
+-rw-r--r-- 1 runner runner   27289 Oct  5 13:35 net.minecraft.world.level.material.txt
+-rw-r--r-- 1 runner runner    5199 Oct  5 13:35 net.minecraft.world.level.portal.txt
+-rw-r--r-- 1 runner runner  361943 Oct  5 13:35 net.minecraft.world.level.storage.txt
+-rw-r--r-- 1 runner runner   33285 Oct  5 13:35 net.minecraft.world.phys.txt
+-rw-r--r-- 1 runner runner     376 Oct  5 13:35 summary.txt

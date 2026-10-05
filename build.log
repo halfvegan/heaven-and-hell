@@ -1,0 +1,16 @@
+
+> Configure project :
+Fabric Loom: 1.18.2
+
+> Task :compileJava
+> Task :processResources
+> Task :classes
+> Task :compileClientJava
+> Task :processClientResources NO-SOURCE
+> Task :processIncludeJars
+> Task :jar
+> Task :assemble
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/assemble-1791207375478.json
+
+BUILD SUCCESSFUL in 7s
+5 actionable tasks: 5 executed

@@ -1,0 +1,10 @@
+Starting a Gradle Daemon (subsequent builds will be faster)
+
+> Configure project :
+Fabric Loom: 1.18.2
+
+> Task :hhExportClasspath
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/setup-1791207329056.json
+
+BUILD SUCCESSFUL in 8s
+1 actionable task: 1 executed

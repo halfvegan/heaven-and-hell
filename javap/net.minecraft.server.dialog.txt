@@ -1,0 +1,382 @@
+Compiled from "ActionButton.java"
+public final class net.minecraft.server.dialog.ActionButton extends java.lang.Record {
+  public static final com.mojang.serialization.Codec<net.minecraft.server.dialog.ActionButton> CODEC;
+  public net.minecraft.server.dialog.ActionButton(net.minecraft.server.dialog.CommonButtonData, java.util.Optional<net.minecraft.server.dialog.action.Action>);
+  public final java.lang.String toString();
+  public final int hashCode();
+  public final boolean equals(java.lang.Object);
+  public net.minecraft.server.dialog.CommonButtonData button();
+  public java.util.Optional<net.minecraft.server.dialog.action.Action> action();
+}
+Compiled from "ButtonListDialog.java"
+public interface net.minecraft.server.dialog.ButtonListDialog extends net.minecraft.server.dialog.Dialog {
+  public abstract com.mojang.serialization.MapCodec<? extends net.minecraft.server.dialog.ButtonListDialog> codec();
+  public abstract int columns();
+  public abstract java.util.Optional<net.minecraft.server.dialog.ActionButton> exitAction();
+  public default java.util.Optional<net.minecraft.server.dialog.action.Action> onCancel();
+}
+Compiled from "CommonButtonData.java"
+public final class net.minecraft.server.dialog.CommonButtonData extends java.lang.Record {
+  public static final int DEFAULT_WIDTH;
+  public static final com.mojang.serialization.MapCodec<net.minecraft.server.dialog.CommonButtonData> MAP_CODEC;
+  public net.minecraft.server.dialog.CommonButtonData(net.minecraft.network.chat.Component, int);
+  public net.minecraft.server.dialog.CommonButtonData(net.minecraft.network.chat.Component, java.util.Optional<net.minecraft.network.chat.Component>, int);
+  public final java.lang.String toString();
+  public final int hashCode();
+  public final boolean equals(java.lang.Object);
+  public net.minecraft.network.chat.Component label();
+  public java.util.Optional<net.minecraft.network.chat.Component> tooltip();
+  public int width();
+}
+Compiled from "CommonDialogData.java"
+public final class net.minecraft.server.dialog.CommonDialogData extends java.lang.Record {
+  public static final com.mojang.serialization.MapCodec<net.minecraft.server.dialog.CommonDialogData> MAP_CODEC;
+  public net.minecraft.server.dialog.CommonDialogData(net.minecraft.network.chat.Component, java.util.Optional<net.minecraft.network.chat.Component>, boolean, boolean, net.minecraft.server.dialog.DialogAction, java.util.List<net.minecraft.server.dialog.body.DialogBody>, java.util.List<net.minecraft.server.dialog.Input>);
+  public net.minecraft.network.chat.Component computeExternalTitle();
+  public final java.lang.String toString();
+  public final int hashCode();
+  public final boolean equals(java.lang.Object);
+  public net.minecraft.network.chat.Component title();
+  public java.util.Optional<net.minecraft.network.chat.Component> externalTitle();
+  public boolean canCloseWithEscape();
+  public boolean pause();
+  public net.minecraft.server.dialog.DialogAction afterAction();
+  public java.util.List<net.minecraft.server.dialog.body.DialogBody> body();
+  public java.util.List<net.minecraft.server.dialog.Input> inputs();
+}
+Compiled from "ConfirmationDialog.java"
+public final class net.minecraft.server.dialog.ConfirmationDialog extends java.lang.Record implements net.minecraft.server.dialog.SimpleDialog {
+  public static final com.mojang.serialization.MapCodec<net.minecraft.server.dialog.ConfirmationDialog> MAP_CODEC;
+  public net.minecraft.server.dialog.ConfirmationDialog(net.minecraft.server.dialog.CommonDialogData, net.minecraft.server.dialog.ActionButton, net.minecraft.server.dialog.ActionButton);
+  public com.mojang.serialization.MapCodec<net.minecraft.server.dialog.ConfirmationDialog> codec();
+  public java.util.Optional<net.minecraft.server.dialog.action.Action> onCancel();
+  public java.util.List<net.minecraft.server.dialog.ActionButton> mainActions();
+  public final java.lang.String toString();
+  public final int hashCode();
+  public final boolean equals(java.lang.Object);
+  public net.minecraft.server.dialog.CommonDialogData common();
+  public net.minecraft.server.dialog.ActionButton yesButton();
+  public net.minecraft.server.dialog.ActionButton noButton();
+}
+Compiled from "Dialog.java"
+public interface net.minecraft.server.dialog.Dialog {
+  public static final com.mojang.serialization.Codec<java.lang.Integer> WIDTH_CODEC;
+  public static final com.mojang.serialization.Codec<net.minecraft.server.dialog.Dialog> DIRECT_CODEC;
+  public static final com.mojang.serialization.Codec<net.minecraft.core.Holder<net.minecraft.server.dialog.Dialog>> CODEC;
+  public static final com.mojang.serialization.Codec<net.minecraft.core.HolderSet<net.minecraft.server.dialog.Dialog>> LIST_CODEC;
+  public static final net.minecraft.network.codec.StreamCodec<net.minecraft.network.RegistryFriendlyByteBuf, net.minecraft.core.Holder<net.minecraft.server.dialog.Dialog>> STREAM_CODEC;
+  public static final net.minecraft.network.codec.StreamCodec<io.netty.buffer.ByteBuf, net.minecraft.server.dialog.Dialog> CONTEXT_FREE_STREAM_CODEC;
+  public abstract net.minecraft.server.dialog.CommonDialogData common();
+  public abstract com.mojang.serialization.MapCodec<? extends net.minecraft.server.dialog.Dialog> codec();
+  public abstract java.util.Optional<net.minecraft.server.dialog.action.Action> onCancel();
+}
+Compiled from "DialogAction.java"
+public final class net.minecraft.server.dialog.DialogAction extends java.lang.Enum<net.minecraft.server.dialog.DialogAction> implements net.minecraft.util.StringRepresentable {
+  public static final net.minecraft.server.dialog.DialogAction CLOSE;
+  public static final net.minecraft.server.dialog.DialogAction NONE;
+  public static final net.minecraft.server.dialog.DialogAction WAIT_FOR_RESPONSE;
+  public static final java.util.function.IntFunction<net.minecraft.server.dialog.DialogAction> BY_ID;
+  public static final com.mojang.serialization.Codec<net.minecraft.server.dialog.DialogAction> CODEC;
+  public static final net.minecraft.network.codec.StreamCodec<io.netty.buffer.ByteBuf, net.minecraft.server.dialog.DialogAction> STREAM_CODEC;
+  public static net.minecraft.server.dialog.DialogAction[] values();
+  public static net.minecraft.server.dialog.DialogAction valueOf(java.lang.String);
+  public java.lang.String getSerializedName();
+  public boolean willUnpause();
+}
+Compiled from "DialogListDialog.java"
+public final class net.minecraft.server.dialog.DialogListDialog extends java.lang.Record implements net.minecraft.server.dialog.ButtonListDialog {
+  public static final com.mojang.serialization.MapCodec<net.minecraft.server.dialog.DialogListDialog> MAP_CODEC;
+  public net.minecraft.server.dialog.DialogListDialog(net.minecraft.server.dialog.CommonDialogData, net.minecraft.core.HolderSet<net.minecraft.server.dialog.Dialog>, java.util.Optional<net.minecraft.server.dialog.ActionButton>, int, int);
+  public com.mojang.serialization.MapCodec<net.minecraft.server.dialog.DialogListDialog> codec();
+  public final java.lang.String toString();
+  public final int hashCode();
+  public final boolean equals(java.lang.Object);
+  public net.minecraft.server.dialog.CommonDialogData common();
+  public net.minecraft.core.HolderSet<net.minecraft.server.dialog.Dialog> dialogs();
+  public java.util.Optional<net.minecraft.server.dialog.ActionButton> exitAction();
+  public int columns();
+  public int buttonWidth();
+}
+Compiled from "DialogTypes.java"
+public class net.minecraft.server.dialog.DialogTypes {
+  public net.minecraft.server.dialog.DialogTypes();
+  public static com.mojang.serialization.MapCodec<? extends net.minecraft.server.dialog.Dialog> bootstrap(net.minecraft.core.Registry<com.mojang.serialization.MapCodec<? extends net.minecraft.server.dialog.Dialog>>);
+}
+Compiled from "Dialogs.java"
+public class net.minecraft.server.dialog.Dialogs {
+  public static final net.minecraft.resources.ResourceKey<net.minecraft.server.dialog.Dialog> SERVER_LINKS;
+  public static final net.minecraft.resources.ResourceKey<net.minecraft.server.dialog.Dialog> CUSTOM_OPTIONS;
+  public static final net.minecraft.resources.ResourceKey<net.minecraft.server.dialog.Dialog> QUICK_ACTIONS;
+  public static final int BIG_BUTTON_WIDTH;
+  public net.minecraft.server.dialog.Dialogs();
+  public static void bootstrap(net.minecraft.data.worldgen.BootstrapContext<net.minecraft.server.dialog.Dialog>);
+}
+Compiled from "Input.java"
+public final class net.minecraft.server.dialog.Input extends java.lang.Record {
+  public static final com.mojang.serialization.Codec<net.minecraft.server.dialog.Input> CODEC;
+  public net.minecraft.server.dialog.Input(java.lang.String, net.minecraft.server.dialog.input.InputControl);
+  public final java.lang.String toString();
+  public final int hashCode();
+  public final boolean equals(java.lang.Object);
+  public java.lang.String key();
+  public net.minecraft.server.dialog.input.InputControl control();
+}
+Compiled from "MultiActionDialog.java"
+public final class net.minecraft.server.dialog.MultiActionDialog extends java.lang.Record implements net.minecraft.server.dialog.ButtonListDialog {
+  public static final com.mojang.serialization.MapCodec<net.minecraft.server.dialog.MultiActionDialog> MAP_CODEC;
+  public net.minecraft.server.dialog.MultiActionDialog(net.minecraft.server.dialog.CommonDialogData, java.util.List<net.minecraft.server.dialog.ActionButton>, java.util.Optional<net.minecraft.server.dialog.ActionButton>, int);
+  public com.mojang.serialization.MapCodec<net.minecraft.server.dialog.MultiActionDialog> codec();
+  public final java.lang.String toString();
+  public final int hashCode();
+  public final boolean equals(java.lang.Object);
+  public net.minecraft.server.dialog.CommonDialogData common();
+  public java.util.List<net.minecraft.server.dialog.ActionButton> actions();
+  public java.util.Optional<net.minecraft.server.dialog.ActionButton> exitAction();
+  public int columns();
+}
+Compiled from "NoticeDialog.java"
+public final class net.minecraft.server.dialog.NoticeDialog extends java.lang.Record implements net.minecraft.server.dialog.SimpleDialog {
+  public static final net.minecraft.server.dialog.ActionButton DEFAULT_ACTION;
+  public static final com.mojang.serialization.MapCodec<net.minecraft.server.dialog.NoticeDialog> MAP_CODEC;
+  public net.minecraft.server.dialog.NoticeDialog(net.minecraft.server.dialog.CommonDialogData, net.minecraft.server.dialog.ActionButton);
+  public com.mojang.serialization.MapCodec<net.minecraft.server.dialog.NoticeDialog> codec();
+  public java.util.Optional<net.minecraft.server.dialog.action.Action> onCancel();
+  public java.util.List<net.minecraft.server.dialog.ActionButton> mainActions();
+  public final java.lang.String toString();
+  public final int hashCode();
+  public final boolean equals(java.lang.Object);
+  public net.minecraft.server.dialog.CommonDialogData common();
+  public net.minecraft.server.dialog.ActionButton action();
+}
+Compiled from "ServerLinksDialog.java"
+public final class net.minecraft.server.dialog.ServerLinksDialog extends java.lang.Record implements net.minecraft.server.dialog.ButtonListDialog {
+  public static final com.mojang.serialization.MapCodec<net.minecraft.server.dialog.ServerLinksDialog> MAP_CODEC;
+  public net.minecraft.server.dialog.ServerLinksDialog(net.minecraft.server.dialog.CommonDialogData, java.util.Optional<net.minecraft.server.dialog.ActionButton>, int, int);
+  public com.mojang.serialization.MapCodec<net.minecraft.server.dialog.ServerLinksDialog> codec();
+  public final java.lang.String toString();
+  public final int hashCode();
+  public final boolean equals(java.lang.Object);
+  public net.minecraft.server.dialog.CommonDialogData common();
+  public java.util.Optional<net.minecraft.server.dialog.ActionButton> exitAction();
+  public int columns();
+  public int buttonWidth();
+}
+Compiled from "SimpleDialog.java"
+public interface net.minecraft.server.dialog.SimpleDialog extends net.minecraft.server.dialog.Dialog {
+  public abstract com.mojang.serialization.MapCodec<? extends net.minecraft.server.dialog.SimpleDialog> codec();
+  public abstract java.util.List<net.minecraft.server.dialog.ActionButton> mainActions();
+}
+Compiled from "Action.java"
+public interface net.minecraft.server.dialog.action.Action$ValueGetter {
+  public abstract java.lang.String asTemplateSubstitution();
+  public abstract net.minecraft.nbt.Tag asTag();
+  public static java.util.Map<java.lang.String, java.lang.String> getAsTemplateSubstitutions(java.util.Map<java.lang.String, net.minecraft.server.dialog.action.Action$ValueGetter>);
+  public static net.minecraft.server.dialog.action.Action$ValueGetter of(java.lang.String);
+  public static net.minecraft.server.dialog.action.Action$ValueGetter of(java.util.function.Supplier<java.lang.String>);
+}
+Compiled from "Action.java"
+public interface net.minecraft.server.dialog.action.Action {
+  public static final com.mojang.serialization.Codec<net.minecraft.server.dialog.action.Action> CODEC;
+  public abstract com.mojang.serialization.MapCodec<? extends net.minecraft.server.dialog.action.Action> codec();
+  public abstract java.util.Optional<net.minecraft.network.chat.ClickEvent> createAction(java.util.Map<java.lang.String, net.minecraft.server.dialog.action.Action$ValueGetter>);
+}
+Compiled from "ActionTypes.java"
+public class net.minecraft.server.dialog.action.ActionTypes {
+  public net.minecraft.server.dialog.action.ActionTypes();
+  public static com.mojang.serialization.MapCodec<? extends net.minecraft.server.dialog.action.Action> bootstrap(net.minecraft.core.Registry<com.mojang.serialization.MapCodec<? extends net.minecraft.server.dialog.action.Action>>);
+}
+Compiled from "CommandTemplate.java"
+public final class net.minecraft.server.dialog.action.CommandTemplate extends java.lang.Record implements net.minecraft.server.dialog.action.Action {
+  public static final com.mojang.serialization.MapCodec<net.minecraft.server.dialog.action.CommandTemplate> MAP_CODEC;
+  public net.minecraft.server.dialog.action.CommandTemplate(net.minecraft.server.dialog.action.ParsedTemplate);
+  public com.mojang.serialization.MapCodec<net.minecraft.server.dialog.action.CommandTemplate> codec();
+  public java.util.Optional<net.minecraft.network.chat.ClickEvent> createAction(java.util.Map<java.lang.String, net.minecraft.server.dialog.action.Action$ValueGetter>);
+  public final java.lang.String toString();
+  public final int hashCode();
+  public final boolean equals(java.lang.Object);
+  public net.minecraft.server.dialog.action.ParsedTemplate template();
+}
+Compiled from "CustomAll.java"
+public final class net.minecraft.server.dialog.action.CustomAll extends java.lang.Record implements net.minecraft.server.dialog.action.Action {
+  public static final com.mojang.serialization.MapCodec<net.minecraft.server.dialog.action.CustomAll> MAP_CODEC;
+  public net.minecraft.server.dialog.action.CustomAll(net.minecraft.resources.Identifier, java.util.Optional<net.minecraft.nbt.CompoundTag>);
+  public com.mojang.serialization.MapCodec<net.minecraft.server.dialog.action.CustomAll> codec();
+  public java.util.Optional<net.minecraft.network.chat.ClickEvent> createAction(java.util.Map<java.lang.String, net.minecraft.server.dialog.action.Action$ValueGetter>);
+  public final java.lang.String toString();
+  public final int hashCode();
+  public final boolean equals(java.lang.Object);
+  public net.minecraft.resources.Identifier id();
+  public java.util.Optional<net.minecraft.nbt.CompoundTag> additions();
+}
+Compiled from "ParsedTemplate.java"
+public class net.minecraft.server.dialog.action.ParsedTemplate {
+  public static final com.mojang.serialization.Codec<net.minecraft.server.dialog.action.ParsedTemplate> CODEC;
+  public static final com.mojang.serialization.Codec<java.lang.String> VARIABLE_CODEC;
+  public java.lang.String instantiate(java.util.Map<java.lang.String, java.lang.String>);
+}
+Compiled from "StaticAction.java"
+public final class net.minecraft.server.dialog.action.StaticAction extends java.lang.Record implements net.minecraft.server.dialog.action.Action {
+  public static final java.util.Map<net.minecraft.network.chat.ClickEvent$Action, com.mojang.serialization.MapCodec<net.minecraft.server.dialog.action.StaticAction>> WRAPPED_CODECS;
+  public net.minecraft.server.dialog.action.StaticAction(net.minecraft.network.chat.ClickEvent);
+  public com.mojang.serialization.MapCodec<net.minecraft.server.dialog.action.StaticAction> codec();
+  public java.util.Optional<net.minecraft.network.chat.ClickEvent> createAction(java.util.Map<java.lang.String, net.minecraft.server.dialog.action.Action$ValueGetter>);
+  public final java.lang.String toString();
+  public final int hashCode();
+  public final boolean equals(java.lang.Object);
+  public net.minecraft.network.chat.ClickEvent value();
+}
+Compiled from "package-info.java"
+interface net.minecraft.server.dialog.action.package-info {
+}
+Compiled from "DialogBody.java"
+public interface net.minecraft.server.dialog.body.DialogBody {
+  public static final com.mojang.serialization.Codec<net.minecraft.server.dialog.body.DialogBody> DIALOG_BODY_CODEC;
+  public static final com.mojang.serialization.Codec<java.util.List<net.minecraft.server.dialog.body.DialogBody>> COMPACT_LIST_CODEC;
+  public abstract com.mojang.serialization.MapCodec<? extends net.minecraft.server.dialog.body.DialogBody> mapCodec();
+}
+Compiled from "DialogBodyTypes.java"
+public class net.minecraft.server.dialog.body.DialogBodyTypes {
+  public net.minecraft.server.dialog.body.DialogBodyTypes();
+  public static com.mojang.serialization.MapCodec<? extends net.minecraft.server.dialog.body.DialogBody> bootstrap(net.minecraft.core.Registry<com.mojang.serialization.MapCodec<? extends net.minecraft.server.dialog.body.DialogBody>>);
+}
+Compiled from "ItemBody.java"
+public final class net.minecraft.server.dialog.body.ItemBody extends java.lang.Record implements net.minecraft.server.dialog.body.DialogBody {
+  public static final com.mojang.serialization.MapCodec<net.minecraft.server.dialog.body.ItemBody> MAP_CODEC;
+  public net.minecraft.server.dialog.body.ItemBody(net.minecraft.world.item.ItemStackTemplate, java.util.Optional<net.minecraft.server.dialog.body.PlainMessage>, boolean, boolean, int, int);
+  public com.mojang.serialization.MapCodec<net.minecraft.server.dialog.body.ItemBody> mapCodec();
+  public final java.lang.String toString();
+  public final int hashCode();
+  public final boolean equals(java.lang.Object);
+  public net.minecraft.world.item.ItemStackTemplate item();
+  public java.util.Optional<net.minecraft.server.dialog.body.PlainMessage> description();
+  public boolean showDecorations();
+  public boolean showTooltip();
+  public int width();
+  public int height();
+}
+Compiled from "PlainMessage.java"
+public final class net.minecraft.server.dialog.body.PlainMessage extends java.lang.Record implements net.minecraft.server.dialog.body.DialogBody {
+  public static final int DEFAULT_WIDTH;
+  public static final com.mojang.serialization.MapCodec<net.minecraft.server.dialog.body.PlainMessage> MAP_CODEC;
+  public static final com.mojang.serialization.Codec<net.minecraft.server.dialog.body.PlainMessage> CODEC;
+  public net.minecraft.server.dialog.body.PlainMessage(net.minecraft.network.chat.Component, int);
+  public com.mojang.serialization.MapCodec<net.minecraft.server.dialog.body.PlainMessage> mapCodec();
+  public final java.lang.String toString();
+  public final int hashCode();
+  public final boolean equals(java.lang.Object);
+  public net.minecraft.network.chat.Component contents();
+  public int width();
+}
+Compiled from "package-info.java"
+interface net.minecraft.server.dialog.body.package-info {
+}
+Compiled from "BooleanInput.java"
+public final class net.minecraft.server.dialog.input.BooleanInput extends java.lang.Record implements net.minecraft.server.dialog.input.InputControl {
+  public static final com.mojang.serialization.MapCodec<net.minecraft.server.dialog.input.BooleanInput> MAP_CODEC;
+  public net.minecraft.server.dialog.input.BooleanInput(net.minecraft.network.chat.Component, boolean, java.lang.String, java.lang.String);
+  public com.mojang.serialization.MapCodec<net.minecraft.server.dialog.input.BooleanInput> mapCodec();
+  public final java.lang.String toString();
+  public final int hashCode();
+  public final boolean equals(java.lang.Object);
+  public net.minecraft.network.chat.Component label();
+  public boolean initial();
+  public java.lang.String onTrue();
+  public java.lang.String onFalse();
+}
+Compiled from "InputControl.java"
+public interface net.minecraft.server.dialog.input.InputControl {
+  public static final com.mojang.serialization.MapCodec<net.minecraft.server.dialog.input.InputControl> MAP_CODEC;
+  public abstract com.mojang.serialization.MapCodec<? extends net.minecraft.server.dialog.input.InputControl> mapCodec();
+}
+Compiled from "InputControlTypes.java"
+public class net.minecraft.server.dialog.input.InputControlTypes {
+  public net.minecraft.server.dialog.input.InputControlTypes();
+  public static com.mojang.serialization.MapCodec<? extends net.minecraft.server.dialog.input.InputControl> bootstrap(net.minecraft.core.Registry<com.mojang.serialization.MapCodec<? extends net.minecraft.server.dialog.input.InputControl>>);
+}
+Compiled from "NumberRangeInput.java"
+public final class net.minecraft.server.dialog.input.NumberRangeInput$RangeInfo extends java.lang.Record {
+  public static final com.mojang.serialization.MapCodec<net.minecraft.server.dialog.input.NumberRangeInput$RangeInfo> MAP_CODEC;
+  public net.minecraft.server.dialog.input.NumberRangeInput$RangeInfo(float, float, java.util.Optional<java.lang.Float>, java.util.Optional<java.lang.Float>);
+  public float computeScaledValue(float);
+  public float initialSliderValue();
+  public final java.lang.String toString();
+  public final int hashCode();
+  public final boolean equals(java.lang.Object);
+  public float start();
+  public float end();
+  public java.util.Optional<java.lang.Float> initial();
+  public java.util.Optional<java.lang.Float> step();
+}
+Compiled from "NumberRangeInput.java"
+public final class net.minecraft.server.dialog.input.NumberRangeInput extends java.lang.Record implements net.minecraft.server.dialog.input.InputControl {
+  public static final com.mojang.serialization.MapCodec<net.minecraft.server.dialog.input.NumberRangeInput> MAP_CODEC;
+  public net.minecraft.server.dialog.input.NumberRangeInput(int, net.minecraft.network.chat.Component, java.lang.String, net.minecraft.server.dialog.input.NumberRangeInput$RangeInfo);
+  public com.mojang.serialization.MapCodec<net.minecraft.server.dialog.input.NumberRangeInput> mapCodec();
+  public net.minecraft.network.chat.Component computeLabel(java.lang.String);
+  public final java.lang.String toString();
+  public final int hashCode();
+  public final boolean equals(java.lang.Object);
+  public int width();
+  public net.minecraft.network.chat.Component label();
+  public java.lang.String labelFormat();
+  public net.minecraft.server.dialog.input.NumberRangeInput$RangeInfo rangeInfo();
+}
+Compiled from "SingleOptionInput.java"
+public final class net.minecraft.server.dialog.input.SingleOptionInput$Entry extends java.lang.Record {
+  public static final com.mojang.serialization.Codec<net.minecraft.server.dialog.input.SingleOptionInput$Entry> FULL_CODEC;
+  public static final com.mojang.serialization.Codec<net.minecraft.server.dialog.input.SingleOptionInput$Entry> CODEC;
+  public net.minecraft.server.dialog.input.SingleOptionInput$Entry(java.lang.String, java.util.Optional<net.minecraft.network.chat.Component>, boolean);
+  public net.minecraft.network.chat.Component displayOrDefault();
+  public final java.lang.String toString();
+  public final int hashCode();
+  public final boolean equals(java.lang.Object);
+  public java.lang.String id();
+  public java.util.Optional<net.minecraft.network.chat.Component> display();
+  public boolean initial();
+}
+Compiled from "SingleOptionInput.java"
+public final class net.minecraft.server.dialog.input.SingleOptionInput extends java.lang.Record implements net.minecraft.server.dialog.input.InputControl {
+  public static final com.mojang.serialization.MapCodec<net.minecraft.server.dialog.input.SingleOptionInput> MAP_CODEC;
+  public net.minecraft.server.dialog.input.SingleOptionInput(int, java.util.List<net.minecraft.server.dialog.input.SingleOptionInput$Entry>, net.minecraft.network.chat.Component, boolean);
+  public com.mojang.serialization.MapCodec<net.minecraft.server.dialog.input.SingleOptionInput> mapCodec();
+  public java.util.Optional<net.minecraft.server.dialog.input.SingleOptionInput$Entry> initial();
+  public final java.lang.String toString();
+  public final int hashCode();
+  public final boolean equals(java.lang.Object);
+  public int width();
+  public java.util.List<net.minecraft.server.dialog.input.SingleOptionInput$Entry> entries();
+  public net.minecraft.network.chat.Component label();
+  public boolean labelVisible();
+}
+Compiled from "TextInput.java"
+public final class net.minecraft.server.dialog.input.TextInput$MultilineOptions extends java.lang.Record {
+  public static final int MAX_HEIGHT;
+  public static final com.mojang.serialization.Codec<net.minecraft.server.dialog.input.TextInput$MultilineOptions> CODEC;
+  public net.minecraft.server.dialog.input.TextInput$MultilineOptions(java.util.Optional<java.lang.Integer>, java.util.Optional<java.lang.Integer>);
+  public final java.lang.String toString();
+  public final int hashCode();
+  public final boolean equals(java.lang.Object);
+  public java.util.Optional<java.lang.Integer> maxLines();
+  public java.util.Optional<java.lang.Integer> height();
+}
+Compiled from "TextInput.java"
+public final class net.minecraft.server.dialog.input.TextInput extends java.lang.Record implements net.minecraft.server.dialog.input.InputControl {
+  public static final com.mojang.serialization.MapCodec<net.minecraft.server.dialog.input.TextInput> MAP_CODEC;
+  public net.minecraft.server.dialog.input.TextInput(int, net.minecraft.network.chat.Component, boolean, java.lang.String, int, java.util.Optional<net.minecraft.server.dialog.input.TextInput$MultilineOptions>);
+  public com.mojang.serialization.MapCodec<net.minecraft.server.dialog.input.TextInput> mapCodec();
+  public final java.lang.String toString();
+  public final int hashCode();
+  public final boolean equals(java.lang.Object);
+  public int width();
+  public net.minecraft.network.chat.Component label();
+  public boolean labelVisible();
+  public java.lang.String initial();
+  public int maxLength();
+  public java.util.Optional<net.minecraft.server.dialog.input.TextInput$MultilineOptions> multiline();
+}
+Compiled from "package-info.java"
+interface net.minecraft.server.dialog.input.package-info {
+}
+Compiled from "package-info.java"
+interface net.minecraft.server.dialog.package-info {
+}
