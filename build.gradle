@@ -67,7 +67,7 @@ jar {
 // Writes the client compile classpath to build/classpath.txt (used by CI to look up Minecraft class signatures).
 def hhClientClasspath = sourceSets.client.compileClasspath
 def hhClasspathFile = layout.buildDirectory.file('classpath.txt')
-tasks.register('exportClasspath') {
+tasks.register('hhExportClasspath') {
 	inputs.files(hhClientClasspath)
 	outputs.file(hhClasspathFile)
 	doLast {

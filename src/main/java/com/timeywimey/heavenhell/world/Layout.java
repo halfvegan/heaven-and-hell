@@ -58,11 +58,11 @@ public final class Layout {
 	/** A chest in each room that is restocked when someone reaches that rank. */
 	public static final BlockPos[] QUARTER_CHESTS = {
 			null,
-			new BlockPos(37, 50, -18),
-			new BlockPos(37, 58, -18),
-			new BlockPos(37, 66, -18),
-			new BlockPos(37, 74, -18),
-			new BlockPos(37, 82, -18)
+			new BlockPos(36, 50, -7),
+			new BlockPos(36, 58, -7),
+			new BlockPos(36, 66, -7),
+			new BlockPos(36, 74, -7),
+			new BlockPos(36, 82, -7)
 	};
 	public static final Vec3 HELL_CENTER = new Vec3(0.5, 50.0, 0.5);
 }

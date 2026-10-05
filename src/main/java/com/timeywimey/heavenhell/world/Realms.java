@@ -101,7 +101,7 @@ public final class Realms {
 		Cmd.in(level, "place template heavenhell:infernal_court " + o.getX() + " " + o.getY() + " " + o.getZ());
 		seal(level, Layout.HELL_CLEAR_MIN, Layout.HELL_CLEAR_MAX);
 		label(level, 0.5, 66.0, 30.5, Txt.of("The Infernal Court", "red").bold(), 2.5F);
-		label(level, 0.5, 60.5, -24.5, Txt.of("Throne of Lucifer", "dark_red").bold(), 1.4F);
+		label(level, 0.5, 65.0, -24.5, Txt.of("Throne of Lucifer", "dark_red").bold(), 1.4F);
 		label(level, 32.5, 92.0, -12.5, Txt.of("Tower of Sin", "gold"), 1.6F);
 		label(level, 0.5, 58.2, -29.4, Txt.of("Redemption Gate", "yellow").then(" - sealed", "gray"), 1.0F);
 		HeavenHell.LOGGER.info("Built the Infernal Court in {} ms", System.currentTimeMillis() - start);

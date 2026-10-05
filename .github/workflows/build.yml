@@ -36,7 +36,7 @@ jobs:
         run: |
           mkdir -p ci-out
           set -o pipefail
-          ./gradlew exportClasspath --stacktrace 2>&1 | tee ci-out/setup.log
+          ./gradlew hhExportClasspath --stacktrace 2>&1 | tee ci-out/setup.log
       - name: look up Minecraft class signatures
         if: steps.setup.outcome == 'success' && hashFiles('.github/javap-packages.txt') != ''
         continue-on-error: true
