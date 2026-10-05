@@ -421,6 +421,7 @@ public final class LuciferBattle {
 			double a = RANDOM.nextDouble() * Math.PI * 2.0;
 			Vec3 pos = lucifer.position().add(Math.cos(a) * 3.0, 0.0, Math.sin(a) * 3.0);
 			imp.snapTo(pos);
+			CourtGuard.markSummoned(imp);
 			hell.addFreshEntity(imp);
 			Cmd.particle(hell, "minecraft:flame", pos.x, pos.y + 0.5, pos.z, 0.3, 0.5, 0.3, 0.05, 20);
 		}

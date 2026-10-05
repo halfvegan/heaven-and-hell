@@ -1,5 +1,7 @@
 package com.timeywimey.heavenhell.util;
 
+import net.minecraft.commands.CommandSource;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -16,9 +18,33 @@ public final class Cmd {
 
 	public static void run(MinecraftServer server, String command) {
 		try {
-			server.getCommands().performPrefixedCommand(server.createCommandSourceStack().withSuppressedOutput(), command);
+			server.getCommands().performPrefixedCommand(server.createCommandSourceStack().withSource(new FailureLog(command)), command);
 		} catch (Exception e) {
 			HeavenHell.LOGGER.warn("Command failed: {}", command, e);
+		}
+	}
+
+	/** Swallows command feedback, but writes errors to the log so broken commands are easy to spot. */
+	private record FailureLog(String command) implements CommandSource {
+		@Override
+		public void sendSystemMessage(Component message) {
+			String shown = command.length() > 300 ? command.substring(0, 300) + "..." : command;
+			HeavenHell.LOGGER.warn("Command '{}' failed: {}", shown, message.getString());
+		}
+
+		@Override
+		public boolean acceptsSuccess() {
+			return false;
+		}
+
+		@Override
+		public boolean acceptsFailure() {
+			return true;
+		}
+
+		@Override
+		public boolean shouldInformAdmins() {
+			return false;
 		}
 	}
 

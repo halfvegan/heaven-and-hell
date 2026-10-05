@@ -8,6 +8,7 @@ import net.minecraft.resources.Identifier;
 import net.fabricmc.api.ModInitializer;
 
 import com.timeywimey.heavenhell.command.HHCommands;
+import com.timeywimey.heavenhell.hell.CourtGuard;
 import com.timeywimey.heavenhell.hell.HellLife;
 import com.timeywimey.heavenhell.hell.LuciferBattle;
 import com.timeywimey.heavenhell.heaven.HeavenLife;
@@ -48,6 +49,7 @@ public class HeavenHell implements ModInitializer {
 		HeavenLife.init();
 		HellLife.init();
 		LuciferBattle.init();
+		CourtGuard.init();
 
 		LOGGER.info("Heaven & Hell is watching your deeds.");
 	}

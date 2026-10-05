@@ -83,6 +83,14 @@ def block_models():
         tex = {"bottom": hh(f"block/{full}"), "side": hh(f"block/{full}"), "top": hh(f"block/{full}")}
         write_json(asset("models/block", b), {"parent": "minecraft:block/slab", "textures": tex})
         write_json(asset("models/block", f"{b}_top"), {"parent": "minecraft:block/slab_top", "textures": tex})
+    # clouds are soft and evenly lit: no directional shading, no ambient occlusion, a little inner glow
+    for b in ("cloud", "golden_cloud"):
+        t = hh(f"block/{b}")
+        faces = {f: {"texture": "#all", "cullface": f} for f in ("down", "up", "north", "south", "west", "east")}
+        write_json(asset("models/block", b), {
+            "parent": "minecraft:block/block", "ambientocclusion": False,
+            "textures": {"all": t, "particle": t},
+            "elements": [{"from": [0, 0, 0], "to": [16, 16, 16], "shade": False, "light_emission": 9, "faces": faces}]})
     write_json(asset("blockstates", "heaven_grass"), {"variants": {"": {"model": hh("block/heaven_grass")}}})
     write_json(asset("models/block", "heaven_grass"), {"parent": "minecraft:block/cube_bottom_top", "textures": {
         "bottom": hh("block/heaven_soil"), "side": hh("block/heaven_grass_side"), "top": hh("block/heaven_grass_top")}})

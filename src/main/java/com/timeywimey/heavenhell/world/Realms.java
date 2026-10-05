@@ -90,6 +90,8 @@ public final class Realms {
 		label(level, 0.5, 115.5, -15.5, Txt.of("Hall of Wonders", "yellow").bold(), 1.6F);
 		label(level, 24.5, 105.5, 0.5, Txt.of("Gardens of Rest", "green"), 1.4F);
 		label(level, 0.5, 107.0, 33.5, Txt.of("Welcome, blessed soul", "aqua").italic(), 1.2F);
+		label(level, -24.5, 122.5, 19.5, Txt.of("Tree of Life", "gold"), 1.4F);
+		label(level, 24.5, 110.5, 22.5, Txt.of("Bell of Heaven", "yellow").then(" - ring it", "gray"), 1.1F);
 		HeavenHell.LOGGER.info("Built the Pearly Gates in {} ms", System.currentTimeMillis() - start);
 	}
 
@@ -103,7 +105,13 @@ public final class Realms {
 		label(level, 0.5, 66.0, 30.5, Txt.of("The Infernal Court", "red").bold(), 2.5F);
 		label(level, 0.5, 65.0, -24.5, Txt.of("Throne of Lucifer", "dark_red").bold(), 1.4F);
 		label(level, 32.5, 92.0, -12.5, Txt.of("Tower of Sin", "gold"), 1.6F);
-		label(level, 0.5, 58.2, -29.4, Txt.of("Redemption Gate", "yellow").then(" - sealed", "gray"), 1.0F);
+		label(level, 0.5, 58.2, -28.6, Txt.of("Redemption Gate", "yellow").then(" - sealed", "gray"), 1.0F);
+		label(level, 0.5, 61.2, 34.4, Txt.of("Abandon all hope, ye who enter here", "gold").italic(), 1.1F);
+		label(level, -29.5, 65.5, -12.5, Txt.of("Hall of Torment", "gray"), 1.4F);
+		label(level, 21.5, 55.0, 24.5, Txt.of("Lake of Fire", "gold"), 1.2F);
+		label(level, -26.5, 54.5, 24.5, Txt.of("Graveyard of the Damned", "dark_gray"), 1.2F);
+		label(level, 31.5, 58.0, 5.5, Txt.of("The Infernal Forge", "red"), 1.2F);
+		label(level, -29.5, 54.5, 6.5, Txt.of("Well of Souls", "aqua"), 1.2F);
 		HeavenHell.LOGGER.info("Built the Infernal Court in {} ms", System.currentTimeMillis() - start);
 	}
 
