@@ -38,7 +38,7 @@ public final class Dialogs {
 		SoulData soul = Soul.get(player);
 		boolean heaven = SoulData.HEAVEN.equals(dest);
 		DialogBuilder d = DialogBuilder.of(heaven ? Txt.of("✦ Judgment ✦", "gold").bold() : Txt.of("☠ Judgment ☠", "dark_red").bold())
-				.picture(heaven ? "heavenhell:vision_heaven" : "heavenhell:vision_hell", 112)
+				.picture(heaven ? "heavenhell:vision_heaven" : "heavenhell:vision_hell", 64)
 				.text(Txt.of("Your soul has been weighed.", "white"))
 				.text(Karma.describe(soul).then("   Good deeds: " + soul.goodDeeds + "   Sins: " + soul.sins, "gray"));
 		if (heaven) {
@@ -62,7 +62,7 @@ public final class Dialogs {
 	public static void gatekeeper(ServerPlayer player) {
 		SoulData soul = Soul.get(player);
 		DialogBuilder d = DialogBuilder.of(Txt.of("The Gatekeeper", "gold").bold())
-				.picture("heavenhell:vision_gatekeeper", 96)
+				.picture("heavenhell:vision_gatekeeper", 64)
 				.text(Txt.of("\"Welcome, child, to the Gates of Heaven. Here there is no hunger, no pain and no night. "
 						+ "Rest a while. Explore the Hall of Wonders. Walk in the gardens.\"", "white"))
 				.text(Txt.of("\"But if your heart still longs for the living world, I can send you back.\"", "white"))
@@ -125,7 +125,7 @@ public final class Dialogs {
 		HellRanks.Rank rank = HellRanks.get(soul.rank);
 		int shards = HellLife.countShards(player);
 		DialogBuilder d = DialogBuilder.of(Txt.of("Lucifer, the Fallen Morningstar", "dark_red").bold())
-				.picture("heavenhell:vision_lucifer", 96)
+				.picture("heavenhell:vision_lucifer", 64)
 				.text(Txt.of("\"" + luciferGreeting(soul) + "\"", "white"))
 				.text(Txt.of("Your rank: ", "gray").then(Txt.of(rank.name(), rank.color()).bold())
 						.then("   (" + soul.rank + "/" + HellRanks.MAX + ")", "gray")

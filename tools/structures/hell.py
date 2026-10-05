@@ -459,20 +459,27 @@ def hall_floor(b):
             else:
                 st = HB
             b.set(x, FLOOR, z, st)
-    # braziers along the nave
+    # soul lamps along the nave (no campfires: their smoke would fill the hall)
     for z in (5, -1, -7, -13):
         for x in (-6, 6):
             b.set(x, FLOOR + 1, z, CHIS)
-            b.set(x, FLOOR + 2, z, mc("soul_campfire", facing="north", lit="true", signal_fire="false", waterlogged="false"))
+            b.set(x, FLOOR + 2, z, mc("soul_lantern", hanging="false", waterlogged="false"))
+        for x in (-4, 4):
+            b.set(x, FLOOR, z + 3 if z > -13 else z - 3, EMBER)
+    # warm lamps on brackets along both walls
+    for z in (1, -5, -11, -17, -23):
+        for x in (-11, 11):
+            b.set(x, 56, z, slab("bottom"))
+            b.set(x, 55, z, mc("lantern", hanging="true", waterlogged="false"))
 
 
 def hall_columns(b):
     for z in COLUMNS_Z:
         for x in (-8, 8):
             for y in range(FLOOR + 1, 69):
-                if y == 58:
+                if y in (53, 58):
                     st = EMBER
-                elif y in (57, 59):
+                elif y in (52, 54, 57, 59):
                     st = GILD
                 else:
                     st = PIL
@@ -489,14 +496,17 @@ def hall_columns(b):
 
 
 def chandelier(b, x, z, top):
-    for y in range(64, top + 1):
+    for y in range(61, top + 1):
         b.set(x, y, z, CHAIN)
-    b.set(x, 63, z, mc("shroomlight"))
-    b.set(x, 62, z, mc("polished_blackstone_brick_slab", type="top"))
-    for dx, dz in ((-2, 0), (2, 0), (0, -2), (0, 2)):
-        for y in range(66, top + 1):
+    b.set(x, 60, z, mc("shroomlight"))
+    b.set(x, 59, z, mc("polished_blackstone_brick_slab", type="top"))
+    for dx, dz in ((-1, 0), (1, 0), (0, -1), (0, 1)):
+        b.set(x + dx, 60, z + dz, GILD)
+        b.set(x + dx, 59, z + dz, mc("lantern", hanging="true", waterlogged="false"))
+    for dx, dz in ((-2, -2), (2, -2), (-2, 2), (2, 2)):
+        for y in range(63, top + 1):
             b.set(x + dx, y, z + dz, CHAIN)
-        b.set(x + dx, 65, z + dz, mc("soul_lantern", hanging="true", waterlogged="false"))
+        b.set(x + dx, 62, z + dz, mc("soul_lantern", hanging="true", waterlogged="false"))
 
 
 def hall_ceiling_and_roof(b):
@@ -606,10 +616,17 @@ def dais_and_throne(b):
         b.set(x + (2 if x > 0 else -2), 60, -26, BLACK)
         b.set(x + (2 if x > 0 else -2), 61, -26, mc("bone_block", axis="y"))
     clear(b, 0, 54, -25, 0, 56, -25)
-    # soul fire braziers on the dais
+    # lamps and candles on the dais, so the Morningstar is never in shadow
     for x in (-4, 4):
-        b.set(x, 51, -25, mc("soul_campfire", facing="north", lit="true", signal_fire="false", waterlogged="false"))
-        b.set(x, 51, -23, mc("soul_campfire", facing="north", lit="true", signal_fire="false", waterlogged="false"))
+        b.set(x, 51, -25, mc("soul_lantern", hanging="false", waterlogged="false"))
+        b.set(x, 51, -23, mc("soul_lantern", hanging="false", waterlogged="false"))
+    for x in (-3, 3):
+        b.set(x, 52, -24, mc("polished_blackstone_wall"))
+        b.set(x, 53, -24, mc("red_candle", candles="4", lit="true", waterlogged="false"))
+    for x in (-4, -2, 2, 4):
+        b.set(x, 50, -20, EMBER) if abs(x) == 4 else None
+    for x in (-2, 2):
+        b.set(x, 52, -23, EMBER)
 
 
 def redemption_gate(b):
@@ -1053,6 +1070,9 @@ def hall_of_torment(b):
     # chains and lanterns
     for x, z in ((-30, -19), (-30, -7), (-36, -13), (-24, -13)):
         hang(b, x, 63, z, length=4)
+    for x, z in ((-37, -16), (-37, -10), (-23, -16), (-23, -10), (-33, -21), (-27, -21), (-33, -5), (-27, -5)):
+        b.set(x, 55, z, mc("polished_blackstone_brick_slab", type="bottom"))
+        b.set(x, 54, z, mc("soul_lantern", hanging="true", waterlogged="false"))
     for x, z in ((-37, -21), (-23, -21), (-37, -5), (-23, -5)):
         b.set(x, 62, z, mc("cobweb"))
         b.set(x, 61, z, mc("cobweb"))
@@ -1231,6 +1251,7 @@ EMIT = {
     "minecraft:campfire": 15, "minecraft:crying_obsidian": 10, "minecraft:glowstone": 15, "minecraft:beacon": 15,
     "minecraft:lava_cauldron": 15, "minecraft:respawn_anchor": 15, "minecraft:red_candle": 9,
     "minecraft:enchanting_table": 7, "minecraft:ender_chest": 7, "minecraft:brewing_stand": 1,
+    "minecraft:shroomlight": 15,
     "heavenhell:ember_lamp": 15, "heavenhell:halo_lamp": 15, "heavenhell:soul_shard_ore": 6,
 }
 SEE_THROUGH = ("glass", "pane", "bars", "chain", "lantern", "fire", "campfire", "carpet", "slab", "stairs", "fence",

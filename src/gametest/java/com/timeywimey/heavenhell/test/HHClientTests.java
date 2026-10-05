@@ -95,6 +95,10 @@ public class HHClientTests implements FabricClientGameTest {
 			run(server, "execute in heavenhell:heaven run tp @a 4.5 101 17.5 180 0");
 			context.waitTicks(20);
 			context.takeScreenshot("20_gatekeeper");
+			run(server, "execute as @a run heavenhell action gatekeeper");
+			context.waitTicks(10);
+			context.takeScreenshot("21_gatekeeper_dialog");
+			run(server, "dialog clear @a");
 			run(server, "item replace entity @a armor.chest with minecraft:air");
 			run(server, "item replace entity @a armor.head with minecraft:air");
 
@@ -109,12 +113,12 @@ public class HHClientTests implements FabricClientGameTest {
 			view(context, sp, server, "33_palace_facade", "0.5 50 14.5 180 -18", 20);
 			view(context, sp, server, "34_throne_hall", "0.5 51 5.5 180 -4", 130);
 			view(context, sp, server, "35_lucifer_on_throne", "0.5 52 -16.5 180 -5", 20);
-			view(context, sp, server, "36_redemption_gate", "-1.5 50 -27.5 160 -12", 20);
+			view(context, sp, server, "36_redemption_gate", "8.5 50 -27.5 105 -14", 20);
 			run(server, "heavenhell rank @a 5");
 			for (int rank = 1; rank <= 5; rank++) {
 				view(context, sp, server, "4" + rank + "_quarters_rank" + rank, quarters(rank), 30);
 			}
-			view(context, sp, server, "46_tower_roof_view", "32.5 90 -12.5 37 22", 30);
+			view(context, sp, server, "46_tower_roof_view", "30.5 91 -5.5 45 30", 30);
 			view(context, sp, server, "47_hall_of_torment", "-30.5 50 -5.5 180 10", 20);
 			view(context, sp, server, "48_lake_of_fire", "21.5 53 29.5 180 25", 20);
 			view(context, sp, server, "49_graveyard", "-26.5 52 29.5 180 20", 20);
@@ -146,6 +150,10 @@ public class HHClientTests implements FabricClientGameTest {
 			run(server, "dialog clear @a");
 			run(server, "execute in heavenhell:hell run tp @a 0.5 51 -16.5 180 0");
 			context.waitTicks(10);
+			run(server, "execute as @a run heavenhell action lucifer");
+			context.waitTicks(10);
+			context.takeScreenshot("58_lucifer_dialog");
+			run(server, "dialog clear @a");
 			run(server, "execute as @a run heavenhell action challenge_confirm");
 			context.waitTicks(10);
 			context.takeScreenshot("61_challenge_dialog");

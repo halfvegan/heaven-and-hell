@@ -1,10 +1,12 @@
 package com.timeywimey.heavenhell.dialog;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import net.minecraft.server.level.ServerPlayer;
 
+import com.timeywimey.heavenhell.registry.ModItems;
 import com.timeywimey.heavenhell.util.Cmd;
 import com.timeywimey.heavenhell.util.Txt;
 
@@ -30,10 +32,28 @@ public final class DialogBuilder {
 		return new DialogBuilder(title);
 	}
 
-	/** A big picture made from an item texture (our "vision" items). */
+	/**
+	 * A picture for the dialog. Item icons are always drawn at 16x16 in dialogs, so the "vision" textures are also
+	 * glyphs of two bitmap fonts (assets/heavenhell/font/vision*.json); a glyph can be as big as we like. The glyph sits
+	 * on the first line and the following blank lines reserve room for its height.
+	 */
 	public DialogBuilder picture(String itemId, int size) {
-		body.add("{type:\"minecraft:item\",item:{id:" + Txt.quote(itemId) + "},show_decorations:false,show_tooltip:false,width:"
-				+ size + ",height:" + size + "}");
+		String name = itemId.substring(itemId.indexOf(':') + 1);
+		int index = Arrays.asList(ModItems.VISIONS).indexOf(name);
+		if (index < 0) {
+			return this;
+		}
+		boolean big = size >= 96;
+		String font = big ? "heavenhell:vision" : "heavenhell:vision_small";
+		int padLines = big ? 7 : 4;
+		StringBuilder pad = new StringBuilder();
+		for (int i = 0; i < padLines; i++) {
+			pad.append("\n\u00a0");
+		}
+		String glyph = String.valueOf((char) (0xE000 + index));
+		body.add("{type:\"minecraft:plain_message\",width:300,contents:{\"text\":" + Txt.quote(glyph) + ",\"font\":\"" + font
+				+ "\",\"color\":\"white\",\"shadow_color\":0,\"extra\":[{\"text\":" + Txt.quote(pad.toString())
+				+ ",\"font\":\"minecraft:default\"}]}}");
 		return this;
 	}
 

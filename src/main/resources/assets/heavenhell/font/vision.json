@@ -1,0 +1,103 @@
+{
+  "providers": [
+    {
+      "type": "bitmap",
+      "file": "heavenhell:item/vision_lava_cow.png",
+      "ascent": 7,
+      "height": 64,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "heavenhell:item/vision_zombie_ambush.png",
+      "ascent": 7,
+      "height": 64,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "heavenhell:item/vision_trapped_wolf.png",
+      "ascent": 7,
+      "height": 64,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "heavenhell:item/vision_hungry_traveler.png",
+      "ascent": 7,
+      "height": 64,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "heavenhell:item/vision_lost_satchel.png",
+      "ascent": 7,
+      "height": 64,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "heavenhell:item/vision_devils_bargain.png",
+      "ascent": 7,
+      "height": 64,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "heavenhell:item/vision_heaven.png",
+      "ascent": 7,
+      "height": 64,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "heavenhell:item/vision_hell.png",
+      "ascent": 7,
+      "height": 64,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "heavenhell:item/vision_lucifer.png",
+      "ascent": 7,
+      "height": 64,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "heavenhell:item/vision_gatekeeper.png",
+      "ascent": 7,
+      "height": 64,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "heavenhell:item/vision_scales.png",
+      "ascent": 7,
+      "height": 64,
+      "chars": [
+        ""
+      ]
+    }
+  ]
+}

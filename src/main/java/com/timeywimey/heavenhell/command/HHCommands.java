@@ -176,6 +176,16 @@ public final class HHCommands {
 			}
 			case "return" -> HeavenLife.returnHome(player);
 			case "heaven_info" -> Dialogs.heavenInfo(player);
+			case "gatekeeper" -> {
+				if (Realms.isHeaven(player.level())) {
+					Dialogs.gatekeeper(player);
+				}
+			}
+			case "lucifer" -> {
+				if (HellLife.nearThrone(player)) {
+					Dialogs.lucifer(player, LuciferBattle.canStart(player.level()));
+				}
+			}
 			case "blessing" -> HeavenLife.blessing(player);
 			case "rankup" -> HellLife.rankUp(player);
 			case "quarters" -> HellLife.quarters(player);

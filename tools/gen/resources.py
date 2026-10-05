@@ -146,16 +146,16 @@ HAND_DISPLAY = {
 
 
 def worn_models():
-    halo = ring(16.4, 17.2, 6.4, 1.2)
+    halo = ring(18.2, 19.6, 7.6, 1.6)  # floats a little above the head and is a bit wider than it
     write_json(asset("models/item", "halo_worn"), {
         "textures": {"ring": hh("item/halo_worn"), "particle": hh("item/halo_worn")},
         "elements": halo, "display": HAND_DISPLAY})
-    fallen = ring(16.2, 17.0, 6.4, 1.2, gap=True, glow=False)
+    fallen = ring(17.8, 19.2, 7.4, 1.6, gap=True, glow=False)
     for e in fallen:
-        e.setdefault("rotation", {"angle": 0.0, "axis": "y", "origin": [8, 16.6, 8]})
+        e.setdefault("rotation", {"angle": 0.0, "axis": "y", "origin": [8, 18.5, 8]})
     # tilt the whole broken ring by rotating the straight bars on x
     for e in fallen[:4]:
-        e["rotation"] = {"angle": -22.5, "axis": "x", "origin": [8, 16.6, 8]}
+        e["rotation"] = {"angle": -22.5, "axis": "x", "origin": [8, 18.5, 8]}
     write_json(asset("models/item", "fallen_halo_worn"), {
         "textures": {"ring": hh("item/fallen_halo_worn"), "particle": hh("item/fallen_halo_worn")},
         "elements": fallen, "display": HAND_DISPLAY})
@@ -456,6 +456,19 @@ def build():
     advancements()
 
 
+# ---------------------------------------------------------------- fonts
+# Dialog pictures: each vision texture doubles as a big glyph (U+E000 + index in VISIONS) in two sizes.
+VISION_FONTS = {"vision": 64, "vision_small": 40}
+
+
+def fonts():
+    for font, height in VISION_FONTS.items():
+        providers = [{"type": "bitmap", "file": hh(f"item/{v}.png"), "ascent": 7, "height": height,
+                      "chars": [chr(0xE000 + i)]} for i, v in enumerate(VISIONS)]
+        write_json(asset("font", font), {"providers": providers})
+
+
 if __name__ == "__main__":
     build()
+    fonts()
     print("resources written")
