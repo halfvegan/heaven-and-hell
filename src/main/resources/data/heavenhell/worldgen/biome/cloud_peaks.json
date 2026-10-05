@@ -1,0 +1,87 @@
+{
+  "attributes": {
+    "minecraft:gameplay/natural_mob_spawns": {
+      "argument": {
+        "spawn_costs": {},
+        "spawns_by_category": {
+          "creature": [
+            {
+              "type": "heavenhell:angel",
+              "count": {
+                "type": "minecraft:uniform",
+                "min_inclusive": 1,
+                "max_inclusive": 3
+              },
+              "weight": 6
+            },
+            {
+              "type": "minecraft:rabbit",
+              "count": {
+                "type": "minecraft:uniform",
+                "min_inclusive": 1,
+                "max_inclusive": 2
+              },
+              "weight": 3
+            }
+          ]
+        }
+      },
+      "modifier": "overlay"
+    },
+    "minecraft:visual/sky_color": "#b4e2ff",
+    "minecraft:visual/fog_color": "#ffffff",
+    "minecraft:visual/water_fog_color": "#8fd8ff",
+    "minecraft:audio/background_music": {
+      "default": {
+        "sound": "minecraft:music.overworld.snowy_slopes",
+        "min_delay": 6000,
+        "max_delay": 18000
+      }
+    },
+    "minecraft:visual/ambient_particles": {
+      "argument": [
+        {
+          "particle": {
+            "type": "minecraft:white_ash"
+          },
+          "probability": 0.004
+        }
+      ],
+      "modifier": "append"
+    }
+  },
+  "carvers": [],
+  "downfall": 0.4,
+  "effects": {
+    "water_color": "#a8e6ff",
+    "grass_color": "#e6fff0",
+    "foliage_color": "#f4f0d0",
+    "dry_foliage_color": "#e8dcb0"
+  },
+  "features": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "heavenhell:heaven/gilded_veins",
+      "heavenhell:heaven/golden_cloud_pocket",
+      "heavenhell:heaven/ore_gold",
+      "heavenhell:heaven/ore_lapis",
+      "heavenhell:heaven/ore_diamond"
+    ],
+    [],
+    [],
+    [
+      "heavenhell:heaven/trees_peaks",
+      "heavenhell:heaven/flowers",
+      "heavenhell:heaven/sky_cloud",
+      "heavenhell:heaven/sky_cloud_white"
+    ],
+    []
+  ],
+  "has_precipitation": false,
+  "temperature": 0.7
+}

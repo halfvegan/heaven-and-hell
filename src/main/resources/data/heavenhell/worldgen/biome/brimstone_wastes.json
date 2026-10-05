@@ -1,0 +1,119 @@
+{
+  "attributes": {
+    "minecraft:gameplay/natural_mob_spawns": {
+      "argument": {
+        "spawn_costs": {},
+        "spawns_by_category": {
+          "monster": [
+            {
+              "type": "heavenhell:imp",
+              "count": {
+                "type": "minecraft:uniform",
+                "min_inclusive": 2,
+                "max_inclusive": 4
+              },
+              "weight": 100
+            },
+            {
+              "type": "minecraft:magma_cube",
+              "count": {
+                "type": "minecraft:uniform",
+                "min_inclusive": 2,
+                "max_inclusive": 4
+              },
+              "weight": 30
+            },
+            {
+              "type": "minecraft:ghast",
+              "count": 1,
+              "weight": 25
+            },
+            {
+              "type": "minecraft:blaze",
+              "count": {
+                "type": "minecraft:uniform",
+                "min_inclusive": 1,
+                "max_inclusive": 2
+              },
+              "weight": 10
+            }
+          ]
+        }
+      },
+      "modifier": "overlay"
+    },
+    "minecraft:visual/sky_color": "#000000",
+    "minecraft:visual/fog_color": "#4a0d06",
+    "minecraft:visual/water_fog_color": "#050533",
+    "minecraft:audio/background_music": {
+      "default": {
+        "sound": "minecraft:music.nether.nether_wastes",
+        "min_delay": 6000,
+        "max_delay": 18000
+      }
+    },
+    "minecraft:visual/ambient_particles": {
+      "argument": [
+        {
+          "particle": {
+            "type": "minecraft:ash"
+          },
+          "probability": 0.03
+        },
+        {
+          "particle": {
+            "type": "minecraft:lava"
+          },
+          "probability": 0.0006
+        }
+      ],
+      "modifier": "append"
+    },
+    "minecraft:audio/ambient_sounds": {
+      "additions": {
+        "sound": "minecraft:ambient.nether_wastes.additions",
+        "tick_chance": 0.0111
+      },
+      "loop": "minecraft:ambient.nether_wastes.loop",
+      "mood": {
+        "block_search_extent": 8,
+        "offset": 2.0,
+        "sound": "minecraft:ambient.nether_wastes.mood",
+        "tick_delay": 6000
+      }
+    }
+  },
+  "carvers": [
+    "minecraft:nether_cave"
+  ],
+  "downfall": 0.0,
+  "effects": {
+    "water_color": "#3f76e4"
+  },
+  "features": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "heavenhell:hell/spring_open",
+      "heavenhell:hell/patch_fire",
+      "heavenhell:hell/ore_magma",
+      "heavenhell:hell/spring_closed",
+      "heavenhell:hell/ore_soul_shard",
+      "heavenhell:hell/ore_soul_shard_rich",
+      "heavenhell:hell/ceiling_glow",
+      "heavenhell:hell/ore_gilded_blackstone",
+      "heavenhell:hell/ash_drifts",
+      "heavenhell:hell/ore_debris_small"
+    ],
+    [],
+    [],
+    []
+  ],
+  "has_precipitation": false,
+  "temperature": 2.0
+}

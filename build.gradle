@@ -1,0 +1,76 @@
+plugins {
+	id 'net.fabricmc.fabric-loom' version "${loom_version}"
+}
+
+base {
+	archivesName = 'heaven-and-hell'
+}
+
+repositories {
+}
+
+loom {
+	splitEnvironmentSourceSets()
+
+	mods {
+		"heavenhell" {
+			sourceSet sourceSets.main
+			sourceSet sourceSets.client
+		}
+	}
+}
+
+fabricApi {
+	configureTests {
+		createSourceSet = true
+		modId = "heavenhell-gametest"
+		eula = true
+		clearRunDirectory = false
+	}
+}
+
+dependencies {
+	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+	implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+	implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+}
+
+processResources {
+	def version = project.version
+	inputs.property "version", version
+
+	filesMatching("fabric.mod.json") {
+		expand "version": version
+	}
+}
+
+tasks.withType(JavaCompile).configureEach {
+	it.options.release = 25
+	it.options.encoding = 'UTF-8'
+	it.options.compilerArgs += ['-Xmaxerrs', '5000', '-Xmaxwarns', '200']
+}
+
+java {
+	sourceCompatibility = JavaVersion.VERSION_25
+	targetCompatibility = JavaVersion.VERSION_25
+}
+
+jar {
+	def projectName = project.name
+	inputs.property "projectName", projectName
+
+	from("LICENSE") {
+		rename { "${it}_$projectName" }
+	}
+}
+
+// Writes the client compile classpath to build/classpath.txt (used by CI to look up Minecraft class signatures).
+def hhClientClasspath = sourceSets.client.compileClasspath
+def hhClasspathFile = layout.buildDirectory.file('classpath.txt')
+tasks.register('exportClasspath') {
+	inputs.files(hhClientClasspath)
+	outputs.file(hhClasspathFile)
+	doLast {
+		hhClasspathFile.get().asFile.text = hhClientClasspath.files.collect { it.absolutePath }.join('\n')
+	}
+}

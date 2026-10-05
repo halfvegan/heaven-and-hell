@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:random_selector",
+  "default": "heavenhell:heaven/golden_tree",
+  "features": [
+    {
+      "chance": 0.3,
+      "feature": "heavenhell:heaven/grand_tree"
+    },
+    {
+      "chance": 0.25,
+      "feature": "heavenhell:heaven/celestial_tree"
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "attributes": {
+    "minecraft:gameplay/natural_mob_spawns": {
+      "argument": {
+        "spawn_costs": {},
+        "spawns_by_category": {
+          "creature": [
+            {
+              "type": "minecraft:sheep",
+              "count": {
+                "type": "minecraft:uniform",
+                "min_inclusive": 2,
+                "max_inclusive": 4
+              },
+              "weight": 8
+            },
+            {
+              "type": "minecraft:rabbit",
+              "count": {
+                "type": "minecraft:uniform",
+                "min_inclusive": 2,
+                "max_inclusive": 3
+              },
+              "weight": 6
+            },
+            {
+              "type": "minecraft:chicken",
+              "count": {
+                "type": "minecraft:uniform",
+                "min_inclusive": 2,
+                "max_inclusive": 4
+              },
+              "weight": 5
+            },
+            {
+              "type": "minecraft:horse",
+              "count": {
+                "type": "minecraft:uniform",
+                "min_inclusive": 1,
+                "max_inclusive": 2
+              },
+              "weight": 2
+            },
+            {
+              "type": "heavenhell:angel",
+              "count": {
+                "type": "minecraft:uniform",
+                "min_inclusive": 1,
+                "max_inclusive": 2
+              },
+              "weight": 5
+            },
+            {
+              "type": "minecraft:bee",
+              "count": {
+                "type": "minecraft:uniform",
+                "min_inclusive": 2,
+                "max_inclusive": 3
+              },
+              "weight": 2
+            }
+          ]
+        }
+      },
+      "modifier": "overlay"
+    },
+    "minecraft:visual/sky_color": "#9cd8ff",
+    "minecraft:visual/fog_color": "#ffe8b8",
+    "minecraft:visual/water_fog_color": "#8fd8ff",
+    "minecraft:audio/background_music": {
+      "default": {
+        "sound": "minecraft:music.overworld.cherry_grove",
+        "min_delay": 6000,
+        "max_delay": 18000
+      }
+    },
+    "minecraft:visual/ambient_particles": {
+      "argument": [
+        {
+          "particle": {
+            "type": "minecraft:wax_on"
+          },
+          "probability": 0.0012
+        },
+        {
+          "particle": {
+            "type": "minecraft:end_rod"
+          },
+          "probability": 0.0004
+        }
+      ],
+      "modifier": "append"
+    }
+  },
+  "carvers": [],
+  "downfall": 0.4,
+  "effects": {
+    "water_color": "#a8e6ff",
+    "grass_color": "#e0f08a",
+    "foliage_color": "#ffd86b",
+    "dry_foliage_color": "#e8dcb0"
+  },
+  "features": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "heavenhell:heaven/gilded_veins",
+      "heavenhell:heaven/golden_cloud_pocket",
+      "heavenhell:heaven/ore_gold",
+      "heavenhell:heaven/ore_lapis",
+      "heavenhell:heaven/ore_diamond"
+    ],
+    [],
+    [],
+    [
+      "heavenhell:heaven/trees_groves",
+      "heavenhell:heaven/golden_flowers",
+      "heavenhell:heaven/grass",
+      "heavenhell:heaven/sky_cloud",
+      "heavenhell:heaven/sky_cloud_white"
+    ],
+    []
+  ],
+  "has_precipitation": false,
+  "temperature": 0.7
+}

@@ -1,0 +1,30 @@
+{
+	"schemaVersion": 1,
+	"id": "heavenhell",
+	"version": "${version}",
+	"name": "Heaven & Hell",
+	"description": "Moments of choice shape your karma. When you die, your soul wakes in Heaven - a peaceful land of wonders - or in Hell, where you must rise through the ranks of Lucifer's court... and defeat him to escape.",
+	"authors": [
+		"timeywimey"
+	],
+	"contact": {
+		"homepage": "https://www.youtube.com/@timeywimey21"
+	},
+	"license": "All-Rights-Reserved",
+	"icon": "assets/heavenhell/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.timeywimey.heavenhell.HeavenHell"
+		],
+		"client": [
+			"com.timeywimey.heavenhell.client.HeavenHellClient"
+		]
+	},
+	"depends": {
+		"fabricloader": ">=0.19.5",
+		"minecraft": "~26.3",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}
