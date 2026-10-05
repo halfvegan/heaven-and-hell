@@ -1,0 +1,32 @@
+{
+  "display": {
+    "icon": {
+      "id": "heavenhell:morningstar"
+    },
+    "title": {
+      "text": "The Morningstar Falls"
+    },
+    "description": {
+      "text": "Defeat Lucifer on his own throne"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "frame": "challenge"
+  },
+  "criteria": {
+    "kill": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_type": "heavenhell:lucifer"
+          }
+        }
+      }
+    }
+  },
+  "parent": "heavenhell:rank_3"
+}

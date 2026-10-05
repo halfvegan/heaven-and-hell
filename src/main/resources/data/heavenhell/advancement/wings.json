@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "id": "heavenhell:angel_wings"
+    },
+    "title": {
+      "text": "Wings of Light"
+    },
+    "description": {
+      "text": "Obtain a pair of Angel Wings"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "wings": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "heavenhell:angel_wings"
+          }
+        ]
+      }
+    }
+  },
+  "parent": "heavenhell:heaven"
+}

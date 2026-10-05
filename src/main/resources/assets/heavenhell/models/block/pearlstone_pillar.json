@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "heavenhell:block/pearlstone_pillar_top",
+    "side": "heavenhell:block/pearlstone_pillar"
+  }
+}

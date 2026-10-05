@@ -1,0 +1,24 @@
+{
+  "replace": false,
+  "values": [
+    "heavenhell:pearlstone",
+    "heavenhell:pearlstone_bricks",
+    "heavenhell:pearlstone_brick_stairs",
+    "heavenhell:pearlstone_brick_slab",
+    "heavenhell:chiseled_pearlstone",
+    "heavenhell:pearlstone_pillar",
+    "heavenhell:gilded_pearlstone",
+    "heavenhell:golden_bricks",
+    "heavenhell:brimstone",
+    "heavenhell:brimstone_bricks",
+    "heavenhell:hellstone_bricks",
+    "heavenhell:hellstone_brick_stairs",
+    "heavenhell:hellstone_brick_slab",
+    "heavenhell:chiseled_hellstone",
+    "heavenhell:hellstone_pillar",
+    "heavenhell:gilded_hellstone",
+    "heavenhell:soul_shard_ore",
+    "heavenhell:halo_lamp",
+    "heavenhell:ember_lamp"
+  ]
+}

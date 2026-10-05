@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "B": "heavenhell:brimstone_bricks",
+    "K": "minecraft:blackstone"
+  },
+  "pattern": [
+    "BK",
+    "KB"
+  ],
+  "result": {
+    "count": 4,
+    "id": "heavenhell:hellstone_bricks"
+  }
+}

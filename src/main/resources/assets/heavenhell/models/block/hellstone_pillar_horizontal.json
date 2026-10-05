@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column_horizontal",
+  "textures": {
+    "end": "heavenhell:block/hellstone_pillar_top",
+    "side": "heavenhell:block/hellstone_pillar"
+  }
+}

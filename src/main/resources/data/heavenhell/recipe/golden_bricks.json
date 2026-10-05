@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": "heavenhell:pearlstone_bricks",
+    "G": "minecraft:gold_ingot"
+  },
+  "pattern": [
+    "###",
+    "#G#",
+    "###"
+  ],
+  "result": {
+    "count": 8,
+    "id": "heavenhell:golden_bricks"
+  }
+}

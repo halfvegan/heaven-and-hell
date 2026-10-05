@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "heavenhell:item/infernal_pickaxe"
+  }
+}

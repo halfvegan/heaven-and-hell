@@ -1,0 +1,23 @@
+{
+  "display": {
+    "icon": {
+      "id": "heavenhell:palace_key"
+    },
+    "title": {
+      "text": "Prince of Hell"
+    },
+    "description": {
+      "text": "Rise to Prince of Hell in Lucifer's court"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "frame": "challenge"
+  },
+  "criteria": {
+    "granted": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "parent": "heavenhell:rank_4"
+}

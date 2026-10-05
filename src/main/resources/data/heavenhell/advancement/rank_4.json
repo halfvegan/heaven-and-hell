@@ -1,0 +1,22 @@
+{
+  "display": {
+    "icon": {
+      "id": "heavenhell:infernal_crown"
+    },
+    "title": {
+      "text": "Archdemon"
+    },
+    "description": {
+      "text": "Rise to Archdemon in Lucifer's court"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "granted": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "parent": "heavenhell:rank_3"
+}

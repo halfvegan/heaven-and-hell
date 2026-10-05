@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "heavenhell:brimstone",
+  "result": {
+    "id": "heavenhell:brimstone_bricks"
+  }
+}

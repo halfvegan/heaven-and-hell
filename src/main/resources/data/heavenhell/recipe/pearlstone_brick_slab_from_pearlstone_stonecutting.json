@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "heavenhell:pearlstone",
+  "result": {
+    "id": "heavenhell:pearlstone_brick_slab",
+    "count": 2
+  }
+}

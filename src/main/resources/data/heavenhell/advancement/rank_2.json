@@ -1,0 +1,22 @@
+{
+  "display": {
+    "icon": {
+      "id": "heavenhell:hellfire_sword"
+    },
+    "title": {
+      "text": "Fiend"
+    },
+    "description": {
+      "text": "Rise to Fiend in Lucifer's court"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "granted": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "parent": "heavenhell:rank_1"
+}

@@ -1,0 +1,21 @@
+{
+  "display": {
+    "icon": {
+      "id": "heavenhell:book_of_deeds"
+    },
+    "title": {
+      "text": "Heaven & Hell"
+    },
+    "description": {
+      "text": "Every choice is remembered."
+    },
+    "background": "minecraft:gui/advancements/backgrounds/stone",
+    "show_toast": false,
+    "announce_to_chat": false
+  },
+  "criteria": {
+    "tick": {
+      "trigger": "minecraft:tick"
+    }
+  }
+}

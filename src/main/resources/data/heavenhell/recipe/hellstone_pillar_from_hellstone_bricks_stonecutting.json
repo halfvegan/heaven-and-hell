@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "heavenhell:hellstone_bricks",
+  "result": {
+    "id": "heavenhell:hellstone_pillar"
+  }
+}

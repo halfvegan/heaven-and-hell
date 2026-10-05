@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:glass_bottle",
+    "heavenhell:cloud",
+    "heavenhell:cloud"
+  ],
+  "result": {
+    "count": 1,
+    "id": "heavenhell:cloud_in_a_bottle"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "display": {
+    "icon": {
+      "id": "heavenhell:feather_of_return"
+    },
+    "title": {
+      "text": "Second Chance"
+    },
+    "description": {
+      "text": "Return to the living world from Heaven"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "granted": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "parent": "heavenhell:heaven"
+}

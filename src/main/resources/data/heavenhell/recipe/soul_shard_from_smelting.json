@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 1.0,
+  "group": "soul_shard",
+  "ingredient": "heavenhell:soul_shard_ore",
+  "result": {
+    "id": "heavenhell:soul_shard"
+  }
+}

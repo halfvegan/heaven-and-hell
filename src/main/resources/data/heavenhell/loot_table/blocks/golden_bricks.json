@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "condition": {
+        "type": "minecraft:survives_explosion"
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "heavenhell:golden_bricks"
+        }
+      ]
+    }
+  ],
+  "random_sequence": "heavenhell:blocks/golden_bricks"
+}

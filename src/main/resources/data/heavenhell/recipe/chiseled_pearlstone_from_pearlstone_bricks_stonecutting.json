@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "heavenhell:pearlstone_bricks",
+  "result": {
+    "id": "heavenhell:chiseled_pearlstone"
+  }
+}

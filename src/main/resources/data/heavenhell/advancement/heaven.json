@@ -1,0 +1,22 @@
+{
+  "display": {
+    "icon": {
+      "id": "heavenhell:cloud"
+    },
+    "title": {
+      "text": "Pearly Gates"
+    },
+    "description": {
+      "text": "Wake up in Heaven"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "granted": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "parent": "heavenhell:root"
+}

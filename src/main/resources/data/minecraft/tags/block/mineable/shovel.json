@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "heavenhell:heaven_grass",
+    "heavenhell:heaven_soil",
+    "heavenhell:ash_block",
+    "heavenhell:cloud",
+    "heavenhell:golden_cloud"
+  ]
+}

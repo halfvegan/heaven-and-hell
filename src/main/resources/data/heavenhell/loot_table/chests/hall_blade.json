@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "heavenhell:seraph_blade"
+        }
+      ]
+    }
+  ],
+  "random_sequence": "heavenhell:chests/hall_blade"
+}

@@ -1,0 +1,22 @@
+{
+  "display": {
+    "icon": {
+      "id": "heavenhell:vision_lava_cow"
+    },
+    "title": {
+      "text": "A Moment of Choice"
+    },
+    "description": {
+      "text": "Face your first moral choice"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "granted": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "parent": "heavenhell:root"
+}

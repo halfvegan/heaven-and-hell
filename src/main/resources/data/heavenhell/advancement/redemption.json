@@ -1,0 +1,23 @@
+{
+  "display": {
+    "icon": {
+      "id": "heavenhell:feather_of_return"
+    },
+    "title": {
+      "text": "Redemption"
+    },
+    "description": {
+      "text": "Escape Hell through the Redemption Gate"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "frame": "challenge"
+  },
+  "criteria": {
+    "granted": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "parent": "heavenhell:morningstar_fallen"
+}

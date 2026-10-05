@@ -1,0 +1,23 @@
+{
+  "display": {
+    "icon": {
+      "id": "heavenhell:soul_shard"
+    },
+    "title": {
+      "text": "Damned"
+    },
+    "description": {
+      "text": "Fall to -50 karma"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "frame": "goal"
+  },
+  "criteria": {
+    "granted": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "parent": "heavenhell:moment"
+}

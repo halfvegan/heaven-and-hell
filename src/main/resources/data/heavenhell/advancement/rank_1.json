@@ -1,0 +1,22 @@
+{
+  "display": {
+    "icon": {
+      "id": "heavenhell:infernal_pickaxe"
+    },
+    "title": {
+      "text": "Imp"
+    },
+    "description": {
+      "text": "Rise to Imp in Lucifer's court"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "granted": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "parent": "heavenhell:hell"
+}

@@ -1,0 +1,23 @@
+{
+  "display": {
+    "icon": {
+      "id": "heavenhell:demon_wings"
+    },
+    "title": {
+      "text": "Demon"
+    },
+    "description": {
+      "text": "Rise to Demon in Lucifer's court"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "frame": "goal"
+  },
+  "criteria": {
+    "granted": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "parent": "heavenhell:rank_2"
+}
