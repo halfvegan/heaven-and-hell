@@ -190,16 +190,16 @@ def gatekeeper():
         "Bhhhhhh.",
         "Bhhhhhh.",
         "BBhhhhB.",
-        "BBwwwBB.",
         "BBwGwBB.",
-        "BBGGGBB.",
+        "BBGwGBB.",
         "BBwGwBB.",
         "BBwGwBB.",
-        "BBwwwBB.",
-        "BBwwwBB.",
+        "BBwGGBB.",
+        "BBwGwBB.",
+        "BBwGGBB.",
         "GGGGGGGG",
         "BBwwwBB.",
-    ], {"B": blue, "w": robe, "G": gold, "h": hair})
+    ], {"B": blue, "w": robe, "G": gold, "h": hair})  # the golden key of the gates
     # the beard continues onto the chest (first rows of body front, base layer above)
     for side in ("r", "l"):
         arm(s, side, robe, robe_d, gold, skin)

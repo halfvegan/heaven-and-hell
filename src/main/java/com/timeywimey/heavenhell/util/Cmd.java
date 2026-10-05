@@ -28,8 +28,12 @@ public final class Cmd {
 	private record FailureLog(String command) implements CommandSource {
 		@Override
 		public void sendSystemMessage(Component message) {
+			String text = message.getString();
+			if (command.contains("particle ") || command.contains("kill @e") || text.startsWith("Nothing changed")) {
+				return; // harmless: nobody saw the particles / nothing to remove
+			}
 			String shown = command.length() > 300 ? command.substring(0, 300) + "..." : command;
-			HeavenHell.LOGGER.warn("Command '{}' failed: {}", shown, message.getString());
+			HeavenHell.LOGGER.warn("Command '{}' failed: {}", shown, text);
 		}
 
 		@Override
@@ -58,8 +62,9 @@ public final class Cmd {
 		run(level.getServer(), "execute in " + level.dimension().identifier() + " run " + command);
 	}
 
+	/** How commands address a player. Player-only commands (title, dialog...) reject UUIDs, so use the name. */
 	public static String target(ServerPlayer player) {
-		return player.getStringUUID();
+		return player.getScoreboardName();
 	}
 
 	public static void title(ServerPlayer player, String titleJson, String subtitleJson, int fadeIn, int stay, int fadeOut) {

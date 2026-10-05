@@ -117,6 +117,6 @@ public final class DialogBuilder {
 	}
 
 	public void show(ServerPlayer player) {
-		Cmd.run(player.level().getServer(), "dialog show " + player.getStringUUID() + " " + snbt());
+		Cmd.run(player.level().getServer(), "dialog show " + Cmd.target(player) + " " + snbt());
 	}
 }

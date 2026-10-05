@@ -61,9 +61,19 @@ public class HHGameTests {
 		return level != null ? level : server.getLevel(fallback);
 	}
 
+	/** No player is in that dimension during the test, so keep the build area loaded by hand. */
+	private static void forceLoad(ServerLevel level, boolean on) {
+		for (int cx = -3; cx <= 3; cx++) {
+			for (int cz = -3; cz <= 3; cz++) {
+				level.setChunkForced(cx, cz, on);
+			}
+		}
+	}
+
 	@GameTest(maxTicks = 600)
 	public void heavenBuilds(GameTestHelper helper) {
 		ServerLevel heaven = realmOr(helper.getLevel().getServer(), Realms.HEAVEN, Level.END);
+		forceLoad(heaven, true);
 		Realms.buildHeaven(heaven);
 		helper.runAfterDelay(20, () -> {
 			BlockState landing = heaven.getBlockState(BlockPos.containing(Layout.HEAVEN_ARRIVAL.x, 100, Layout.HEAVEN_ARRIVAL.z));
@@ -73,6 +83,7 @@ public class HHGameTests {
 			long keepers = heaven.getEntitiesOfClass(AngelEntity.class, new AABB(BlockPos.containing(Layout.GATEKEEPER)).inflate(4.0),
 					AngelEntity::isGatekeeper).size();
 			helper.assertTrue(keepers == 1, "Expected exactly one Gatekeeper, found " + keepers);
+			forceLoad(heaven, false);
 			helper.succeed();
 		});
 	}
@@ -80,6 +91,7 @@ public class HHGameTests {
 	@GameTest(maxTicks = 600)
 	public void hellBuilds(GameTestHelper helper) {
 		ServerLevel hell = realmOr(helper.getLevel().getServer(), Realms.HELL, Level.NETHER);
+		forceLoad(hell, true);
 		Realms.buildHell(hell);
 		helper.runAfterDelay(20, () -> {
 			BlockState floor = hell.getBlockState(BlockPos.containing(Layout.HELL_ARRIVAL).below());
@@ -97,6 +109,7 @@ public class HHGameTests {
 			helper.assertTrue(lucifer != null, "Lucifer did not spawn");
 			helper.runAfterDelay(10, () -> {
 				helper.assertTrue(lucifer.isPassenger(), "Lucifer is not seated on his throne");
+				forceLoad(hell, false);
 				helper.succeed();
 			});
 		});
