@@ -94,9 +94,4 @@ public class LuciferEntity extends Monster {
 	public boolean removeWhenFarAway(double distance) {
 		return false;
 	}
-
-	@Override
-	protected boolean shouldDespawnInPeaceful() {
-		return false;
-	}
 }

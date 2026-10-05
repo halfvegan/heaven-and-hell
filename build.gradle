@@ -64,8 +64,9 @@ jar {
 	}
 }
 
-// Writes the client compile classpath to build/classpath.txt (used by CI to look up Minecraft class signatures).
-def hhClientClasspath = sourceSets.client.compileClasspath
+// Writes the client compile classpath (libraries only, so it works even if the mod does not compile yet)
+// to build/classpath.txt. CI uses it to look up Minecraft class signatures.
+def hhClientClasspath = configurations.clientCompileClasspath
 def hhClasspathFile = layout.buildDirectory.file('classpath.txt')
 tasks.register('hhExportClasspath') {
 	inputs.files(hhClientClasspath)

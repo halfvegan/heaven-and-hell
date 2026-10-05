@@ -37,6 +37,7 @@ import com.timeywimey.heavenhell.soul.Judgment;
 import com.timeywimey.heavenhell.soul.Karma;
 import com.timeywimey.heavenhell.soul.Soul;
 import com.timeywimey.heavenhell.soul.SoulData;
+import com.timeywimey.heavenhell.util.Give;
 import com.timeywimey.heavenhell.world.Realms;
 import com.timeywimey.heavenhell.world.WorldState;
 
@@ -314,9 +315,7 @@ public final class HHCommands {
 	}
 
 	private static void give(ServerPlayer p, ItemStack stack) {
-		if (!p.getInventory().add(stack)) {
-			p.drop(stack, false);
-		}
+		Give.give(p, stack);
 	}
 
 	private static int rebuild(CommandContext<CommandSourceStack> ctx, boolean heaven) {

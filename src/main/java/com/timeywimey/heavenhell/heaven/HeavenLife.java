@@ -25,6 +25,7 @@ import com.timeywimey.heavenhell.registry.ModItems;
 import com.timeywimey.heavenhell.soul.Soul;
 import com.timeywimey.heavenhell.soul.SoulData;
 import com.timeywimey.heavenhell.util.Cmd;
+import com.timeywimey.heavenhell.util.Give;
 import com.timeywimey.heavenhell.util.Scheduler;
 import com.timeywimey.heavenhell.util.Txt;
 import com.timeywimey.heavenhell.world.Layout;
@@ -192,8 +193,6 @@ public final class HeavenLife {
 	}
 
 	private static void give(ServerPlayer player, ItemStack stack) {
-		if (!player.getInventory().add(stack)) {
-			player.drop(stack, false);
-		}
+		Give.give(player, stack);
 	}
 }

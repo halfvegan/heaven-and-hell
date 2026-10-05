@@ -2,6 +2,7 @@
 net.minecraft.world.entity
 net.minecraft.world.item
 net.minecraft.world.level.block
+net.minecraft.world.level.material
 net.minecraft.world.level.Level
 net.minecraft.world.level.LevelAccessor
 net.minecraft.world.level.ServerLevelAccessor

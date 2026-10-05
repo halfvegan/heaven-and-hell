@@ -14,6 +14,7 @@ import com.timeywimey.heavenhell.dialog.Dialogs;
 import com.timeywimey.heavenhell.hell.HellLife;
 import com.timeywimey.heavenhell.registry.ModItems;
 import com.timeywimey.heavenhell.util.Cmd;
+import com.timeywimey.heavenhell.util.Give;
 import com.timeywimey.heavenhell.util.Scheduler;
 import com.timeywimey.heavenhell.util.Txt;
 import com.timeywimey.heavenhell.world.Layout;
@@ -124,10 +125,7 @@ public final class Judgment {
 		if (!soul.has(SoulData.FLAG_BOOK)) {
 			soul.set(SoulData.FLAG_BOOK);
 			Soul.save(p, soul);
-			ItemStack book = new ItemStack(ModItems.BOOK_OF_DEEDS);
-			if (!p.getInventory().add(book)) {
-				p.drop(book, false);
-			}
+			Give.give(p, new ItemStack(ModItems.BOOK_OF_DEEDS));
 		}
 		final boolean first = firstTime;
 		Scheduler.after(70, () -> Dialogs.judgment(p, dest, died, first));
