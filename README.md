@@ -4,34 +4,68 @@ A Minecraft **Java 26.3** mod (Fabric) by **timeywimey**.
 
 Every so often, time freezes and the world asks you to choose. Save the cow that's about to stumble into lava,
 or let it fall? Feed the starving traveler, or rob him? Every choice changes your **karma**. When you die, your
-soul is weighed:
+soul is weighed, and you wake up in **Heaven** or **Hell**.
 
-* **Heaven**: a sea of clouds and floating islands with endless daylight. You'll find the Pearly Gates, the
-  Gatekeeper, angels, the Hall of Wonders (angel wings that let you fly, a halo, a harp of peace and more), and
-  cottages where you can live in peace. Whenever you like, the Gate of Return will send you back to the living
-  world.
-* **Hell**: a burning cavern-world ruled by **Lucifer** from his throne in the Infernal Court. Mine Soul Shards
-  and offer them to him to climb the ranks (Imp → Fiend → Demon → Archdemon → Prince of Hell). Each rank brings
-  better perks, gear and more lavish quarters. The only way out is to defeat Lucifer himself.
+## Moments of choice
+About 3 minutes into a world, and then every 8 to 14 minutes, a moment freezes time in the Overworld and a
+choice screen appears:
+
+* a cow wandering into lava
+* zombies about to ambush a villager
+* a wolf caught in a trap
+* a starving traveler asking for food
+* a lost satchel full of someone else's emeralds
+* a stranger offering a devil's bargain
+
+Kindness raises your karma, cruelty lowers it. Killing villagers, angels or other players' pets counts too; curing
+zombie villagers counts for you. Your **Book of Deeds** keeps the record.
+
+## Heaven
+A sea of clouds and floating islands in endless daylight. You arrive at the **Pearly Gates**:
+
+* the **Gatekeeper**, who welcomes you and can send you back to the living world
+* the **Hall of Wonders**: treasure chests with Angel Wings (real flight in Heaven), the Halo, the Harp of Peace,
+  the Seraph Blade, Manna, Clouds in a Bottle and Feathers of Return
+* the fountain plaza, the **Gardens of Rest**, the **Tree of Life**, the **Bell of Heaven** and cottages to live in
+* angels who give blessings
+* no fall damage, no hunger, no night. Walk through the **Gate of Return** to go back to the Overworld.
+
+## Hell
+A burning cavern-world ruled by **Lucifer, the Fallen Morningstar**, from his throne in the **Infernal Court**:
+
+* the Gates of Hell, the Avenue of Bones, the lava moat and Lucifer's palace
+* the Tower of Sin, with one floor of quarters per rank, each more lavish than the last
+* the Hall of Torment, the Lake of Fire, the Graveyard of the Damned, the Infernal Forge and the Well of Souls
+
+Mine **Soul Shards** (or take them from imps) and offer them to Lucifer to climb the ranks:
+Lost Soul → Imp → Fiend → Demon → Archdemon → Prince of Hell. Each rank brings perks (fire resistance, haste,
+strength, flight with Demon Wings...) and gear such as the Infernal Pickaxe, the Hellfire Sword and the Infernal
+Crown. Once you're a Demon, you can **challenge Lucifer**. He has three phases. Beat him and the Redemption Gate
+behind his throne opens, leading you back to the living world.
 
 ## Install
-1. Install the **Fabric Loader** for Minecraft 26.3 (https://fabricmc.net/use/installer/).
-2. Put **Fabric API** (for 26.3) and the `heaven-and-hell-*.jar` from this repo's
-   [Actions → build → Artifacts](../../actions) (or the `ci/build` branch) in your `.minecraft/mods` folder.
-3. Start Minecraft with the Fabric profile. Existing worlds work too: Heaven and Hell appear the first
-   time someone goes there.
+1. Install **Fabric Loader 0.19.5 or newer** for Minecraft 26.3 (https://fabricmc.net/use/installer/).
+2. Download **Fabric API 0.161.0+26.3** (Modrinth or CurseForge) and put it in your `.minecraft/mods` folder.
+3. Put `heaven-and-hell-1.0.0.jar` in the same `mods` folder.
+4. Start Minecraft with the Fabric profile. Minecraft 26.3 needs Java 25; the official launcher provides it.
+
+Existing worlds work too. Heaven and Hell are built the first time someone goes there.
 
 ## Commands
 * `/heavenhell karma`: your karma, and where you'd go if you died right now
 * `/heavenhell deeds`: open your Book of Deeds
 
 Creator tools (cheats on):
-* `/heavenhell moment <lava_animal|zombie_ambush|trapped_wolf|hungry_traveler|lost_satchel|devils_bargain>`: trigger a choice right now
+* `/heavenhell moment <lava_animal|zombie_ambush|trapped_wolf|hungry_traveler|lost_satchel|devils_bargain>`: start a moment now
 * `/heavenhell send <player> heaven|hell|living`
 * `/heavenhell karma set|add <player> <value>`, `/heavenhell rank <player> <0-5>`, `/heavenhell free <player>`
 * `/heavenhell kit heaven|hell`: all the special items
 * `/heavenhell moments on|off|every <min> <max>`, `/heavenhell judgment on|off`
+* `/heavenhell rebuild heaven|hell`: rebuild the Pearly Gates or the Infernal Court
 
 ## Building
 GitHub Actions builds the mod on every push (Java 25, Gradle). The workflow also runs game tests and takes
-in-game screenshots.
+in-game screenshots. The finished jar is attached to each run and saved on the `ci/build` branch.
+
+The Pearly Gates and the Infernal Court are generated by `tools/structures/build.py`; textures, models and data
+by the scripts in `tools/art` and `tools/gen`.

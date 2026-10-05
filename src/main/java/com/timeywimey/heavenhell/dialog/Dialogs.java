@@ -39,19 +39,19 @@ public final class Dialogs {
 		boolean heaven = SoulData.HEAVEN.equals(dest);
 		DialogBuilder d = DialogBuilder.of(heaven ? Txt.of("✦ Judgment ✦", "gold").bold() : Txt.of("☠ Judgment ☠", "dark_red").bold())
 				.picture(heaven ? "heavenhell:vision_heaven" : "heavenhell:vision_hell", 64)
-				.text(Txt.of("Your soul has been weighed.", "white"))
-				.text(Karma.describe(soul).then("   Good deeds: " + soul.goodDeeds + "   Sins: " + soul.sins, "gray"));
+				.text(Txt.of("Your soul has been weighed. ", "white").then(Karma.describe(soul))
+						.then("   Good deeds: " + soul.goodDeeds + "   Sins: " + soul.sins, "gray"));
 		if (heaven) {
 			d.text(Txt.of(firstTime
-					? "The scales tip toward the light. You have been welcomed into Heaven - a land of peace, wonders and endless day."
+					? "The scales tip toward the light. Welcome to Heaven - a land of peace, wonders and endless day."
 					: "You wake once more beneath the Pearly Gates.", "yellow"));
-			d.text(Txt.of("Visit the Hall of Wonders, wander the Gardens of Rest, and speak to the Gatekeeper if you ever wish to return to the living world.", "gray"));
+			d.text(Txt.of("Explore the Hall of Wonders. The Gatekeeper can send you back to the living world.", "gray"));
 			d.button(Txt.of("Enter Paradise", "gold").bold(), null, null);
 		} else {
 			d.text(Txt.of(firstTime
 					? "The scales sink into darkness. You have been cast into Hell."
 					: "Death is no escape. You wake again at the Gates of Hell.", "red"));
-			d.text(Txt.of("Mine Soul Shards and slay demons. Offer the shards to Lucifer on his throne to rise through the ranks and live lavishly... and one day, challenge him for your freedom.", "gray"));
+			d.text(Txt.of("Offer Soul Shards to Lucifer to rise through the ranks and live lavishly... then challenge him for your freedom.", "gray"));
 			d.button(Txt.of("Enter the Inferno", "red").bold(), null, null);
 		}
 		d.columns(1).show(player);
