@@ -120,7 +120,7 @@ public final class Realms {
 				gatekeeper.setYRot(0.0F);
 				gatekeeper.setYHeadRot(0.0F);
 				gatekeeper.setPersistenceRequired();
-				gatekeeper.setInvulnerable(true);
+				gatekeeper.setPermanentlyInvulnerable(true);
 				level.addFreshEntity(gatekeeper);
 			}
 		}

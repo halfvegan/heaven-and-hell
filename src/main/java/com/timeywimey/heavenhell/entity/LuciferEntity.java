@@ -33,7 +33,7 @@ public class LuciferEntity extends Monster {
 		this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(ModItems.MORNINGSTAR));
 		this.xpReward = 500;
 		this.setNoAi(true);
-		this.setInvulnerable(true);
+		this.setPermanentlyInvulnerable(true);
 	}
 
 	public static AttributeSupplier.Builder createAttributes() {
@@ -62,7 +62,7 @@ public class LuciferEntity extends Monster {
 	public void setInBattle(boolean battle) {
 		this.inBattle = battle;
 		this.setNoAi(!battle);
-		this.setInvulnerable(!battle);
+		this.setPermanentlyInvulnerable(!battle);
 	}
 
 	@Override

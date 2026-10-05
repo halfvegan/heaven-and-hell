@@ -1,5 +1,8 @@
 package com.timeywimey.heavenhell.entity;
 
+import net.minecraft.core.BlockPos;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -13,11 +16,24 @@ import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
+
+import com.timeywimey.heavenhell.world.Realms;
 
 /** Small, quick demons of Hell. They drop Soul Shards. */
 public class ImpEntity extends Monster {
 	public ImpEntity(EntityType<? extends ImpEntity> type, Level level) {
 		super(type, level);
+	}
+
+	/** Imps roam the wilds of Hell, but never spawn on their own inside Lucifer's court. */
+	public static boolean checkImpSpawnRules(EntityType<ImpEntity> type, ServerLevelAccessor level, EntitySpawnReason reason,
+			BlockPos pos, RandomSource random) {
+		if (reason == EntitySpawnReason.NATURAL && Realms.isHell(level.getLevel())
+				&& (long) pos.getX() * pos.getX() + (long) pos.getZ() * pos.getZ() < 47L * 47L && pos.getY() >= 44) {
+			return false;
+		}
+		return Monster.checkAnyLightMonsterSpawnRules(type, level, reason, pos, random);
 	}
 
 	public static AttributeSupplier.Builder createAttributes() {

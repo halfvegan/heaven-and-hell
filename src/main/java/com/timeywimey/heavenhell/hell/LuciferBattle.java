@@ -114,7 +114,7 @@ public final class LuciferBattle {
 				entity.igniteForSeconds(6.0F);
 				entity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 100, 0));
 			} else if (weapon.is(ModItems.SERAPH_BLADE)) {
-				if (entity instanceof ImpEntity || entity instanceof LuciferEntity || entity.getType().is(EntityTypeTags.UNDEAD)) {
+				if (entity instanceof ImpEntity || entity instanceof LuciferEntity || entity.typeHolder().is(EntityTypeTags.UNDEAD)) {
 					entity.igniteForSeconds(5.0F);
 				}
 				living.heal(1.0F);

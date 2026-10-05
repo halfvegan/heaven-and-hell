@@ -62,12 +62,12 @@ public final class ModBlocks {
 			.lightLevel(state -> 3));
 	public static final Block ANGEL_LILY = register("angel_lily", Block::new, props()
 			.mapColor(MapColor.SNOW).noCollision().instabreak().noOcclusion().sound(SoundType.GRASS)
-			.lightLevel(state -> 5).pushReaction(PushReaction.DESTROY));
+			.lightLevel(state -> 5).pushReaction(PushReaction.POPPED));
 	public static final Block HALO_LAMP = register("halo_lamp", Block::new, props()
 			.mapColor(MapColor.GOLD).strength(0.8F).sound(SoundType.GLASS).lightLevel(state -> 15));
 	public static final Block RETURN_LIGHT = register("return_light", Block::new, props()
 			.mapColor(MapColor.SNOW).noCollision().noOcclusion().strength(-1.0F, 3600000.0F).noLootTable()
-			.lightLevel(state -> 13).sound(SoundType.AMETHYST).pushReaction(PushReaction.BLOCK));
+			.lightLevel(state -> 13).sound(SoundType.AMETHYST).pushReaction(PushReaction.IMMOVEABLE));
 
 	// -------------------------------------------------------------------- Hell
 	public static final Block BRIMSTONE = register("brimstone", Block::new, stone(MapColor.NETHER, 0.6F)
@@ -94,7 +94,7 @@ public final class ModBlocks {
 			.mapColor(MapColor.FIRE).strength(0.8F).sound(SoundType.GLASS).lightLevel(state -> 15));
 	public static final Block REDEMPTION_LIGHT = register("redemption_light", Block::new, props()
 			.mapColor(MapColor.GOLD).noCollision().noOcclusion().strength(-1.0F, 3600000.0F).noLootTable()
-			.lightLevel(state -> 15).sound(SoundType.AMETHYST).pushReaction(PushReaction.BLOCK));
+			.lightLevel(state -> 15).sound(SoundType.AMETHYST).pushReaction(PushReaction.IMMOVEABLE));
 
 	private static BlockBehaviour.Properties props() {
 		return BlockBehaviour.Properties.of();
@@ -106,8 +106,8 @@ public final class ModBlocks {
 
 	private static BlockBehaviour.Properties leaves(MapColor color) {
 		return BlockBehaviour.Properties.of().mapColor(color).strength(0.2F).sound(SoundType.GRASS).noOcclusion()
-				.isSuffocating((state, level, pos) -> false).isViewBlocking((state, level, pos) -> false)
-				.ignitedByLava().pushReaction(PushReaction.DESTROY);
+				.isSuffocating((state, level, pos) -> false).isViewBlocking((state, level, pos, box) -> false)
+				.ignitedByLava().pushReaction(PushReaction.POPPED);
 	}
 
 	private static <B extends Block> B register(String name, Function<BlockBehaviour.Properties, B> factory, BlockBehaviour.Properties properties) {

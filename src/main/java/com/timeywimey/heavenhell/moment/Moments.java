@@ -322,7 +322,7 @@ public final class Moments {
 	public static void freeze(Mob mob) {
 		mob.setNoAi(true);
 		mob.setNoGravity(true);
-		mob.setInvulnerable(true);
+		mob.setPermanentlyInvulnerable(true);
 		mob.setGlowingTag(true);
 		mob.setDeltaMovement(Vec3.ZERO);
 		mob.addTag(SUBJECT_TAG);
@@ -331,7 +331,7 @@ public final class Moments {
 	public static void unfreeze(Mob mob) {
 		mob.setNoAi(false);
 		mob.setNoGravity(false);
-		mob.setInvulnerable(false);
+		mob.setPermanentlyInvulnerable(false);
 		mob.setGlowingTag(false);
 		mob.removeTag(SUBJECT_TAG);
 	}
@@ -718,7 +718,7 @@ public final class Moments {
 
 	/** Cleans up mobs left frozen by a crash or restart. */
 	public static void cleanupStray(Entity entity, ServerLevel level) {
-		if (entity.getTags().contains(SUBJECT_TAG) && entity instanceof Mob mob) {
+		if (entity.entityTags().contains(SUBJECT_TAG) && entity instanceof Mob mob) {
 			boolean owned = ACTIVE.values().stream().anyMatch(a -> a.subjects.contains(mob));
 			if (!owned) {
 				mob.discard();

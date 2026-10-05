@@ -9,7 +9,6 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.SpawnPlacementTypes;
-import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.level.levelgen.Heightmap;
 
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityType;
@@ -37,8 +36,8 @@ public final class ModEntities {
 	public static final EntityType<ImpEntity> IMP = register("imp",
 			FabricEntityType.Builder.createMob(ImpEntity::new, MobCategory.MONSTER, b -> b
 					.defaultAttributes(ImpEntity::createAttributes)
-					.spawnPlacement(SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkAnyLightMonsterSpawnRules))
-					.sized(0.6F, 1.95F).fireImmune().clientTrackingRange(8));
+					.spawnPlacement(SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ImpEntity::checkImpSpawnRules))
+					.sized(0.6F, 1.95F).fireImmune().notInPeaceful().clientTrackingRange(8));
 
 	public static final EntityType<LuciferEntity> LUCIFER = register("lucifer",
 			FabricEntityType.Builder.createMob(LuciferEntity::new, MobCategory.MONSTER, b -> b
