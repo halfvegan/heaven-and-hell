@@ -1,0 +1,30 @@
+{
+	"schemaVersion": 1,
+	"id": "poolrooms",
+	"version": "${version}",
+	"name": "The Poolrooms",
+	"description": "Swim down a strange drain into the Poolrooms: an endless, brightly lit maze of tiled pools. Find three wristbands, find the exit, and whatever you do... don't run.",
+	"authors": [
+		"timeywimey"
+	],
+	"contact": {
+		"homepage": "https://www.youtube.com/@timeywimey21"
+	},
+	"license": "All-Rights-Reserved",
+	"icon": "assets/poolrooms/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.timeywimey.poolrooms.Poolrooms"
+		],
+		"client": [
+			"com.timeywimey.poolrooms.client.PoolroomsClient"
+		]
+	},
+	"depends": {
+		"fabricloader": ">=0.19.5",
+		"minecraft": "~26.3",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}
