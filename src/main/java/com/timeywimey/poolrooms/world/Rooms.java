@@ -86,7 +86,7 @@ final class Rooms {
 	}
 
 	static BlockState pane(boolean north, boolean east, boolean south, boolean west) {
-		return Blocks.WHITE_STAINED_GLASS_PANE.defaultBlockState().setValue(CrossCollisionBlock.NORTH, north)
+		return Blocks.STAINED_GLASS_PANE.white().defaultBlockState().setValue(CrossCollisionBlock.NORTH, north)
 				.setValue(CrossCollisionBlock.EAST, east).setValue(CrossCollisionBlock.SOUTH, south)
 				.setValue(CrossCollisionBlock.WEST, west);
 	}
@@ -445,7 +445,7 @@ final class Rooms {
 			c.locker(14, WALK, z, Direction.WEST, LOUNGE_LOCKER, null);
 			c.locker(14, WALK + 1, z, Direction.WEST, z % 2 == 0 ? LOUNGE_LOCKER : null, null);
 		}
-		Block[] towels = {Blocks.LIGHT_BLUE_CARPET, Blocks.WHITE_CARPET, Blocks.YELLOW_CARPET};
+		Block[] towels = {Blocks.CARPET.lightBlue(), Blocks.CARPET.white(), Blocks.CARPET.yellow()};
 		int i = 0;
 		for (int z : new int[] {2, 3, 4, 11, 12, 13}) {
 			c.set(2, WALK, z, facing(ModBlocks.POOL_CHAIR, Direction.EAST));
@@ -453,7 +453,7 @@ final class Rooms {
 		}
 		for (int x = 6; x <= 9; x++) {
 			for (int z = 6; z <= 9; z++) {
-				c.set(x, WALK, z, ((x + z) % 2 == 0 ? Blocks.WHITE_CARPET : Blocks.LIGHT_BLUE_CARPET).defaultBlockState());
+				c.set(x, WALK, z, ((x + z) % 2 == 0 ? Blocks.CARPET.white() : Blocks.CARPET.lightBlue()).defaultBlockState());
 			}
 		}
 		maybeRuleSign(c, 3);
