@@ -1,0 +1,58 @@
+{
+  "attributes": {
+    "minecraft:audio/ambient_sounds": {
+      "loop": "poolrooms:ambient.poolrooms.hum",
+      "additions": {
+        "sound": "poolrooms:ambient.poolrooms.drip",
+        "tick_chance": 0.0065
+      }
+    },
+    "minecraft:audio/background_music": {},
+    "minecraft:audio/music_volume": 0.0,
+    "minecraft:gameplay/natural_mob_spawns": {
+      "argument": {
+        "spawn_costs": {},
+        "spawns_by_category": {
+          "ambient": [],
+          "axolotls": [],
+          "creature": [],
+          "misc": [],
+          "monster": [],
+          "underground_water_creature": [],
+          "water_ambient": [],
+          "water_creature": []
+        }
+      },
+      "modifier": "overlay"
+    },
+    "minecraft:visual/fog_color": "#cfeff0",
+    "minecraft:visual/sky_color": "#cfeff0",
+    "minecraft:visual/water_fog_color": "#4fc9d6",
+    "minecraft:visual/water_fog_end_distance": {
+      "argument": 0.45,
+      "modifier": "multiply"
+    }
+  },
+  "carvers": [],
+  "downfall": 0.0,
+  "effects": {
+    "water_color": "#56d6e0"
+  },
+  "features": [
+    [
+      "poolrooms:rooms"
+    ],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    []
+  ],
+  "has_precipitation": false,
+  "temperature": 0.8
+}

@@ -1,0 +1,22 @@
+{
+  "type": "poolrooms:poolrooms",
+  "generator": {
+    "type": "minecraft:flat",
+    "settings": {
+      "biome": "poolrooms:poolrooms",
+      "features": true,
+      "lakes": false,
+      "layers": [
+        {
+          "block": "minecraft:bedrock",
+          "height": 1
+        },
+        {
+          "block": "poolrooms:white_pool_tiles",
+          "height": 95
+        }
+      ],
+      "structure_overrides": []
+    }
+  }
+}
