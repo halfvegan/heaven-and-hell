@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "id": "poolrooms:yellow_wristband"
+    },
+    "title": {
+      "text": "Slide Into It"
+    },
+    "description": {
+      "text": "Find the yellow wristband at the top of the Slide Tower"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "got": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "poolrooms:yellow_wristband"
+          }
+        ]
+      }
+    }
+  },
+  "parent": "poolrooms:root"
+}

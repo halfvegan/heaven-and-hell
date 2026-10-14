@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "N": "minecraft:iron_nugget"
+  },
+  "pattern": [
+    "N N",
+    "NNN",
+    "N N"
+  ],
+  "result": {
+    "count": 4,
+    "id": "poolrooms:pool_ladder"
+  }
+}

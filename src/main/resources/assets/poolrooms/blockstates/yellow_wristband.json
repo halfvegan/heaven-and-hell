@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "waterlogged=false": {
+      "model": "poolrooms:block/yellow_wristband"
+    },
+    "waterlogged=true": {
+      "model": "poolrooms:block/yellow_wristband"
+    }
+  }
+}

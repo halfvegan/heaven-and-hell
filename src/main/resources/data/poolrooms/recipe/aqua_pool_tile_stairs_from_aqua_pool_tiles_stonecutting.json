@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "poolrooms:aqua_pool_tiles",
+  "result": {
+    "count": 1,
+    "id": "poolrooms:aqua_pool_tile_stairs"
+  }
+}

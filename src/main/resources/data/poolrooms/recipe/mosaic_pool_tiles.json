@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "W": "poolrooms:white_pool_tiles",
+    "A": "poolrooms:aqua_pool_tiles"
+  },
+  "pattern": [
+    "WA",
+    "AW"
+  ],
+  "result": {
+    "count": 4,
+    "id": "poolrooms:mosaic_pool_tiles"
+  }
+}

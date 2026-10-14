@@ -1,0 +1,27 @@
+{
+  "textures": {
+    "water": "poolrooms:block/shallow_water",
+    "particle": "poolrooms:block/shallow_water"
+  },
+  "ambientocclusion": false,
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        3,
+        16
+      ],
+      "shade": false,
+      "faces": {
+        "up": {
+          "texture": "#water"
+        }
+      }
+    }
+  ]
+}

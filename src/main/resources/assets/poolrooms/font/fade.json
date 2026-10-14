@@ -1,0 +1,13 @@
+{
+  "providers": [
+    {
+      "type": "bitmap",
+      "file": "poolrooms:font/fade.png",
+      "ascent": 125,
+      "height": 256,
+      "chars": [
+        ""
+      ]
+    }
+  ]
+}

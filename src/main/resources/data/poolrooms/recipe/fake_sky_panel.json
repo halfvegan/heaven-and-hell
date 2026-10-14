@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "minecraft:glowstone",
+    "minecraft:light_blue_dye",
+    "poolrooms:white_pool_tiles",
+    "poolrooms:white_pool_tiles"
+  ],
+  "result": {
+    "count": 2,
+    "id": "poolrooms:fake_sky_panel"
+  }
+}

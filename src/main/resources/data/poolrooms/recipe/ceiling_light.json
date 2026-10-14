@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "T": "poolrooms:white_pool_tiles",
+    "G": "minecraft:glowstone"
+  },
+  "pattern": [
+    " T ",
+    "TGT",
+    " T "
+  ],
+  "result": {
+    "count": 4,
+    "id": "poolrooms:ceiling_light"
+  }
+}

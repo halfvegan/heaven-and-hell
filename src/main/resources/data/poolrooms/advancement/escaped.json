@@ -1,0 +1,23 @@
+{
+  "display": {
+    "icon": {
+      "id": "poolrooms:exit_sign"
+    },
+    "title": {
+      "text": "Swim at Your Own Risk"
+    },
+    "description": {
+      "text": "Escape the Poolrooms through an EXIT door"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "frame": "challenge"
+  },
+  "criteria": {
+    "granted": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "parent": "poolrooms:red_wristband"
+}

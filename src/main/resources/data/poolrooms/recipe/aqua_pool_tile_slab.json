@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "T": "poolrooms:aqua_pool_tiles"
+  },
+  "pattern": [
+    "TTT"
+  ],
+  "result": {
+    "count": 6,
+    "id": "poolrooms:aqua_pool_tile_slab"
+  }
+}

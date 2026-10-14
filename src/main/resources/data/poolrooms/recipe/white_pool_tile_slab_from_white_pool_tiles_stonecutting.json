@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "poolrooms:white_pool_tiles",
+  "result": {
+    "count": 2,
+    "id": "poolrooms:white_pool_tile_slab"
+  }
+}

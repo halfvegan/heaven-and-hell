@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "W": "minecraft:white_wool",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    "W  ",
+    "WWW",
+    "S S"
+  ],
+  "result": {
+    "count": 1,
+    "id": "poolrooms:pool_chair"
+  }
+}

@@ -1,0 +1,5 @@
+# Classes whose method bodies (bytecode) CI dumps into ci/pool-build:javap/code-*.txt
+net.minecraft.world.level.chunk.ProtoChunk
+net.minecraft.server.level.WorldGenRegion
+net.minecraft.world.level.levelgen.FlatLevelSource
+net.minecraft.world.level.levelgen.flat.FlatLevelGeneratorSettings

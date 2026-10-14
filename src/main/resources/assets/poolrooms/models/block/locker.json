@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "poolrooms:block/locker_front",
+    "side": "poolrooms:block/locker_side",
+    "top": "poolrooms:block/locker_top"
+  }
+}

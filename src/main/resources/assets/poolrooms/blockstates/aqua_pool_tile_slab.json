@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "poolrooms:block/aqua_pool_tile_slab"
+    },
+    "type=double": {
+      "model": "poolrooms:block/aqua_pool_tiles"
+    },
+    "type=top": {
+      "model": "poolrooms:block/aqua_pool_tile_slab_top"
+    }
+  }
+}

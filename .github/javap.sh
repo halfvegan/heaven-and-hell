@@ -21,3 +21,11 @@ while read -r pkg; do
   fi
 done < .github/javap-packages.txt
 ls -la ci-out/javap >> ci-out/javap/summary.txt
+# full bytecode for a few classes (to see exactly how they behave)
+if [ -f .github/javap-code.txt ]; then
+  while read -r cls; do
+    [ -z "$cls" ] && continue
+    case "$cls" in \#*) continue ;; esac
+    javap -c -p -cp "$CP" "$cls" > "ci-out/javap/code-$cls.txt" 2>&1 || true
+  done < .github/javap-code.txt
+fi

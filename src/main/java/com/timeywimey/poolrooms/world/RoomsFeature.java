@@ -29,7 +29,17 @@ public record RoomsFeature() implements Feature {
 		long seed = level.getSeed();
 		Layout.Room room = Layout.roomAt(seed, chunkX, chunkZ);
 		try {
+			boolean debug = chunkX == 0 && chunkZ == 0;
+			if (debug) {
+				Poolrooms.LOGGER.info("[debug] before: origin {} y10={} y50={} chunk={} status={}", origin,
+						level.getBlockState(new BlockPos(8, 10, 8)), level.getBlockState(new BlockPos(8, 50, 3)),
+						level.getChunk(origin).getClass().getSimpleName(), level.getChunk(origin).getPersistedStatus());
+			}
 			buildChunk(level, seed, room, chunkX, chunkZ);
+			if (debug) {
+				Poolrooms.LOGGER.info("[debug] after: y50={} y48={} y45={}", level.getBlockState(new BlockPos(8, 50, 3)),
+						level.getBlockState(new BlockPos(8, 48, 3)), level.getBlockState(new BlockPos(8, 45, 10)));
+			}
 		} catch (RuntimeException e) {
 			Poolrooms.LOGGER.error("Could not build the {} at chunk {}, {}", room.type().title, chunkX, chunkZ, e);
 		}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "condition": {
+        "type": "minecraft:survives_explosion"
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "poolrooms:yellow_wristband"
+        }
+      ]
+    }
+  ],
+  "random_sequence": "poolrooms:blocks/yellow_wristband"
+}

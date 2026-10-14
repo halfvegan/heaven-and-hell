@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "id": "poolrooms:red_wristband"
+    },
+    "title": {
+      "text": "Staff Only"
+    },
+    "description": {
+      "text": "Take the red wristband from the Lifeguard's desk"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "got": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "poolrooms:red_wristband"
+          }
+        ]
+      }
+    }
+  },
+  "parent": "poolrooms:root"
+}

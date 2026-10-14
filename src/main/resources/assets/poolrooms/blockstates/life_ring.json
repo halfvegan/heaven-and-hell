@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "poolrooms:block/life_ring"
+    },
+    "facing=east": {
+      "model": "poolrooms:block/life_ring",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "poolrooms:block/life_ring",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "poolrooms:block/life_ring",
+      "y": 270
+    }
+  }
+}

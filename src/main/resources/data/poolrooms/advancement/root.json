@@ -1,0 +1,25 @@
+{
+  "display": {
+    "icon": {
+      "id": "poolrooms:strange_drain"
+    },
+    "title": {
+      "text": "The Poolrooms"
+    },
+    "description": {
+      "text": "Swim down a Strange Drain into the Poolrooms"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "background": "poolrooms:gui/advancements/backgrounds/pool_tiles"
+  },
+  "criteria": {
+    "entered": {
+      "trigger": "minecraft:changed_dimension",
+      "conditions": {
+        "to": "poolrooms:poolrooms"
+      }
+    }
+  }
+}

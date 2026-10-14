@@ -1,0 +1,94 @@
+{
+  "variants": {
+    "facing=north,part=0": {
+      "model": "poolrooms:block/exit_light"
+    },
+    "facing=north,part=1": {
+      "model": "poolrooms:block/exit_light"
+    },
+    "facing=north,part=2": {
+      "model": "poolrooms:block/exit_light"
+    },
+    "facing=north,part=3": {
+      "model": "poolrooms:block/exit_light"
+    },
+    "facing=north,part=4": {
+      "model": "poolrooms:block/exit_light"
+    },
+    "facing=north,part=5": {
+      "model": "poolrooms:block/exit_light"
+    },
+    "facing=east,part=0": {
+      "model": "poolrooms:block/exit_light",
+      "y": 90
+    },
+    "facing=east,part=1": {
+      "model": "poolrooms:block/exit_light",
+      "y": 90
+    },
+    "facing=east,part=2": {
+      "model": "poolrooms:block/exit_light",
+      "y": 90
+    },
+    "facing=east,part=3": {
+      "model": "poolrooms:block/exit_light",
+      "y": 90
+    },
+    "facing=east,part=4": {
+      "model": "poolrooms:block/exit_light",
+      "y": 90
+    },
+    "facing=east,part=5": {
+      "model": "poolrooms:block/exit_light",
+      "y": 90
+    },
+    "facing=south,part=0": {
+      "model": "poolrooms:block/exit_light",
+      "y": 180
+    },
+    "facing=south,part=1": {
+      "model": "poolrooms:block/exit_light",
+      "y": 180
+    },
+    "facing=south,part=2": {
+      "model": "poolrooms:block/exit_light",
+      "y": 180
+    },
+    "facing=south,part=3": {
+      "model": "poolrooms:block/exit_light",
+      "y": 180
+    },
+    "facing=south,part=4": {
+      "model": "poolrooms:block/exit_light",
+      "y": 180
+    },
+    "facing=south,part=5": {
+      "model": "poolrooms:block/exit_light",
+      "y": 180
+    },
+    "facing=west,part=0": {
+      "model": "poolrooms:block/exit_light",
+      "y": 270
+    },
+    "facing=west,part=1": {
+      "model": "poolrooms:block/exit_light",
+      "y": 270
+    },
+    "facing=west,part=2": {
+      "model": "poolrooms:block/exit_light",
+      "y": 270
+    },
+    "facing=west,part=3": {
+      "model": "poolrooms:block/exit_light",
+      "y": 270
+    },
+    "facing=west,part=4": {
+      "model": "poolrooms:block/exit_light",
+      "y": 270
+    },
+    "facing=west,part=5": {
+      "model": "poolrooms:block/exit_light",
+      "y": 270
+    }
+  }
+}

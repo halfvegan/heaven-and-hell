@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "poolrooms:block/shallow_water"
+    }
+  }
+}

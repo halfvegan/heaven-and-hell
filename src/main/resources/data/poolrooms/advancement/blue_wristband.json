@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "id": "poolrooms:blue_wristband"
+    },
+    "title": {
+      "text": "The Deep End"
+    },
+    "description": {
+      "text": "Find the blue wristband at the bottom of the Deep End"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "got": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "poolrooms:blue_wristband"
+          }
+        ]
+      }
+    }
+  },
+  "parent": "poolrooms:root"
+}

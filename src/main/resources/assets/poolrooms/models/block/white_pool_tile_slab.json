@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "poolrooms:block/white_pool_tiles",
+    "side": "poolrooms:block/white_pool_tiles",
+    "top": "poolrooms:block/white_pool_tiles"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": "minecraft:iron_bars",
+    "Q": "minecraft:quartz",
+    "E": "minecraft:ender_pearl"
+  },
+  "pattern": [
+    " B ",
+    "QEQ",
+    " B "
+  ],
+  "result": {
+    "count": 1,
+    "id": "poolrooms:strange_drain"
+  }
+}

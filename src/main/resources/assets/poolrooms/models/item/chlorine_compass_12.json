@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "poolrooms:item/chlorine_compass_12"
+  }
+}

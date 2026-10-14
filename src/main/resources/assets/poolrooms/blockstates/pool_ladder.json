@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "poolrooms:block/pool_ladder"
+    },
+    "facing=east": {
+      "model": "poolrooms:block/pool_ladder",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "poolrooms:block/pool_ladder",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "poolrooms:block/pool_ladder",
+      "y": 270
+    }
+  }
+}

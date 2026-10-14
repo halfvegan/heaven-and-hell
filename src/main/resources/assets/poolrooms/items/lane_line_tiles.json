@@ -1,0 +1,6 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "poolrooms:block/lane_line_tiles"
+  }
+}

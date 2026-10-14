@@ -1,0 +1,22 @@
+{
+  "display": {
+    "icon": {
+      "id": "poolrooms:pool_noodle"
+    },
+    "title": {
+      "text": "No Running!"
+    },
+    "description": {
+      "text": "Get walked back to the Entrance Pool by the Lifeguard"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "granted": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "parent": "poolrooms:root"
+}

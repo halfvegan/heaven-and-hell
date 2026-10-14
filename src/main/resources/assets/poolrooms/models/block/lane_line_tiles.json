@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "poolrooms:block/lane_line_tiles"
+  }
+}

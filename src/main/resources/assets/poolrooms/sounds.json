@@ -1,0 +1,98 @@
+{
+  "entity.lifeguard.whistle_short": {
+    "sounds": [
+      {
+        "name": "poolrooms:entity/lifeguard/whistle_short",
+        "attenuation_distance": 48
+      }
+    ],
+    "subtitle": "subtitles.poolrooms.whistle_short"
+  },
+  "entity.lifeguard.whistle_long": {
+    "sounds": [
+      {
+        "name": "poolrooms:entity/lifeguard/whistle_long",
+        "attenuation_distance": 48
+      }
+    ],
+    "subtitle": "subtitles.poolrooms.whistle_long"
+  },
+  "ambient.poolrooms.hum": {
+    "sounds": [
+      {
+        "name": "poolrooms:ambient/hum"
+      }
+    ]
+  },
+  "ambient.poolrooms.drip": {
+    "sounds": [
+      {
+        "name": "poolrooms:ambient/drip1"
+      },
+      {
+        "name": "poolrooms:ambient/drip2"
+      },
+      {
+        "name": "poolrooms:ambient/drip3"
+      },
+      {
+        "name": "poolrooms:ambient/lap1"
+      },
+      {
+        "name": "poolrooms:ambient/lap2"
+      }
+    ],
+    "subtitle": "subtitles.poolrooms.drip"
+  },
+  "block.shallow_water.step": {
+    "sounds": [
+      {
+        "name": "poolrooms:block/splash_step1"
+      },
+      {
+        "name": "poolrooms:block/splash_step2"
+      },
+      {
+        "name": "poolrooms:block/splash_step3"
+      },
+      {
+        "name": "poolrooms:block/splash_step4"
+      }
+    ],
+    "subtitle": "subtitles.poolrooms.splash"
+  },
+  "block.strange_drain.swirl": {
+    "sounds": [
+      {
+        "name": "poolrooms:block/drain_swirl",
+        "attenuation_distance": 24
+      }
+    ],
+    "subtitle": "subtitles.poolrooms.swirl"
+  },
+  "item.pool_noodle.boing": {
+    "sounds": [
+      {
+        "name": "poolrooms:item/noodle_boing"
+      }
+    ],
+    "subtitle": "subtitles.poolrooms.boing"
+  },
+  "block.exit_door.open": {
+    "sounds": [
+      {
+        "name": "poolrooms:block/exit_open",
+        "attenuation_distance": 24
+      }
+    ],
+    "subtitle": "subtitles.poolrooms.exit_open"
+  },
+  "event.fade": {
+    "sounds": [
+      {
+        "name": "poolrooms:event/fade"
+      }
+    ],
+    "subtitle": "subtitles.poolrooms.fade"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "waterlogged=false": {
+      "model": "poolrooms:block/strange_drain"
+    },
+    "waterlogged=true": {
+      "model": "poolrooms:block/strange_drain"
+    }
+  }
+}
