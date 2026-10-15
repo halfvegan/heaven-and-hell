@@ -1,0 +1,16 @@
+{
+  "replace": false,
+  "values": [
+    "poolrooms:white_pool_tiles",
+    "poolrooms:aqua_pool_tiles",
+    "poolrooms:mosaic_pool_tiles",
+    "poolrooms:lane_line_tiles",
+    "poolrooms:ceiling_light",
+    "poolrooms:fake_sky_panel",
+    "poolrooms:pool_light",
+    "poolrooms:locker",
+    "poolrooms:pool_chair",
+    "poolrooms:strange_drain",
+    "poolrooms:exit_door"
+  ]
+}

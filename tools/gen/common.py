@@ -5,8 +5,10 @@ import os
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 RES = os.path.join(ROOT, "src", "main", "resources")
 NS = "poolrooms"
-VANILLA_DATA = "/home/claude/misode/mcmeta/data/minecraft"
-VANILLA_ASSETS = "/home/claude/misode/mcmeta-assets/assets/minecraft"
+# vanilla files, unpacked from the Minecraft 26.3 jars (data from the common jar, assets from the client jar)
+VANILLA = os.environ.get("VANILLA_DIR", "/home/claude/vanilla")
+VANILLA_DATA = f"{VANILLA}/data/minecraft"
+VANILLA_ASSETS = f"{VANILLA}/assets/minecraft"
 
 WRITTEN = []
 

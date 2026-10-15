@@ -10,6 +10,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.block.state.BlockState;
 
 import net.fabricmc.fabric.api.client.gametest.v1.FabricClientGameTest;
@@ -17,7 +18,11 @@ import net.fabricmc.fabric.api.client.gametest.v1.context.ClientGameTestContext;
 import net.fabricmc.fabric.api.client.gametest.v1.context.TestServerContext;
 import net.fabricmc.fabric.api.client.gametest.v1.context.TestSingleplayerContext;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.timeywimey.poolrooms.gameplay.PoolTravel;
+import com.timeywimey.poolrooms.world.Layout;
 import com.timeywimey.poolrooms.world.Pool;
 
 /**
@@ -26,6 +31,62 @@ import com.timeywimey.poolrooms.world.Pool;
  */
 public class PoolClientTests implements FabricClientGameTest {
 	private static final String POOL = "poolrooms:poolrooms";
+	private static final Logger LOGGER = LoggerFactory.getLogger("PoolClientTests");
+	private static final BlockPos[] PROBES = {new BlockPos(8, 50, 3), new BlockPos(8, 48, 3), new BlockPos(8, 52, 6),
+			new BlockPos(8, 56, 6), new BlockPos(10, 56, 10), new BlockPos(4, 49, 4), new BlockPos(20, 50, 8), new BlockPos(20, 48, 8),
+			new BlockPos(8, 40, 8)};
+
+	/** Logs the block light at foot level in every room near the entrance: min / average per room. */
+	private static void lightSurvey(TestServerContext server) {
+		server.runOnServer(s -> {
+			ServerLevel l = s.getLevel(Pool.DIMENSION);
+			long seed = l.getSeed();
+			java.util.Set<Layout.Room> seen = new java.util.HashSet<>();
+			for (int cx = -3; cx <= 3; cx++) {
+				for (int cz = -3; cz <= 3; cz++) {
+					Layout.Room room = Layout.roomAt(seed, cx, cz);
+					if (!seen.add(room)) {
+						continue;
+					}
+					int min = 99;
+					int sum = 0;
+					int n = 0;
+					for (int x = room.minX() + 1; x < room.minX() + room.width() - 1; x++) {
+						for (int z = room.minZ() + 1; z < room.minZ() + room.depth() - 1; z++) {
+							BlockPos p = new BlockPos(x, Pool.WALK, z);
+							l.getChunk(p);
+							BlockState st = l.getBlockState(p);
+							if (st.isSolidRender() || !l.getFluidState(p).isEmpty() && st.is(net.minecraft.world.level.block.Blocks.WATER)) {
+								continue;
+							}
+							int light = l.getBrightness(LightLayer.BLOCK, p);
+							min = Math.min(min, light);
+							sum += light;
+							n++;
+						}
+					}
+					LOGGER.info("[light] {} at cell {},{}: min {} avg {} over {} spots", room.type().title, room.cellX(), room.cellZ(),
+							min, n == 0 ? 0 : String.format(Locale.ROOT, "%.1f", sum / (double) n), n);
+				}
+			}
+		});
+	}
+
+	/** Logs what the server and the client each think is at a few spots in the Entrance Pool and the Pool Hall. */
+	private static void probe(ClientGameTestContext context, TestServerContext server, String tag) {
+		server.runOnServer(s -> {
+			ServerLevel l = s.getLevel(Pool.DIMENSION);
+			for (BlockPos p : PROBES) {
+				LOGGER.info("[probe {}] server {} {} light={}", tag, p.toShortString(), l.getBlockState(p), l.getBrightness(LightLayer.BLOCK, p));
+			}
+		});
+		context.runOnClient(c -> {
+			for (BlockPos p : PROBES) {
+				LOGGER.info("[probe {}] client {} {} light={} dim={}", tag, p.toShortString(), c.level.getBlockState(p),
+						c.level.getBrightness(LightLayer.BLOCK, p), c.level.dimension().identifier());
+			}
+		});
+	}
 
 	@Override
 	public void runTest(ClientGameTestContext context) {
@@ -51,7 +112,9 @@ public class PoolClientTests implements FabricClientGameTest {
 			run(server, "fill 5 146 -1 5 149 5 minecraft:light_blue_concrete");
 			run(server, "fill 0 146 0 4 149 4 minecraft:water");
 			run(server, "setblock 2 146 2 poolrooms:strange_drain[waterlogged=true]");
-			view(context, sp, server, "minecraft:overworld", "01_drain_in_a_pool", 2.5, 152.5, -3.5, 2.5, 146.0, 2.5, 30);
+			run(server, "gamemode spectator @a");
+			view(context, sp, server, "minecraft:overworld", "01_drain_in_a_pool", 2.5, 151.0, -4.5, 2.5, 146.0, 2.5, 30);
+			run(server, "gamemode creative @a");
 			run(server, "tp @a 2.5 147.2 2.5 0 80");
 			context.waitTicks(10);
 			server.runOnServer(s -> PoolTravel.useDrain(player(s), new BlockPos(2, 146, 2)));
@@ -63,6 +126,8 @@ public class PoolClientTests implements FabricClientGameTest {
 			sp.getConnection().waitForChunksRender();
 			context.waitTicks(10);
 			context.takeScreenshot("04_arrival_entrance_pool");
+			probe(context, server, "arrival");
+			lightSurvey(server);
 
 			// ---------------------------------------------------------- the Entrance Pool
 			run(server, "gamemode spectator @a");

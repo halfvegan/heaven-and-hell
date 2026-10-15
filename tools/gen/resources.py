@@ -451,6 +451,11 @@ def tags():
     tag("item", "stairs", [pr(b) for b in STAIRS])
     tag("item", "slabs", [pr(b) for b in SLABS])
     tag("block", "inside_step_sound_blocks", [pr("shallow_water")])
+    # In 26.3 "blocks motion" is a block tag. Heightmaps use it, and so does the flat world generator: a flat-world
+    # layer whose block is not in this tag is placed as a late "fill the air" feature, which would fill every room
+    # back in after the rooms are carved. So every solid Poolrooms block goes in here.
+    tag("block", "blocks_motion_no_leaves", [pr(b) for b in TILES + GLOW + ["locker", "pool_chair", "strange_drain",
+                                                                            "exit_door"]])
 
 
 def advancements():

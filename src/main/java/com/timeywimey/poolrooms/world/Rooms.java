@@ -128,6 +128,22 @@ final class Rooms {
 			case OFFICE -> office(c);
 			case EXIT -> exit(c);
 		}
+		brighten(c);
+	}
+
+	/**
+	 * Fills in the light between the ceiling lights: invisible light blocks a little above head height on a 3-block
+	 * grid, so every room is evenly bright all the way down to the floor (no dim corners).
+	 */
+	static void brighten(Canvas c) {
+		int y = WALK + 2;
+		for (int x = 2; x <= c.width - 2; x += 3) {
+			for (int z = 2; z <= c.depth - 2; z += 3) {
+				if (c.inside(x, z) && c.get(x, y, z).isAir()) {
+					c.set(x, y, z, light(15, false));
+				}
+			}
+		}
 	}
 
 	/** Empties the room, lays the floor and ceiling, tiles the walls and cuts the doorways. */
@@ -484,6 +500,8 @@ final class Rooms {
 		c.fill(7, 24, 3, 8, 26, 8, WATER);
 		c.fill(7, 24, 7, 8, 28, 8, WATER);
 		c.fill(5, 23, 1, 10, 23, 3, MOSAIC);
+		// a pocket of air under the chamber's ceiling: swim up into it to catch your breath
+		c.fill(5, 27, 1, 10, 27, 3, AIR);
 		int[] band = Layout.DEEP_END_BAND;
 		c.set(band[0], band[1] - 1, band[2], MOSAIC);
 		c.set(band[0], band[1], band[2], band(ModBlocks.BLUE_WRISTBAND, true));

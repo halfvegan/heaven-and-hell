@@ -39,7 +39,9 @@ def main():
             "minecraft:gameplay/respawn_anchor_works": False,
             "minecraft:gameplay/can_start_raid": False,
             "minecraft:gameplay/nether_portal_spawns_piglin": False,
-            "minecraft:visual/ambient_light_color": "#4a6466",
+            # cool fluorescent light instead of the default warm torch tint, and no murky corners
+            "minecraft:visual/ambient_light_color": "#55797c",
+            "minecraft:visual/block_light_tint": "#e6fbff",
             "minecraft:visual/fog_color": "#cfeff0",
             "minecraft:visual/fog_start_distance": 48.0,
             "minecraft:visual/fog_end_distance": 160.0,
