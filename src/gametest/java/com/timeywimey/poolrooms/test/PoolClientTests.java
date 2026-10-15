@@ -173,6 +173,7 @@ public class PoolClientTests implements FabricClientGameTest {
 			view(context, sp, server, POOL, "31_lifeguard_close", 24.5, 51.6, 6.6, 24.5, 52.2, 3.5, 10);
 			run(server, "execute in " + POOL + " run summon poolrooms:lifeguard -8.5 49 2.5 {NoAI:1b,Rotation:[0f,0f]}");
 			view(context, sp, server, POOL, "32_lifeguard_down_the_corridor", -8.0, 50.6, 14.4, -8.5, 51.0, 2.5, 20);
+			run(server, "execute in " + POOL + " run kill @e[type=poolrooms:lifeguard]");
 
 			// ---------------------------------------------------------- items
 			run(server, "gamemode survival @a");

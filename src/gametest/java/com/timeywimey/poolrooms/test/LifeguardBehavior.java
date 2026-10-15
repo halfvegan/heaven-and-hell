@@ -55,6 +55,9 @@ final class LifeguardBehavior {
 			LOGGER.info("[lifeguard] {} (nearest Lifeguard {} blocks away)", event, fmt(nearestGuard(player)));
 		};
 		try {
+			// start clean: no Lifeguards left over from the screenshots
+			cmd("poolrooms lifeguard off");
+			cmd(IN_POOL + "kill @e[type=poolrooms:lifeguard]");
 			cmd("gamemode survival @a");
 			cmd("effect give @a minecraft:saturation infinite 0 true");
 			appearsAndWhistles();
