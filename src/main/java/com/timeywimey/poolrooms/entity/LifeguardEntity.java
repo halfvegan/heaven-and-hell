@@ -13,6 +13,7 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
@@ -26,8 +27,9 @@ import com.timeywimey.poolrooms.world.Layout;
 /**
  * The Lifeguard. Very tall, blank-faced, in a faded red swimsuit. It walks slowly and never runs. It only comes after
  * someone it sees sprinting ("No running!"), it walks slower than you do, and it loses interest once it has not seen
- * you for 10 seconds. If it reaches you it does no damage: it sends you back to the Entrance Pool. It cannot be hurt,
- * but the Pool Noodle knocks it back.
+ * you for 10 seconds (being in the water counts as unseen: it can't follow you in). If it reaches you it does no
+ * damage: it sends you back to the Entrance Pool. It cannot be hurt, but the Pool Noodle knocks it back. When it is not
+ * after anyone it keeps its distance, slowly wandering away from people it can see close by.
  */
 public class LifeguardEntity extends PathfinderMob {
 	/** Blocks per second ~= 43 * (0.25 * modifier)^2: about 1.4 when strolling and 3.0 when chasing (you walk at 4.3). */
@@ -35,8 +37,10 @@ public class LifeguardEntity extends PathfinderMob {
 	public static final double CHASE_SPEED = 1.05;
 	/** It notices running within this many blocks, if it can see you. */
 	public static final double NOTICE_RANGE = 24.0;
-	/** Out of sight for this long and it gives up (10 seconds). */
+	/** Out of sight for this long and it gives up (10 seconds). Being in the water counts as out of sight. */
 	public static final int LOSE_INTEREST_TICKS = 200;
+	/** When it isn't chasing anyone it wanders away from people closer than this. */
+	public static final float KEEP_AWAY = 6.0F;
 
 	private UUID chaseTarget;
 	private long lastSeen;
@@ -61,6 +65,9 @@ public class LifeguardEntity extends PathfinderMob {
 	@Override
 	protected void registerGoals() {
 		goalSelector.addGoal(1, new FollowRunnerGoal(this));
+		// when it isn't after anyone it keeps its distance: it slowly wanders away from people it can see close by
+		goalSelector.addGoal(2, new AvoidEntityGoal<>(this, Player.class, KEEP_AWAY, STROLL_SPEED, STROLL_SPEED,
+				e -> !isChasing() && !e.isSpectator()));
 		goalSelector.addGoal(5, new RandomStrollGoal(this, STROLL_SPEED, 60));
 		goalSelector.addGoal(6, new RandomLookAroundGoal(this));
 	}
@@ -112,7 +119,8 @@ public class LifeguardEntity extends PathfinderMob {
 				LifeguardDirector.gaveUp(target, true);
 				return;
 			}
-			if (tickCount % 5 == 0 && hasLineOfSight(target)) {
+			// it can't follow you into the water, so swimming counts as out of sight
+			if (tickCount % 5 == 0 && hasLineOfSight(target) && !target.isInWater()) {
 				lastSeen = now;
 			}
 			if (now - lastSeen > LOSE_INTEREST_TICKS) {

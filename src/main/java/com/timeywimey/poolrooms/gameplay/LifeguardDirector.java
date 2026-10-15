@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
+import java.util.function.BiConsumer;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -56,6 +57,24 @@ public final class LifeguardDirector {
 	private static final Map<UUID, Watch> WATCHES = new HashMap<>();
 	private static final Set<UUID> CATCHING = new HashSet<>();
 	private static final RandomSource RANDOM = RandomSource.create();
+
+	/** Only for the game tests: hears about everything the Lifeguard does (appeared, whistle, noticed, ...). */
+	public static volatile BiConsumer<String, ServerPlayer> listener;
+
+	private static void report(String event, ServerPlayer player) {
+		BiConsumer<String, ServerPlayer> l = listener;
+		if (l != null) {
+			l.accept(event, player);
+		}
+	}
+
+	/** Only for the game tests: the Lifeguard appears as soon as it can instead of after 45 seconds. */
+	public static void hurry(ServerPlayer player) {
+		ServerLevel pool = Pool.level(player.level().getServer());
+		if (pool != null) {
+			watch(player, pool.getGameTime()).nextSpawn = pool.getGameTime();
+		}
+	}
 
 	public static void init() {
 		ServerTickEvents.END_SERVER_TICK.register(LifeguardDirector::tick);
@@ -201,6 +220,7 @@ public final class LifeguardDirector {
 	private static void whistle(ServerLevel level, LifeguardEntity guard, ServerPlayer player) {
 		level.playSound(null, guard.getX(), guard.getEyeY(), guard.getZ(), ModSounds.WHISTLE_SHORT, SoundSource.HOSTILE, 1.0F, 1.0F);
 		Cmd.actionbar(player, Txt.of("Two whistle blasts: ", "aqua").then("the Lifeguard is nearby. Walk, don't run.", "white").str());
+		report("whistle", player);
 	}
 
 	// ------------------------------------------------------------------ appearing
@@ -241,6 +261,7 @@ public final class LifeguardDirector {
 			}
 			guard.snapTo(x + 0.5, Pool.WALK, z + 0.5, RANDOM.nextFloat() * 360.0F, 0.0F);
 			level.addFreshEntity(guard);
+			report("appeared", player);
 			return guard;
 		}
 		return null;
@@ -258,12 +279,14 @@ public final class LifeguardDirector {
 				1.0F, 1.0F);
 		Cmd.actionbar(player, Txt.of("NO RUNNING! ", "red").bold().then("The Lifeguard saw you. Walk away and stay out of sight.",
 				"white").str());
+		report("noticed", player);
 	}
 
 	public static void gaveUp(ServerPlayer player, boolean entrance) {
 		Cmd.actionbar(player, entrance
 				? Txt.of("The Lifeguard can't come into the Entrance Pool.", "aqua").str()
 				: Txt.of("The Lifeguard lost interest.", "aqua").str());
+		report(entrance ? "gave_up_entrance" : "gave_up", player);
 	}
 
 	/** It reached you: no damage, the screen fades to white and you are back at the Entrance Pool with all your things. */
@@ -273,6 +296,7 @@ public final class LifeguardDirector {
 			return;
 		}
 		CATCHING.add(id);
+		report("caught", player);
 		guard.getNavigation().stop();
 		PoolTravel.fade(player);
 		PoolTravel.setMoving(player, true);

@@ -59,15 +59,16 @@ def write(name, x, peak=0.6):
                         os.path.join(OUT, name + ".ogg")], check=True)
 
 
-def pea_whistle(seconds, pitch=2900.0):
-    """A referee/lifeguard pea whistle: a bright tone with a fast warble (the pea rattling)."""
+def pea_whistle(seconds, pitch=2900.0, attack=0.03):
+    """A referee/lifeguard pea whistle: a bright tone with a fast warble (the pea rattling). It fades in over a few
+    hundredths of a second instead of snapping on, so it never makes you jump."""
     t = t_axis(seconds)
     warble = 0.035 * np.sin(2 * np.pi * 34 * t) + 0.01 * np.sin(2 * np.pi * 53 * t)
     phase = 2 * np.pi * pitch * np.cumsum(1 + warble) / RATE
     tone = np.sin(phase) + 0.35 * np.sin(2 * phase) + 0.12 * np.sin(3 * phase)
     am = 0.75 + 0.25 * np.sin(2 * np.pi * 34 * t)
     breath = highpass(R.normal(0, 1, len(t)), 2500) * 0.08
-    return (tone * am + breath) * env(len(t), 0.012, 0.04)
+    return (tone * am + breath) * env(len(t), attack, 0.05)
 
 
 def whistle_short():
@@ -77,7 +78,7 @@ def whistle_short():
 
 
 def whistle_long():
-    return np.concatenate([pea_whistle(0.75, 2880.0), np.zeros(int(0.05 * RATE))])
+    return np.concatenate([pea_whistle(0.75, 2880.0, attack=0.08), np.zeros(int(0.05 * RATE))])
 
 
 def hum():
@@ -164,8 +165,9 @@ def fade():
 
 
 def main():
-    write("entity/lifeguard/whistle_short", whistle_short(), 0.55)
-    write("entity/lifeguard/whistle_long", whistle_long(), 0.5)
+    # whistles: clear but not loud (they are heard from where the Lifeguard is, so they get quieter with distance)
+    write("entity/lifeguard/whistle_short", whistle_short(), 0.36)
+    write("entity/lifeguard/whistle_long", whistle_long(), 0.3)
     write("ambient/hum", hum(), 0.18)
     for v in range(3):
         write(f"ambient/drip{v + 1}", drip(v), 0.35)
@@ -174,7 +176,7 @@ def main():
     for v in range(4):
         write(f"block/splash_step{v + 1}", splash_step(v), 0.3)
     write("block/drain_swirl", swirl(), 0.5)
-    write("item/noodle_boing", boing(), 0.5)
+    write("item/noodle_boing", boing(), 0.4)
     write("block/exit_open", chime(), 0.45)
     write("event/fade", fade(), 0.35)
 

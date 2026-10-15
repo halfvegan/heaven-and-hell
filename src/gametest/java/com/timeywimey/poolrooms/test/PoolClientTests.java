@@ -1,5 +1,9 @@
 package com.timeywimey.poolrooms.test;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.List;
 import java.util.Locale;
 
 import net.minecraft.client.CameraType;
@@ -102,6 +106,13 @@ public class PoolClientTests implements FabricClientGameTest {
 			run(server, "time set noon");
 			run(server, "weather clear");
 			run(server, "poolrooms lifeguard off");
+
+			// a views.txt file in the run directory replaces the tour with a scripted set of shots (for development)
+			Path script = Path.of("views.txt");
+			if (Files.exists(script)) {
+				runScript(context, sp, server, script);
+				return;
+			}
 
 			// ---------------------------------------------------------- in through the Strange Drain
 			run(server, "fill -3 144 -3 7 153 7 minecraft:air");
@@ -211,7 +222,78 @@ public class PoolClientTests implements FabricClientGameTest {
 			sp.getConnection().waitForChunksRender();
 			context.waitTicks(30);
 			context.takeScreenshot("52_back_home");
+
+			// ---------------------------------------------------------- the Lifeguard's rules, played out for real
+			run(server, "execute as @a run poolrooms enter");
+			context.waitTicks(40);
+			sp.getConnection().waitForChunksRender();
+			new LifeguardBehavior(context, sp, server).run();
 		}
+	}
+
+	/**
+	 * Runs a little screenshot script, one step per line: {@code cmd <command>}, {@code view <name> <dimension> x y z
+	 * tx ty tz [ticks]}, {@code wait <ticks>}, {@code shot <name>}, {@code hud on|off}, {@code camera first|back|front},
+	 * {@code inventory <name>}, {@code fade} and {@code drain x y z}. Lines starting with # are comments.
+	 */
+	private static void runScript(ClientGameTestContext context, TestSingleplayerContext sp, TestServerContext server, Path script) {
+		List<String> lines;
+		try {
+			lines = Files.readAllLines(script);
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+		for (String raw : lines) {
+			String line = raw.strip();
+			if (line.isEmpty() || line.startsWith("#")) {
+				continue;
+			}
+			String[] a = line.split("\\s+");
+			LOGGER.info("[script] {}", line);
+			switch (a[0]) {
+				case "cmd" -> run(server, line.substring(4).strip());
+				case "wait" -> context.waitTicks(Integer.parseInt(a[1]));
+				case "shot" -> {
+					sp.getConnection().waitForChunksRender();
+					context.takeScreenshot(a[1]);
+				}
+				case "view" -> view(context, sp, server, a[2], a[1], d(a[3]), d(a[4]), d(a[5]), d(a[6]), d(a[7]), d(a[8]),
+						a.length > 9 ? Integer.parseInt(a[9]) : 20);
+				case "hud" -> {
+					boolean hide = a[1].equals("off");
+					context.runOnClient(c -> {
+						if (c.gui.hud.isHidden() != hide) {
+							c.gui.hud.toggle();
+						}
+					});
+				}
+				case "camera" -> {
+					CameraType type = switch (a[1]) {
+						case "back" -> CameraType.THIRD_PERSON_BACK;
+						case "front" -> CameraType.THIRD_PERSON_FRONT;
+						default -> CameraType.FIRST_PERSON;
+					};
+					context.runOnClient(c -> c.options.setCameraType(type));
+				}
+				case "inventory" -> {
+					context.setScreen(() -> new InventoryScreen(Minecraft.getInstance().player));
+					context.waitTicks(5);
+					context.takeScreenshot(a[1]);
+					context.setScreen(() -> null);
+				}
+				case "fade" -> server.runOnServer(s -> PoolTravel.fade(player(s)));
+				case "lifeguard" -> new LifeguardBehavior(context, sp, server).run();
+				case "drain" -> {
+					BlockPos drain = new BlockPos(Integer.parseInt(a[1]), Integer.parseInt(a[2]), Integer.parseInt(a[3]));
+					server.runOnServer(s -> PoolTravel.useDrain(player(s), drain));
+				}
+				default -> LOGGER.warn("[script] unknown step: {}", line);
+			}
+		}
+	}
+
+	private static double d(String s) {
+		return Double.parseDouble(s);
 	}
 
 	private static ServerPlayer player(MinecraftServer server) {
