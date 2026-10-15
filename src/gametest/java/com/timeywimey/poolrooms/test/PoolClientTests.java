@@ -234,7 +234,8 @@ public class PoolClientTests implements FabricClientGameTest {
 	/**
 	 * Runs a little screenshot script, one step per line: {@code cmd <command>}, {@code view <name> <dimension> x y z
 	 * tx ty tz [ticks]}, {@code wait <ticks>}, {@code shot <name>}, {@code hud on|off}, {@code camera first|back|front},
-	 * {@code inventory <name>}, {@code fade} and {@code drain x y z}. Lines starting with # are comments.
+	 * {@code inventory <name>}, {@code gui <scale>}, {@code fade}, {@code lifeguard} (the behaviour checks) and
+	 * {@code drain x y z}. Lines starting with # are comments.
 	 */
 	private static void runScript(ClientGameTestContext context, TestSingleplayerContext sp, TestServerContext server, Path script) {
 		List<String> lines;
@@ -277,12 +278,20 @@ public class PoolClientTests implements FabricClientGameTest {
 				}
 				case "inventory" -> {
 					context.setScreen(() -> new InventoryScreen(Minecraft.getInstance().player));
+					context.getInput().setCursorPos(2, 2);
 					context.waitTicks(5);
 					context.takeScreenshot(a[1]);
 					context.setScreen(() -> null);
 				}
 				case "fade" -> server.runOnServer(s -> PoolTravel.fade(player(s)));
 				case "lifeguard" -> new LifeguardBehavior(context, sp, server).run();
+				case "gui" -> {
+					int scale = Integer.parseInt(a[1]);
+					context.runOnClient(c -> {
+						c.options.guiScale().set(scale);
+						c.resizeGui();
+					});
+				}
 				case "drain" -> {
 					BlockPos drain = new BlockPos(Integer.parseInt(a[1]), Integer.parseInt(a[2]), Integer.parseInt(a[3]));
 					server.runOnServer(s -> PoolTravel.useDrain(player(s), drain));
