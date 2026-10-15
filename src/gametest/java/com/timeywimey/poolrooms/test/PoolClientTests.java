@@ -235,8 +235,8 @@ public class PoolClientTests implements FabricClientGameTest {
 	/**
 	 * Runs a little screenshot script, one step per line: {@code cmd <command>}, {@code view <name> <dimension> x y z
 	 * tx ty tz [ticks]}, {@code wait <ticks>}, {@code shot <name>}, {@code hud on|off}, {@code camera first|back|front},
-	 * {@code inventory <name>}, {@code gui <scale>}, {@code fade}, {@code lifeguard} (the behaviour checks) and
-	 * {@code drain x y z}. Lines starting with # are comments.
+	 * {@code inventory <name>}, {@code gui <scale>}, {@code fade}, {@code lifeguard} (the behaviour checks),
+	 * {@code opendoor x y z} and {@code drain x y z}. Lines starting with # are comments.
 	 */
 	private static void runScript(ClientGameTestContext context, TestSingleplayerContext sp, TestServerContext server, Path script) {
 		List<String> lines;
@@ -286,6 +286,13 @@ public class PoolClientTests implements FabricClientGameTest {
 				}
 				case "fade" -> server.runOnServer(s -> PoolTravel.fade(player(s)));
 				case "lifeguard" -> new LifeguardBehavior(context, sp, server).run();
+				case "opendoor" -> {
+					BlockPos door = new BlockPos(Integer.parseInt(a[1]), Integer.parseInt(a[2]), Integer.parseInt(a[3]));
+					server.runOnServer(s -> {
+						ServerLevel pool = s.getLevel(Pool.DIMENSION);
+						PoolTravel.openDoor(pool, door, pool.getBlockState(door));
+					});
+				}
 				case "gui" -> {
 					int scale = Integer.parseInt(a[1]);
 					context.runOnClient(c -> {
