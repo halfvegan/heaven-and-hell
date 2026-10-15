@@ -84,8 +84,10 @@ public final class PoolLife {
 		Vec3 away = new Vec3(target.getX() - player.getX(), 0.0, target.getZ() - player.getZ());
 		away = away.lengthSqr() < 1.0E-4 ? player.getLookAngle().multiply(1.0, 0.0, 1.0) : away;
 		away = away.normalize();
-		double strength = target instanceof LifeguardEntity ? 1.7 : 1.3;
-		target.push(away.x * strength, 0.35, away.z * strength);
+		// a big bouncy shove: about 5 or 6 blocks for the Lifeguard, a bit more for lighter things
+		boolean isGuard = target instanceof LifeguardEntity;
+		double strength = isGuard ? 1.1 : 1.3;
+		target.push(away.x * strength, isGuard ? 0.3 : 0.35, away.z * strength);
 		target.needsSync = true;
 		if (target instanceof LifeguardEntity guard) {
 			guard.bonk();

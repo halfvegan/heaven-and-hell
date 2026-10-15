@@ -3,6 +3,8 @@ package com.timeywimey.poolrooms.entity;
 import java.util.EnumSet;
 import java.util.UUID;
 
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
@@ -14,12 +16,14 @@ import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
+import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.pathfinder.PathType;
+import net.minecraft.world.phys.Vec3;
 
 import com.timeywimey.poolrooms.gameplay.LifeguardDirector;
 import com.timeywimey.poolrooms.world.Layout;
@@ -61,11 +65,16 @@ public class LifeguardEntity extends PathfinderMob {
 				.add(Attributes.MOVEMENT_SPEED, 0.25)
 				.add(Attributes.FOLLOW_RANGE, 48.0)
 				.add(Attributes.KNOCKBACK_RESISTANCE, 0.0)
-				.add(Attributes.SCALE, 1.45);
+				.add(Attributes.SCALE, 1.45)
+				// a strong swimmer (it's a lifeguard): if it ends up in a pool it paddles out at walking pace
+				.add(Attributes.WATER_MOVEMENT_EFFICIENCY, 1.0);
 	}
 
 	@Override
 	protected void registerGoals() {
+		// if it ends up in a pool (say, after a pool noodle), it floats and paddles to the nearest edge
+		goalSelector.addGoal(0, new FloatGoal(this));
+		goalSelector.addGoal(0, new ClimbOutGoal(this));
 		goalSelector.addGoal(1, new FollowRunnerGoal(this));
 		// when it isn't after anyone it keeps its distance: it slowly wanders away from people it can see close by
 		goalSelector.addGoal(2, new AvoidEntityGoal<>(this, Player.class, KEEP_AWAY, STROLL_SPEED, STROLL_SPEED,
@@ -201,6 +210,74 @@ public class LifeguardEntity extends PathfinderMob {
 				repath = 10;
 				guard.getNavigation().moveTo(target, CHASE_SPEED);
 			}
+		}
+	}
+
+	/** In the water: swim straight to the nearest dry floor (it never chooses to walk into water). */
+	static final class ClimbOutGoal extends Goal {
+		private final LifeguardEntity guard;
+		private Vec3 target;
+		private int retarget;
+
+		ClimbOutGoal(LifeguardEntity guard) {
+			this.guard = guard;
+			setFlags(EnumSet.of(Goal.Flag.MOVE));
+		}
+
+		@Override
+		public boolean canUse() {
+			return guard.isInWater();
+		}
+
+		@Override
+		public void start() {
+			retarget = 0;
+			target = null;
+			guard.getNavigation().stop();
+		}
+
+		@Override
+		public boolean requiresUpdateEveryTick() {
+			return true;
+		}
+
+		@Override
+		public void tick() {
+			if (--retarget <= 0) {
+				retarget = 20;
+				target = nearestDryFloor();
+			}
+			if (target != null) {
+				guard.getMoveControl().setWantedPosition(target.x, target.y, target.z, STROLL_SPEED);
+				guard.getLookControl().setLookAt(target.x, target.y + 1.0, target.z);
+			}
+		}
+
+		private Vec3 nearestDryFloor() {
+			Level level = guard.level();
+			BlockPos here = guard.blockPosition();
+			BlockPos best = null;
+			double bestDistance = Double.MAX_VALUE;
+			for (int dx = -10; dx <= 10; dx++) {
+				for (int dz = -10; dz <= 10; dz++) {
+					for (int dy = -2; dy <= 3; dy++) {
+						BlockPos feet = here.offset(dx, dy, dz);
+						BlockPos floor = feet.below();
+						if (level.getFluidState(feet).isEmpty() && level.getFluidState(floor).isEmpty()
+								&& level.getBlockState(floor).isFaceSturdy(level, floor, Direction.UP)
+								&& level.getBlockState(feet).getCollisionShape(level, feet).isEmpty()
+								&& level.getBlockState(feet.above()).getCollisionShape(level, feet.above()).isEmpty()
+								&& level.getBlockState(feet.above(2)).getCollisionShape(level, feet.above(2)).isEmpty()) {
+							double d = feet.distSqr(here);
+							if (d < bestDistance) {
+								bestDistance = d;
+								best = feet;
+							}
+						}
+					}
+				}
+			}
+			return best == null ? null : Vec3.atBottomCenterOf(best);
 		}
 	}
 

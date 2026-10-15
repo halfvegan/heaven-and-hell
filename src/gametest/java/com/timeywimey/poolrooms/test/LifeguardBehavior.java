@@ -30,8 +30,9 @@ import com.timeywimey.poolrooms.world.Pool;
 /**
  * Plays out every promise about the Lifeguard with a real player (real key presses) and checks each one: it appears
  * far away and out of sight, it whistles when it comes near, walking is fine (it even keeps its distance), running gets
- * noticed, it walks (never runs) to you and catches you without hurting you, it gives up after 10 seconds out of sight,
- * and it never follows you into the Entrance Pool.
+ * noticed, it walks (never runs) to you and catches you without hurting you, it gives up after 10 seconds out of sight
+ * or when you're in a pool, it never follows you into the Entrance Pool, the Pool Noodle shoves it without hurting it,
+ * and it climbs back out if it's knocked into a pool.
  */
 final class LifeguardBehavior {
 	private static final Logger LOGGER = LoggerFactory.getLogger("LifeguardBehavior");
@@ -67,6 +68,8 @@ final class LifeguardBehavior {
 			losesInterest();
 			waterIsSafe();
 			entranceIsSafe();
+			noodleKnocksItBack();
+			climbsOutOfPools();
 		} finally {
 			LifeguardDirector.listener = null;
 			context.getInput().releaseKey(o -> o.keyUp);
@@ -259,6 +262,70 @@ final class LifeguardBehavior {
 				}
 			}
 		});
+		cmd(IN_POOL + "kill @e[type=poolrooms:lifeguard]");
+	}
+
+	/** The Pool Noodle: no damage, just a big shove (and a moment's pause). */
+	private void noodleKnocksItBack() {
+		cmd("item replace entity @a weapon.mainhand with poolrooms:pool_noodle");
+		summonGuard(24.5, 24.5, 90);
+		tp(22.3, 24.5, -90);
+		context.waitTicks(10);
+		Vec3 before = guardPos();
+		AtomicReference<Float> health = new AtomicReference<>();
+		server.runOnServer(s -> {
+			LifeguardEntity guard = closestGuard(player(s));
+			health.set(guard == null ? -1F : guard.getHealth());
+		});
+		context.getInput().pressKey(o -> o.keyAttack);
+		context.waitTicks(12);
+		Vec3 after = guardPos();
+		double moved = before == null || after == null ? 0 : Math.hypot(after.x - before.x, after.z - before.z);
+		AtomicReference<Float> healthAfter = new AtomicReference<>();
+		server.runOnServer(s -> {
+			LifeguardEntity guard = closestGuard(player(s));
+			healthAfter.set(guard == null ? -1F : guard.getHealth());
+		});
+		LOGGER.info("[lifeguard] pool noodle: knocked back {} blocks, health {} -> {}", fmt(moved), health.get(), healthAfter.get());
+		if (moved < 2.0) {
+			fail("the Pool Noodle only moved the Lifeguard " + fmt(moved) + " blocks");
+		}
+		if (!health.get().equals(healthAfter.get())) {
+			fail("the Pool Noodle hurt the Lifeguard");
+		}
+		cmd(IN_POOL + "kill @e[type=poolrooms:lifeguard]");
+	}
+
+	/** Noodled into a pool, it floats and climbs out by itself (it never stays stuck in the water). */
+	private void climbsOutOfPools() {
+		// the north deck of the big Pool Hall, with the pool just south
+		summonGuard(47.5, -27.5, 0);
+		tp(47.5, -29.6, 0);
+		context.waitTicks(10);
+		context.getInput().pressKey(o -> o.keyAttack);
+		boolean wasInWater = false;
+		boolean out = false;
+		int t = 0;
+		for (; t < 500; t += 5) {
+			context.waitTicks(5);
+			AtomicReference<String> state = new AtomicReference<>("");
+			server.runOnServer(s -> {
+				LifeguardEntity guard = closestGuard(player(s));
+				state.set(guard == null ? "gone" : guard.isInWater() ? "water" : guard.onGround() ? "ground" : "air");
+			});
+			if (state.get().equals("water")) {
+				wasInWater = true;
+			} else if (wasInWater && state.get().equals("ground")) {
+				out = true;
+				break;
+			}
+		}
+		LOGGER.info("[lifeguard] knocked into the pool: {}, climbed out: {} (after {} ticks)", wasInWater, out, t);
+		if (!wasInWater) {
+			LOGGER.warn("[lifeguard] the noodle didn't knock it into the pool, so the climb-out check was skipped");
+		} else if (!out) {
+			fail("the Lifeguard did not climb out of the pool");
+		}
 		cmd(IN_POOL + "kill @e[type=poolrooms:lifeguard]");
 	}
 
