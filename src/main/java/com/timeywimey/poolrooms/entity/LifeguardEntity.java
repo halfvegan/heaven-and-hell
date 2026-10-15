@@ -41,6 +41,8 @@ public class LifeguardEntity extends PathfinderMob {
 	public static final int LOSE_INTEREST_TICKS = 200;
 	/** When it isn't chasing anyone it wanders away from people closer than this. */
 	public static final float KEEP_AWAY = 6.0F;
+	/** How close it has to get to take you back to the Entrance Pool. */
+	public static final double REACH = 3.0;
 
 	private UUID chaseTarget;
 	private long lastSeen;
@@ -145,10 +147,14 @@ public class LifeguardEntity extends PathfinderMob {
 		}
 	}
 
+	/**
+	 * Close enough to "reach" you. It's tall with long arms, so this is about 3 blocks: the screen starts fading to
+	 * white before it is right up in your face.
+	 */
 	private boolean reached(ServerPlayer target) {
 		double dx = target.getX() - getX();
 		double dz = target.getZ() - getZ();
-		return dx * dx + dz * dz < 1.7 * 1.7 && Math.abs(target.getY() - getY()) < 2.0 && hasLineOfSight(target);
+		return dx * dx + dz * dz < REACH * REACH && Math.abs(target.getY() - getY()) < 2.5 && hasLineOfSight(target);
 	}
 
 	/** Walks (never runs) towards the person it saw running, re-planning its path twice a second. */
