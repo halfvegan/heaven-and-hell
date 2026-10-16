@@ -11,6 +11,7 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -282,6 +283,16 @@ public class LifeguardEntity extends PathfinderMob {
 	}
 
 	// ------------------------------------------------------------------ rules of the pool
+
+	/**
+	 * The Lifeguard never attacks anyone. Vanilla uses this to decide who a mob "notices", and on Peaceful it says no
+	 * to every player, which would stop the Lifeguard keeping its distance. So: anyone who isn't in Creative or
+	 * Spectator mode, on every difficulty.
+	 */
+	@Override
+	public boolean canAttack(LivingEntity target) {
+		return target.canBeSeenAsEnemy();
+	}
 
 	@Override
 	public boolean isInvulnerableTo(ServerLevel level, DamageSource source) {
