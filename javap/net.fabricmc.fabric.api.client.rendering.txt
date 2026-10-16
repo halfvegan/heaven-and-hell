@@ -1,0 +1,388 @@
+Compiled from "ArmorRenderer.java"
+public interface net.fabricmc.fabric.api.client.rendering.v1.ArmorRenderer$Factory {
+  public abstract net.fabricmc.fabric.api.client.rendering.v1.ArmorRenderer createArmorRenderer(net.minecraft.client.renderer.entity.EntityRendererProvider$Context);
+}
+Compiled from "ArmorRenderer.java"
+public interface net.fabricmc.fabric.api.client.rendering.v1.ArmorRenderer {
+  public static void register(net.fabricmc.fabric.api.client.rendering.v1.ArmorRenderer$Factory, net.minecraft.world.level.ItemLike...);
+  public static void register(net.fabricmc.fabric.api.client.rendering.v1.ArmorRenderer, net.minecraft.world.level.ItemLike...);
+  public static <S, D> void submitTransformCopyingModel(net.minecraft.client.model.Model<? super S>, S, net.minecraft.client.model.Model<? super D>, D, boolean, net.minecraft.client.renderer.OrderedSubmitNodeCollector, com.mojang.blaze3d.vertex.PoseStack, net.minecraft.client.renderer.rendertype.RenderType, int, int, int, net.minecraft.client.renderer.texture.TextureAtlasSprite, int);
+  public static <S, D> void submitTransformCopyingModel(net.minecraft.client.model.Model<? super S>, S, net.minecraft.client.model.Model<? super D>, D, boolean, net.minecraft.client.renderer.OrderedSubmitNodeCollector, com.mojang.blaze3d.vertex.PoseStack, net.minecraft.client.renderer.rendertype.RenderType, int, int, int);
+  public abstract void render(com.mojang.blaze3d.vertex.PoseStack, net.minecraft.client.renderer.SubmitNodeCollector, net.minecraft.world.item.ItemStack, net.minecraft.client.renderer.entity.state.HumanoidRenderState, net.minecraft.world.entity.EquipmentSlot, int, net.minecraft.client.model.HumanoidModel<net.minecraft.client.renderer.entity.state.HumanoidRenderState>);
+  public default boolean shouldRenderDefaultHeadItem(net.minecraft.world.entity.LivingEntity, net.minecraft.world.item.ItemStack);
+}
+Compiled from "AtlasRegistry.java"
+public final class net.fabricmc.fabric.api.client.rendering.v1.AtlasRegistry {
+  public static void register(net.minecraft.client.resources.model.sprite.AtlasManager$AtlasConfig);
+  public static net.minecraft.resources.Identifier generateTextureLocation(net.minecraft.resources.Identifier);
+  public static java.util.List<net.minecraft.client.resources.model.sprite.AtlasManager$AtlasConfig> getAtlases();
+}
+Compiled from "BlockColorRegistry.java"
+public final class net.fabricmc.fabric.api.client.rendering.v1.BlockColorRegistry {
+  public static void register(java.util.List<net.minecraft.client.color.block.BlockTintSource>, net.minecraft.world.level.block.Block...);
+  public static void register(net.fabricmc.fabric.api.client.rendering.v1.BlockTintsFactory, net.minecraft.world.level.block.Block...);
+  public static net.fabricmc.fabric.api.client.rendering.v1.BlockTintsFactory getFactory(net.minecraft.world.level.block.state.BlockState);
+}
+Compiled from "BlockEntityRendererRegistry.java"
+public final class net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry {
+  public static <E extends net.minecraft.world.level.block.entity.BlockEntity, S extends net.minecraft.client.renderer.blockentity.state.BlockEntityRenderState> void register(net.minecraft.world.level.block.entity.BlockEntityType<E>, net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider<? super E, ? super S>);
+}
+Compiled from "BlockTintsFactory.java"
+public interface net.fabricmc.fabric.api.client.rendering.v1.BlockTintsFactory {
+  public abstract void collect(net.minecraft.world.level.block.state.BlockState, net.minecraft.client.renderer.block.BlockAndTintGetter, net.minecraft.core.BlockPos, it.unimi.dsi.fastutil.ints.IntList);
+}
+Compiled from "BuiltInBlockModelsCallback.java"
+public interface net.fabricmc.fabric.api.client.rendering.v1.BuiltInBlockModelsCallback {
+  public static final net.fabricmc.fabric.api.event.Event<net.fabricmc.fabric.api.client.rendering.v1.BuiltInBlockModelsCallback> EVENT;
+  public abstract void createBlockModels(net.minecraft.client.renderer.block.BuiltInBlockModels$Builder);
+}
+Compiled from "ClientTooltipComponentCallback.java"
+public interface net.fabricmc.fabric.api.client.rendering.v1.ClientTooltipComponentCallback {
+  public static final net.fabricmc.fabric.api.event.Event<net.fabricmc.fabric.api.client.rendering.v1.ClientTooltipComponentCallback> EVENT;
+  public abstract net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent getClientComponent(net.minecraft.world.inventory.tooltip.TooltipComponent);
+}
+Compiled from "ColorResolverRegistry.java"
+public final class net.fabricmc.fabric.api.client.rendering.v1.ColorResolverRegistry {
+  public static void register(net.minecraft.world.level.ColorResolver);
+  public static java.util.Set<net.minecraft.world.level.ColorResolver> getAllResolvers();
+  public static java.util.Set<net.minecraft.world.level.ColorResolver> getCustomResolvers();
+  public static boolean isRegistered(net.minecraft.world.level.ColorResolver);
+}
+Compiled from "EntityRendererRegistry.java"
+public final class net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry {
+  public static <E extends net.minecraft.world.entity.Entity> void register(net.minecraft.world.entity.EntityType<? extends E>, net.minecraft.client.renderer.entity.EntityRendererProvider<E>);
+}
+Compiled from "ExtractItemDecorationsCallback.java"
+public interface net.fabricmc.fabric.api.client.rendering.v1.ExtractItemDecorationsCallback {
+  public static final net.fabricmc.fabric.api.event.Event<net.fabricmc.fabric.api.client.rendering.v1.ExtractItemDecorationsCallback> EVENT;
+  public abstract void onExtractItemDecorations(net.minecraft.client.gui.GuiGraphicsExtractor, net.minecraft.client.gui.Font, net.minecraft.world.item.ItemStack, int, int);
+}
+Compiled from "FabricModel.java"
+public interface net.fabricmc.fabric.api.client.rendering.v1.FabricModel<S> {
+  public default net.minecraft.client.model.geom.ModelPart getChildPart(java.lang.String);
+  public default void copyTransforms(net.minecraft.client.model.Model<?>);
+}
+Compiled from "FabricOrderedSubmitNodeCollector.java"
+public interface net.fabricmc.fabric.api.client.rendering.v1.FabricOrderedSubmitNodeCollector {
+  public default <T extends net.minecraft.client.renderer.feature.submit.SubmitNode> void submitCustom(net.fabricmc.fabric.api.client.rendering.v1.SubmitRenderPhase<T>, T);
+}
+Compiled from "FabricRenderPipeline.java"
+public interface net.fabricmc.fabric.api.client.rendering.v1.FabricRenderPipeline$Builder {
+  public default com.mojang.renderpearl.api.pipeline.RenderPipeline$Builder withUsePipelineDrawModeForGui(boolean);
+  public default com.mojang.renderpearl.api.pipeline.RenderPipeline$Builder withoutUsePipelineDrawModeForGui();
+}
+Compiled from "FabricRenderPipeline.java"
+public interface net.fabricmc.fabric.api.client.rendering.v1.FabricRenderPipeline$Snippet {
+  public default java.util.Optional<java.lang.Boolean> usePipelineDrawModeForGui();
+  public static com.mojang.renderpearl.api.pipeline.RenderPipeline$Snippet withPipelineDrawModeForGui(com.mojang.renderpearl.api.pipeline.RenderPipeline$Snippet, boolean);
+  public static com.mojang.renderpearl.api.pipeline.RenderPipeline$Snippet withoutPipelineDrawModeForGui(com.mojang.renderpearl.api.pipeline.RenderPipeline$Snippet);
+}
+Compiled from "FabricRenderPipeline.java"
+public interface net.fabricmc.fabric.api.client.rendering.v1.FabricRenderPipeline {
+  public default boolean usePipelineDrawModeForGui();
+}
+Compiled from "FabricRenderState.java"
+public interface net.fabricmc.fabric.api.client.rendering.v1.FabricRenderState {
+  public default <T> T getData(net.fabricmc.fabric.api.client.rendering.v1.RenderStateDataKey<T>);
+  public default <T> T getDataOrDefault(net.fabricmc.fabric.api.client.rendering.v1.RenderStateDataKey<T>, T);
+  public default <T> void setData(net.fabricmc.fabric.api.client.rendering.v1.RenderStateDataKey<T>, T);
+  public default void clearExtraData();
+}
+Compiled from "FeatureRendererRegistry.java"
+public final class net.fabricmc.fabric.api.client.rendering.v1.FeatureRendererRegistry {
+  public static <T extends net.minecraft.client.renderer.feature.submit.SubmitNode> void register(net.minecraft.client.renderer.feature.FeatureRendererType<T>, java.util.function.Supplier<net.minecraft.client.renderer.feature.FeatureRenderer<T>>);
+}
+Compiled from "InvalidateRenderStateCallback.java"
+public interface net.fabricmc.fabric.api.client.rendering.v1.InvalidateRenderStateCallback {
+  public static final net.fabricmc.fabric.api.event.Event<net.fabricmc.fabric.api.client.rendering.v1.InvalidateRenderStateCallback> EVENT;
+  public abstract void onInvalidate();
+}
+Compiled from "LivingEntityFeatureRenderEvents.java"
+public interface net.fabricmc.fabric.api.client.rendering.v1.LivingEntityFeatureRenderEvents$AllowCapeRender {
+  public abstract boolean allowCapeRender(net.minecraft.client.renderer.entity.state.AvatarRenderState);
+}
+Compiled from "LivingEntityFeatureRenderEvents.java"
+public final class net.fabricmc.fabric.api.client.rendering.v1.LivingEntityFeatureRenderEvents {
+  public static final net.fabricmc.fabric.api.event.Event<net.fabricmc.fabric.api.client.rendering.v1.LivingEntityFeatureRenderEvents$AllowCapeRender> ALLOW_CAPE_RENDER;
+}
+Compiled from "LivingEntityRenderLayerRegistrationCallback.java"
+public interface net.fabricmc.fabric.api.client.rendering.v1.LivingEntityRenderLayerRegistrationCallback$RegistrationHelper {
+  public abstract <T extends net.minecraft.client.renderer.entity.state.EntityRenderState> void register(net.minecraft.client.renderer.entity.layers.RenderLayer<T, ? extends net.minecraft.client.model.EntityModel<T>>);
+}
+Compiled from "LivingEntityRenderLayerRegistrationCallback.java"
+public interface net.fabricmc.fabric.api.client.rendering.v1.LivingEntityRenderLayerRegistrationCallback {
+  public static final net.fabricmc.fabric.api.event.Event<net.fabricmc.fabric.api.client.rendering.v1.LivingEntityRenderLayerRegistrationCallback> EVENT;
+  public abstract void registerLayers(net.minecraft.world.entity.EntityType<? extends net.minecraft.world.entity.LivingEntity>, net.minecraft.client.renderer.entity.LivingEntityRenderer<?, ?, ?>, net.fabricmc.fabric.api.client.rendering.v1.LivingEntityRenderLayerRegistrationCallback$RegistrationHelper, net.minecraft.client.renderer.entity.EntityRendererProvider$Context);
+}
+Compiled from "ModelLayerRegistry.java"
+public interface net.fabricmc.fabric.api.client.rendering.v1.ModelLayerRegistry$TexturedArmorModelSetProvider {
+  public abstract net.minecraft.client.renderer.entity.ArmorModelSet<net.minecraft.client.model.geom.builders.LayerDefinition> createArmorModelSet();
+}
+Compiled from "ModelLayerRegistry.java"
+public interface net.fabricmc.fabric.api.client.rendering.v1.ModelLayerRegistry$TexturedLayerDefinitionProvider {
+  public abstract net.minecraft.client.model.geom.builders.LayerDefinition createLayerDefinition();
+}
+Compiled from "ModelLayerRegistry.java"
+public final class net.fabricmc.fabric.api.client.rendering.v1.ModelLayerRegistry {
+  public static void registerModelLayer(net.minecraft.client.model.geom.ModelLayerLocation, net.fabricmc.fabric.api.client.rendering.v1.ModelLayerRegistry$TexturedLayerDefinitionProvider);
+  public static void registerArmorModelLayers(net.minecraft.client.renderer.entity.ArmorModelSet<net.minecraft.client.model.geom.ModelLayerLocation>, net.fabricmc.fabric.api.client.rendering.v1.ModelLayerRegistry$TexturedArmorModelSetProvider);
+}
+Compiled from "PictureInPictureRendererRegistry.java"
+public interface net.fabricmc.fabric.api.client.rendering.v1.PictureInPictureRendererRegistry$Context {
+  public abstract net.minecraft.client.Minecraft minecraft();
+}
+Compiled from "PictureInPictureRendererRegistry.java"
+public interface net.fabricmc.fabric.api.client.rendering.v1.PictureInPictureRendererRegistry$Factory {
+  public abstract net.minecraft.client.gui.render.pip.PictureInPictureRenderer<?> createRenderer(net.fabricmc.fabric.api.client.rendering.v1.PictureInPictureRendererRegistry$Context);
+}
+Compiled from "PictureInPictureRendererRegistry.java"
+public final class net.fabricmc.fabric.api.client.rendering.v1.PictureInPictureRendererRegistry {
+  public net.fabricmc.fabric.api.client.rendering.v1.PictureInPictureRendererRegistry();
+  public static void register(net.fabricmc.fabric.api.client.rendering.v1.PictureInPictureRendererRegistry$Factory);
+}
+Compiled from "RenderStateDataKey.java"
+public final class net.fabricmc.fabric.api.client.rendering.v1.RenderStateDataKey<T> {
+  public static <T> net.fabricmc.fabric.api.client.rendering.v1.RenderStateDataKey<T> create(java.util.function.Supplier<java.lang.String>);
+  public static <T> net.fabricmc.fabric.api.client.rendering.v1.RenderStateDataKey<T> create();
+  public java.lang.String toString();
+}
+Compiled from "SpriteSourceRegistry.java"
+public final class net.fabricmc.fabric.api.client.rendering.v1.SpriteSourceRegistry {
+  public static void register(net.minecraft.resources.Identifier, com.mojang.serialization.MapCodec<? extends net.minecraft.client.renderer.texture.atlas.SpriteSource>);
+}
+Compiled from "SubmitRenderPhase.java"
+public class net.fabricmc.fabric.api.client.rendering.v1.SubmitRenderPhase<T extends net.minecraft.client.renderer.feature.submit.SubmitNode> {
+  public net.fabricmc.fabric.api.client.rendering.v1.SubmitRenderPhase(java.util.function.Function<net.minecraft.client.renderer.SubmitNodeCollection, net.minecraft.client.renderer.feature.phase.FeatureRenderPhase<? super T>>);
+  public void submit(net.minecraft.client.renderer.SubmitNodeCollection, T);
+}
+Compiled from "SubmitRenderPhases.java"
+public final class net.fabricmc.fabric.api.client.rendering.v1.SubmitRenderPhases {
+  public static final net.fabricmc.fabric.api.client.rendering.v1.SubmitRenderPhase<net.minecraft.client.renderer.feature.submit.SubmitNode> SOLID;
+  public static final net.fabricmc.fabric.api.client.rendering.v1.SubmitRenderPhase<net.minecraft.client.renderer.feature.submit.SubmitNode> SHADOWS;
+  public static final net.fabricmc.fabric.api.client.rendering.v1.SubmitRenderPhase<net.minecraft.client.renderer.feature.submit.SubmitNode> NAME_TAGS;
+  public static final net.fabricmc.fabric.api.client.rendering.v1.SubmitRenderPhase<net.minecraft.client.renderer.feature.submit.TranslucentSubmit> SEE_THROUGH_NAME_TAGS;
+  public static final net.fabricmc.fabric.api.client.rendering.v1.SubmitRenderPhase<net.minecraft.client.renderer.feature.submit.SubmitNode> TEXTS;
+  public static final net.fabricmc.fabric.api.client.rendering.v1.SubmitRenderPhase<net.minecraft.client.renderer.feature.submit.SubmitNode> SHAPE_OUTLINES;
+  public static final net.fabricmc.fabric.api.client.rendering.v1.SubmitRenderPhase<net.minecraft.client.renderer.feature.submit.TranslucentSubmit> TRANSLUCENT_BLOCKS_AND_ITEMS;
+  public static final net.fabricmc.fabric.api.client.rendering.v1.SubmitRenderPhase<net.minecraft.client.renderer.feature.submit.TranslucentSubmit> TRANSLUCENT_MODELS;
+  public static final net.fabricmc.fabric.api.client.rendering.v1.SubmitRenderPhase<net.minecraft.client.renderer.feature.submit.SubmitNode> TRANSLUCENT_CUSTOM_GEOMETRY;
+  public static final net.fabricmc.fabric.api.client.rendering.v1.SubmitRenderPhase<net.minecraft.client.renderer.feature.submit.SubmitNode> GIZMOS;
+  public static final net.fabricmc.fabric.api.client.rendering.v1.SubmitRenderPhase<net.minecraft.client.renderer.feature.submit.SubmitNode> BREAKING_OVERLAY;
+  public static final net.fabricmc.fabric.api.client.rendering.v1.SubmitRenderPhase<net.minecraft.client.renderer.feature.submit.SubmitNode> WATER_MASK;
+  public static final net.fabricmc.fabric.api.client.rendering.v1.SubmitRenderPhase<net.minecraft.client.renderer.feature.submit.SubmitNode> AFTER_TERRAIN;
+  public static final net.fabricmc.fabric.api.client.rendering.v1.SubmitRenderPhase<net.minecraft.client.renderer.feature.submit.SubmitNode> ALWAYS_ON_TOP;
+  public static final net.fabricmc.fabric.api.client.rendering.v1.SubmitRenderPhase<net.minecraft.client.renderer.feature.submit.SubmitNode> OUTLINE;
+}
+Compiled from "TransformCopyingModel.java"
+public final class net.fabricmc.fabric.api.client.rendering.v1.TransformCopyingModel<S, D> extends net.minecraft.client.model.Model<com.mojang.datafixers.util.Pair<S, D>> implements net.fabricmc.fabric.impl.client.rendering.ModelExtensions {
+  public static <S, D> net.fabricmc.fabric.api.client.rendering.v1.TransformCopyingModel<S, D> create(net.minecraft.client.model.Model<? super S>, net.minecraft.client.model.Model<? super D>, boolean);
+  public void setupAnim(com.mojang.datafixers.util.Pair<S, D>);
+  public void fabric$calculateChildParts(net.minecraft.client.model.geom.ModelPart);
+  public net.minecraft.client.model.geom.ModelPart getChildPart(java.lang.String);
+  public void copyTransforms(net.minecraft.client.model.Model<?>);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "AdvancementRenderContext.java"
+public interface net.fabricmc.fabric.api.client.rendering.v1.advancement.AdvancementRenderContext$Background extends net.fabricmc.fabric.api.client.rendering.v1.advancement.AdvancementRenderContext {
+  public abstract net.minecraft.client.gui.navigation.ScreenRectangle bounds();
+  public abstract double scrollX();
+  public abstract double scrollY();
+}
+Compiled from "AdvancementRenderContext.java"
+public interface net.fabricmc.fabric.api.client.rendering.v1.advancement.AdvancementRenderContext$Frame extends net.fabricmc.fabric.api.client.rendering.v1.advancement.AdvancementRenderContext {
+  public abstract int x();
+  public abstract int y();
+  public abstract boolean isHovered();
+}
+Compiled from "AdvancementRenderContext.java"
+public interface net.fabricmc.fabric.api.client.rendering.v1.advancement.AdvancementRenderContext$Icon extends net.fabricmc.fabric.api.client.rendering.v1.advancement.AdvancementRenderContext {
+  public abstract int x();
+  public abstract int y();
+  public abstract boolean isHovered();
+  public abstract boolean isSelected();
+}
+Compiled from "AdvancementRenderContext.java"
+public interface net.fabricmc.fabric.api.client.rendering.v1.advancement.AdvancementRenderContext {
+  public abstract net.minecraft.client.gui.GuiGraphicsExtractor graphics();
+  public abstract net.minecraft.advancements.AdvancementHolder holder();
+  public abstract net.minecraft.advancements.AdvancementProgress progress();
+  public default net.minecraft.advancements.Advancement advancement();
+  public default net.minecraft.advancements.DisplayInfo display();
+  public default boolean isObtained();
+}
+Compiled from "AdvancementRenderer.java"
+public interface net.fabricmc.fabric.api.client.rendering.v1.advancement.AdvancementRenderer$BackgroundRenderer {
+  public abstract void extractAdvancementBackground(net.fabricmc.fabric.api.client.rendering.v1.advancement.AdvancementRenderContext$Background);
+  public default boolean shouldRenderOriginalBackground();
+}
+Compiled from "AdvancementRenderer.java"
+public interface net.fabricmc.fabric.api.client.rendering.v1.advancement.AdvancementRenderer$FrameRenderer {
+  public abstract void extractAdvancementFrame(net.fabricmc.fabric.api.client.rendering.v1.advancement.AdvancementRenderContext$Frame);
+  public default boolean shouldRenderOriginalFrame();
+  public default boolean shouldRenderTooltip();
+}
+Compiled from "AdvancementRenderer.java"
+public interface net.fabricmc.fabric.api.client.rendering.v1.advancement.AdvancementRenderer$IconRenderer {
+  public abstract void extractAdvancementIcon(net.fabricmc.fabric.api.client.rendering.v1.advancement.AdvancementRenderContext$Icon);
+  public default boolean shouldRenderOriginalIcon();
+}
+Compiled from "AdvancementRenderer.java"
+public final class net.fabricmc.fabric.api.client.rendering.v1.advancement.AdvancementRenderer {
+  public static void registerIcon(net.fabricmc.fabric.api.client.rendering.v1.advancement.AdvancementRenderer$IconRenderer, net.minecraft.resources.Identifier...);
+  public static void registerFrame(net.fabricmc.fabric.api.client.rendering.v1.advancement.AdvancementRenderer$FrameRenderer, net.minecraft.resources.Identifier...);
+  public static void registerBackground(net.fabricmc.fabric.api.client.rendering.v1.advancement.AdvancementRenderer$BackgroundRenderer, net.minecraft.resources.Identifier...);
+}
+Compiled from "package-info.java"
+interface net.fabricmc.fabric.api.client.rendering.v1.advancement.package-info {
+}
+Compiled from "HudElement.java"
+public interface net.fabricmc.fabric.api.client.rendering.v1.hud.HudElement {
+  public abstract void extractRenderState(net.minecraft.client.gui.GuiGraphicsExtractor, net.minecraft.client.DeltaTracker);
+}
+Compiled from "HudElementRegistry.java"
+public interface net.fabricmc.fabric.api.client.rendering.v1.hud.HudElementRegistry {
+  public static void addFirst(net.minecraft.resources.Identifier, net.fabricmc.fabric.api.client.rendering.v1.hud.HudElement);
+  public static void addLast(net.minecraft.resources.Identifier, net.fabricmc.fabric.api.client.rendering.v1.hud.HudElement);
+  public static void attachElementBefore(net.minecraft.resources.Identifier, net.minecraft.resources.Identifier, net.fabricmc.fabric.api.client.rendering.v1.hud.HudElement);
+  public static void attachElementAfter(net.minecraft.resources.Identifier, net.minecraft.resources.Identifier, net.fabricmc.fabric.api.client.rendering.v1.hud.HudElement);
+  public static void removeElement(net.minecraft.resources.Identifier);
+  public static void replaceElement(net.minecraft.resources.Identifier, java.util.function.Function<net.fabricmc.fabric.api.client.rendering.v1.hud.HudElement, net.fabricmc.fabric.api.client.rendering.v1.hud.HudElement>);
+}
+Compiled from "HudStatusBarHeightRegistry.java"
+public final class net.fabricmc.fabric.api.client.rendering.v1.hud.HudStatusBarHeightRegistry {
+  public static void addLeft(net.minecraft.resources.Identifier, net.fabricmc.fabric.api.client.rendering.v1.hud.StatusBarHeightProvider);
+  public static void addRight(net.minecraft.resources.Identifier, net.fabricmc.fabric.api.client.rendering.v1.hud.StatusBarHeightProvider);
+  public static int getHeight(net.minecraft.resources.Identifier);
+  public static int getElementHeight(net.minecraft.resources.Identifier);
+}
+Compiled from "StatusBarHeightProvider.java"
+public interface net.fabricmc.fabric.api.client.rendering.v1.hud.StatusBarHeightProvider extends java.util.function.ToIntFunction<net.minecraft.world.entity.player.Player> {
+  public abstract int getStatusBarHeight(net.minecraft.world.entity.player.Player);
+  public default int applyAsInt(net.minecraft.world.entity.player.Player);
+  public default int applyAsInt(java.lang.Object);
+}
+Compiled from "VanillaHudElements.java"
+public final class net.fabricmc.fabric.api.client.rendering.v1.hud.VanillaHudElements {
+  public static final net.minecraft.resources.Identifier MISC_OVERLAYS;
+  public static final net.minecraft.resources.Identifier CROSSHAIR;
+  public static final net.minecraft.resources.Identifier SPECTATOR_MENU;
+  public static final net.minecraft.resources.Identifier HOTBAR;
+  public static final net.minecraft.resources.Identifier ARMOR_BAR;
+  public static final net.minecraft.resources.Identifier HEALTH_BAR;
+  public static final net.minecraft.resources.Identifier FOOD_BAR;
+  public static final net.minecraft.resources.Identifier AIR_BAR;
+  public static final net.minecraft.resources.Identifier MOUNT_HEALTH;
+  public static final net.minecraft.resources.Identifier INFO_BAR;
+  public static final net.minecraft.resources.Identifier EXPERIENCE_LEVEL;
+  public static final net.minecraft.resources.Identifier HELD_ITEM_TOOLTIP;
+  public static final net.minecraft.resources.Identifier SPECTATOR_TOOLTIP;
+  public static final net.minecraft.resources.Identifier MOB_EFFECTS;
+  public static final net.minecraft.resources.Identifier BOSS_BAR;
+  public static final net.minecraft.resources.Identifier SLEEP;
+  public static final net.minecraft.resources.Identifier DEMO_TIMER;
+  public static final net.minecraft.resources.Identifier SCOREBOARD;
+  public static final net.minecraft.resources.Identifier OVERLAY_MESSAGE;
+  public static final net.minecraft.resources.Identifier TITLE_AND_SUBTITLE;
+  public static final net.minecraft.resources.Identifier CHAT;
+  public static final net.minecraft.resources.Identifier PLAYER_LIST;
+  public static final net.minecraft.resources.Identifier SUBTITLES;
+}
+Compiled from "package-info.java"
+interface net.fabricmc.fabric.api.client.rendering.v1.hud.package-info {
+}
+Compiled from "AbstractLevelRenderContext.java"
+public interface net.fabricmc.fabric.api.client.rendering.v1.level.AbstractLevelRenderContext {
+  public abstract net.minecraft.client.renderer.GameRenderer gameRenderer();
+  public abstract net.minecraft.client.renderer.LevelRenderer levelRenderer();
+  public abstract net.minecraft.client.renderer.state.level.LevelRenderState levelState();
+}
+Compiled from "LevelExtractionContext.java"
+public interface net.fabricmc.fabric.api.client.rendering.v1.level.LevelExtractionContext extends net.fabricmc.fabric.api.client.rendering.v1.level.AbstractLevelRenderContext {
+  public abstract net.minecraft.client.multiplayer.ClientLevel level();
+  public abstract net.minecraft.client.Camera camera();
+  public abstract net.minecraft.client.DeltaTracker deltaTracker();
+}
+Compiled from "LevelExtractionEvents.java"
+public interface net.fabricmc.fabric.api.client.rendering.v1.level.LevelExtractionEvents$AfterBlockOutlineExtraction {
+  public abstract void afterBlockOutlineExtraction(net.fabricmc.fabric.api.client.rendering.v1.level.LevelExtractionContext, net.minecraft.world.phys.HitResult);
+}
+Compiled from "LevelExtractionEvents.java"
+public interface net.fabricmc.fabric.api.client.rendering.v1.level.LevelExtractionEvents$EndExtraction {
+  public abstract void endExtraction(net.fabricmc.fabric.api.client.rendering.v1.level.LevelExtractionContext);
+}
+Compiled from "LevelExtractionEvents.java"
+public class net.fabricmc.fabric.api.client.rendering.v1.level.LevelExtractionEvents {
+  public static final net.fabricmc.fabric.api.event.Event<net.fabricmc.fabric.api.client.rendering.v1.level.LevelExtractionEvents$AfterBlockOutlineExtraction> AFTER_BLOCK_OUTLINE_EXTRACTION;
+  public static final net.fabricmc.fabric.api.event.Event<net.fabricmc.fabric.api.client.rendering.v1.level.LevelExtractionEvents$EndExtraction> END_EXTRACTION;
+  public net.fabricmc.fabric.api.client.rendering.v1.level.LevelExtractionEvents();
+}
+Compiled from "LevelRenderContext.java"
+public interface net.fabricmc.fabric.api.client.rendering.v1.level.LevelRenderContext extends net.fabricmc.fabric.api.client.rendering.v1.level.LevelTerrainRenderContext {
+  public abstract net.minecraft.client.renderer.SubmitNodeCollector submitNodeCollector();
+  public abstract com.mojang.blaze3d.vertex.PoseStack poseStack();
+}
+Compiled from "LevelRenderEvents.java"
+public interface net.fabricmc.fabric.api.client.rendering.v1.level.LevelRenderEvents$AfterOpaqueTerrain {
+  public abstract void afterOpaqueTerrain(net.fabricmc.fabric.api.client.rendering.v1.level.LevelTerrainRenderContext);
+}
+Compiled from "LevelRenderEvents.java"
+public interface net.fabricmc.fabric.api.client.rendering.v1.level.LevelRenderEvents$AfterSolidFeatures {
+  public abstract void afterSolidFeatures(net.fabricmc.fabric.api.client.rendering.v1.level.LevelRenderContext);
+}
+Compiled from "LevelRenderEvents.java"
+public interface net.fabricmc.fabric.api.client.rendering.v1.level.LevelRenderEvents$AfterTranslucentFeatures {
+  public abstract void afterTranslucentFeatures(net.fabricmc.fabric.api.client.rendering.v1.level.LevelRenderContext);
+}
+Compiled from "LevelRenderEvents.java"
+public interface net.fabricmc.fabric.api.client.rendering.v1.level.LevelRenderEvents$AfterTranslucentTerrain {
+  public abstract void afterTranslucentTerrain(net.fabricmc.fabric.api.client.rendering.v1.level.LevelRenderContext);
+}
+Compiled from "LevelRenderEvents.java"
+public interface net.fabricmc.fabric.api.client.rendering.v1.level.LevelRenderEvents$BeforeBlockOutline {
+  public abstract boolean beforeBlockOutline(net.fabricmc.fabric.api.client.rendering.v1.level.LevelRenderContext, net.minecraft.client.renderer.state.level.BlockOutlineRenderState);
+}
+Compiled from "LevelRenderEvents.java"
+public interface net.fabricmc.fabric.api.client.rendering.v1.level.LevelRenderEvents$BeforeGizmos {
+  public abstract void beforeGizmos(net.fabricmc.fabric.api.client.rendering.v1.level.LevelRenderContext);
+}
+Compiled from "LevelRenderEvents.java"
+public interface net.fabricmc.fabric.api.client.rendering.v1.level.LevelRenderEvents$BeforeTranslucentTerrain {
+  public abstract void beforeTranslucentTerrain(net.fabricmc.fabric.api.client.rendering.v1.level.LevelRenderContext);
+}
+Compiled from "LevelRenderEvents.java"
+public interface net.fabricmc.fabric.api.client.rendering.v1.level.LevelRenderEvents$CollectSubmits {
+  public abstract void collectSubmits(net.fabricmc.fabric.api.client.rendering.v1.level.LevelRenderContext);
+}
+Compiled from "LevelRenderEvents.java"
+public interface net.fabricmc.fabric.api.client.rendering.v1.level.LevelRenderEvents$EndMain {
+  public abstract void endMain(net.fabricmc.fabric.api.client.rendering.v1.level.LevelRenderContext);
+}
+Compiled from "LevelRenderEvents.java"
+public interface net.fabricmc.fabric.api.client.rendering.v1.level.LevelRenderEvents$StartMain {
+  public abstract void startMain(net.fabricmc.fabric.api.client.rendering.v1.level.LevelTerrainRenderContext);
+}
+Compiled from "LevelRenderEvents.java"
+public final class net.fabricmc.fabric.api.client.rendering.v1.level.LevelRenderEvents {
+  public static final net.fabricmc.fabric.api.event.Event<net.fabricmc.fabric.api.client.rendering.v1.level.LevelRenderEvents$StartMain> START_MAIN;
+  public static final net.fabricmc.fabric.api.event.Event<net.fabricmc.fabric.api.client.rendering.v1.level.LevelRenderEvents$AfterOpaqueTerrain> AFTER_OPAQUE_TERRAIN;
+  public static final net.fabricmc.fabric.api.event.Event<net.fabricmc.fabric.api.client.rendering.v1.level.LevelRenderEvents$CollectSubmits> COLLECT_SUBMITS;
+  public static final net.fabricmc.fabric.api.event.Event<net.fabricmc.fabric.api.client.rendering.v1.level.LevelRenderEvents$AfterSolidFeatures> AFTER_SOLID_FEATURES;
+  public static final net.fabricmc.fabric.api.event.Event<net.fabricmc.fabric.api.client.rendering.v1.level.LevelRenderEvents$AfterTranslucentFeatures> AFTER_TRANSLUCENT_FEATURES;
+  public static final net.fabricmc.fabric.api.event.Event<net.fabricmc.fabric.api.client.rendering.v1.level.LevelRenderEvents$BeforeBlockOutline> BEFORE_BLOCK_OUTLINE;
+  public static final net.fabricmc.fabric.api.event.Event<net.fabricmc.fabric.api.client.rendering.v1.level.LevelRenderEvents$BeforeGizmos> BEFORE_GIZMOS;
+  public static final net.fabricmc.fabric.api.event.Event<net.fabricmc.fabric.api.client.rendering.v1.level.LevelRenderEvents$BeforeTranslucentTerrain> BEFORE_TRANSLUCENT_TERRAIN;
+  public static final net.fabricmc.fabric.api.event.Event<net.fabricmc.fabric.api.client.rendering.v1.level.LevelRenderEvents$AfterTranslucentTerrain> AFTER_TRANSLUCENT_TERRAIN;
+  public static final net.fabricmc.fabric.api.event.Event<net.fabricmc.fabric.api.client.rendering.v1.level.LevelRenderEvents$EndMain> END_MAIN;
+  public static final net.fabricmc.fabric.api.event.Event<net.fabricmc.fabric.api.client.rendering.v1.level.LevelExtractionEvents$AfterBlockOutlineExtraction> AFTER_BLOCK_OUTLINE_EXTRACTION;
+  public static final net.fabricmc.fabric.api.event.Event<net.fabricmc.fabric.api.client.rendering.v1.level.LevelExtractionEvents$EndExtraction> END_EXTRACTION;
+}
+Compiled from "LevelTerrainRenderContext.java"
+public interface net.fabricmc.fabric.api.client.rendering.v1.level.LevelTerrainRenderContext extends net.fabricmc.fabric.api.client.rendering.v1.level.AbstractLevelRenderContext {
+  public abstract net.minecraft.client.renderer.chunk.ChunkSectionsToRender sectionsToRender();
+}
+Compiled from "package-info.java"
+interface net.fabricmc.fabric.api.client.rendering.v1.level.package-info {
+}
+Compiled from "package-info.java"
+interface net.fabricmc.fabric.api.client.rendering.v1.package-info {
+}

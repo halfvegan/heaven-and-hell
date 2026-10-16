@@ -1,0 +1,23 @@
+Compiled from "LootTable.java"
+public class net.minecraft.world.level.storage.loot.LootTable implements net.minecraft.world.level.storage.loot.Validatable {
+  public static final com.mojang.serialization.Codec<net.minecraft.resources.ResourceKey<net.minecraft.world.level.storage.loot.LootTable>> KEY_CODEC;
+  public static final net.minecraft.util.context.ContextKeySet DEFAULT_PARAM_SET;
+  public static final long RANDOMIZE_SEED;
+  public static final com.mojang.serialization.Codec<net.minecraft.world.level.storage.loot.LootTable> DIRECT_CODEC;
+  public static final com.mojang.serialization.Codec<net.minecraft.core.Holder<net.minecraft.world.level.storage.loot.LootTable>> CODEC;
+  public static final com.mojang.serialization.Codec<net.minecraft.core.HolderSet<net.minecraft.world.level.storage.loot.LootTable>> LIST_CODEC;
+  public static final net.minecraft.world.level.storage.loot.LootTable EMPTY;
+  public static java.util.function.Consumer<net.minecraft.world.item.ItemStack> createStackSplitter(net.minecraft.server.level.ServerLevel, java.util.function.Consumer<net.minecraft.world.item.ItemStack>);
+  public void getRandomItemsRaw(net.minecraft.world.level.storage.loot.LootParams, java.util.function.Consumer<net.minecraft.world.item.ItemStack>);
+  public void getRandomItemsRaw(net.minecraft.world.level.storage.loot.LootContext, java.util.function.Consumer<net.minecraft.world.item.ItemStack>);
+  public void getRandomItems(net.minecraft.world.level.storage.loot.LootParams, long, java.util.function.Consumer<net.minecraft.world.item.ItemStack>);
+  public void getRandomItems(net.minecraft.world.level.storage.loot.LootParams, java.util.function.Consumer<net.minecraft.world.item.ItemStack>);
+  public void getRandomItems(net.minecraft.world.level.storage.loot.LootContext, java.util.function.Consumer<net.minecraft.world.item.ItemStack>);
+  public it.unimi.dsi.fastutil.objects.ObjectArrayList<net.minecraft.world.item.ItemStack> getRandomItems(net.minecraft.world.level.storage.loot.LootParams, net.minecraft.util.RandomSource);
+  public it.unimi.dsi.fastutil.objects.ObjectArrayList<net.minecraft.world.item.ItemStack> getRandomItems(net.minecraft.world.level.storage.loot.LootParams, long);
+  public it.unimi.dsi.fastutil.objects.ObjectArrayList<net.minecraft.world.item.ItemStack> getRandomItems(net.minecraft.world.level.storage.loot.LootParams);
+  public net.minecraft.util.context.ContextKeySet getParamSet();
+  public void validate(net.minecraft.world.level.storage.loot.ValidationContext);
+  public void fill(net.minecraft.world.Container, net.minecraft.world.level.storage.loot.LootParams, long);
+  public static net.minecraft.world.level.storage.loot.LootTable$Builder lootTable();
+}

@@ -1,0 +1,14 @@
+Compiled from "PlayerAdvancements.java"
+public class net.minecraft.server.PlayerAdvancements {
+  public net.minecraft.server.PlayerAdvancements(com.mojang.datafixers.DataFixer, net.minecraft.server.players.PlayerList, net.minecraft.server.ServerAdvancementManager, java.nio.file.Path, net.minecraft.server.level.ServerPlayer);
+  public void setPlayer(net.minecraft.server.level.ServerPlayer);
+  public void clearTriggers();
+  public void reload(net.minecraft.server.ServerAdvancementManager);
+  public void save();
+  public boolean award(net.minecraft.advancements.AdvancementHolder, java.lang.String);
+  public boolean revoke(net.minecraft.advancements.AdvancementHolder, java.lang.String);
+  public void flushDirty(net.minecraft.server.level.ServerPlayer, boolean);
+  public void setSelectedTab(net.minecraft.advancements.AdvancementHolder);
+  public net.minecraft.advancements.AdvancementProgress getOrStartProgress(net.minecraft.advancements.AdvancementHolder);
+  public <T extends net.minecraft.advancements.CriterionTriggerInstance> java.util.Map<net.minecraft.server.PlayerAdvancements$TriggerInstanceKey, T> getTriggerMapForType(net.minecraft.advancements.triggers.CriterionTrigger<T>);
+}

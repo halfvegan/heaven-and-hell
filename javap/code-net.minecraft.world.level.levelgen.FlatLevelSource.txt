@@ -1,0 +1,296 @@
+Compiled from "FlatLevelSource.java"
+public class net.minecraft.world.level.levelgen.FlatLevelSource extends net.minecraft.world.level.chunk.ChunkGenerator {
+  public static final com.mojang.serialization.MapCodec<net.minecraft.world.level.levelgen.FlatLevelSource> CODEC;
+
+  private final net.minecraft.world.level.levelgen.flat.FlatLevelGeneratorSettings settings;
+
+  public net.minecraft.world.level.levelgen.FlatLevelSource(net.minecraft.world.level.levelgen.flat.FlatLevelGeneratorSettings);
+    Code:
+         0: aload_0
+         1: new           #1                  // class net/minecraft/world/level/biome/FixedBiomeSource
+         4: dup
+         5: aload_1
+         6: invokevirtual #3                  // Method net/minecraft/world/level/levelgen/flat/FlatLevelGeneratorSettings.getBiome:()Lnet/minecraft/core/Holder;
+         9: invokespecial #9                  // Method net/minecraft/world/level/biome/FixedBiomeSource."<init>":(Lnet/minecraft/core/Holder;)V
+        12: aload_1
+        13: dup
+        14: invokestatic  #13                 // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+        17: pop
+        18: invokedynamic #19,  0             // InvokeDynamic #0:apply:(Lnet/minecraft/world/level/levelgen/flat/FlatLevelGeneratorSettings;)Ljava/util/function/Function;
+        23: invokestatic  #23                 // Method net/minecraft/util/Util.memoize:(Ljava/util/function/Function;)Ljava/util/function/Function;
+        26: invokespecial #29                 // Method net/minecraft/world/level/chunk/ChunkGenerator."<init>":(Lnet/minecraft/world/level/biome/BiomeSource;Ljava/util/function/Function;)V
+        29: aload_0
+        30: aload_1
+        31: putfield      #34                 // Field settings:Lnet/minecraft/world/level/levelgen/flat/FlatLevelGeneratorSettings;
+        34: return
+
+  public net.minecraft.world.level.chunk.ChunkGeneratorStructureState createState(net.minecraft.core.HolderLookup<net.minecraft.world.level.levelgen.structure.StructureSet>, net.minecraft.world.level.levelgen.RandomState, long);
+    Code:
+         0: aload_0
+         1: getfield      #34                 // Field settings:Lnet/minecraft/world/level/levelgen/flat/FlatLevelGeneratorSettings;
+         4: invokevirtual #40                 // Method net/minecraft/world/level/levelgen/flat/FlatLevelGeneratorSettings.structureOverrides:()Ljava/util/Optional;
+         7: invokedynamic #44,  0             // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+        12: invokevirtual #47                 // Method java/util/Optional.map:(Ljava/util/function/Function;)Ljava/util/Optional;
+        15: aload_1
+        16: invokedynamic #53,  0             // InvokeDynamic #2:get:(Lnet/minecraft/core/HolderLookup;)Ljava/util/function/Supplier;
+        21: invokevirtual #57                 // Method java/util/Optional.orElseGet:(Ljava/util/function/Supplier;)Ljava/lang/Object;
+        24: checkcast     #61                 // class java/util/stream/Stream
+        27: astore        5
+        29: aload_2
+        30: lload_3
+        31: aload_0
+        32: aload_2
+        33: invokevirtual #63                 // Method getOrigin:(Lnet/minecraft/world/level/levelgen/RandomState;)Lnet/minecraft/world/level/ChunkPos;
+        36: aload_0
+        37: getfield      #67                 // Field biomeSource:Lnet/minecraft/world/level/biome/BiomeSource;
+        40: aload         5
+        42: invokestatic  #71                 // Method net/minecraft/world/level/chunk/ChunkGeneratorStructureState.createForFlat:(Lnet/minecraft/world/level/levelgen/RandomState;JLnet/minecraft/world/level/ChunkPos;Lnet/minecraft/world/level/biome/BiomeSource;Ljava/util/stream/Stream;)Lnet/minecraft/world/level/chunk/ChunkGeneratorStructureState;
+        45: areturn
+
+  protected com.mojang.serialization.MapCodec<? extends net.minecraft.world.level.chunk.ChunkGenerator> codec();
+    Code:
+         0: getstatic     #77                 // Field CODEC:Lcom/mojang/serialization/MapCodec;
+         3: areturn
+
+  public net.minecraft.world.level.levelgen.flat.FlatLevelGeneratorSettings settings();
+    Code:
+         0: aload_0
+         1: getfield      #34                 // Field settings:Lnet/minecraft/world/level/levelgen/flat/FlatLevelGeneratorSettings;
+         4: areturn
+
+  public int getSpawnHeight(net.minecraft.world.level.LevelHeightAccessor);
+    Code:
+         0: aload_1
+         1: invokeinterface #81,  1           // InterfaceMethod net/minecraft/world/level/LevelHeightAccessor.getMinY:()I
+         6: aload_1
+         7: invokeinterface #87,  1           // InterfaceMethod net/minecraft/world/level/LevelHeightAccessor.getHeight:()I
+        12: aload_0
+        13: getfield      #34                 // Field settings:Lnet/minecraft/world/level/levelgen/flat/FlatLevelGeneratorSettings;
+        16: invokevirtual #90                 // Method net/minecraft/world/level/levelgen/flat/FlatLevelGeneratorSettings.getLayers:()Ljava/util/List;
+        19: invokeinterface #94,  1           // InterfaceMethod java/util/List.size:()I
+        24: invokestatic  #99                 // Method java/lang/Math.min:(II)I
+        27: iadd
+        28: ireturn
+
+  public java.util.concurrent.CompletableFuture<net.minecraft.world.level.chunk.ChunkAccess> buildTerrain(net.minecraft.world.level.chunk.ChunkAccess, net.minecraft.world.level.levelgen.blending.Blender, net.minecraft.world.level.levelgen.RandomState, net.minecraft.world.level.StructureManager, net.minecraft.world.level.biome.BiomeManager, net.minecraft.server.level.WorldGenRegion, java.util.Set<net.minecraft.core.Holder<net.minecraft.world.level.biome.Biome>>);
+    Code:
+         0: aload_0
+         1: getfield      #34                 // Field settings:Lnet/minecraft/world/level/levelgen/flat/FlatLevelGeneratorSettings;
+         4: invokevirtual #90                 // Method net/minecraft/world/level/levelgen/flat/FlatLevelGeneratorSettings.getLayers:()Ljava/util/List;
+         7: astore        8
+         9: new           #105                // class net/minecraft/core/BlockPos$MutableBlockPos
+        12: dup
+        13: invokespecial #107                // Method net/minecraft/core/BlockPos$MutableBlockPos."<init>":()V
+        16: astore        9
+        18: aload_1
+        19: getstatic     #110                // Field net/minecraft/world/level/levelgen/Heightmap$Types.OCEAN_FLOOR_WG:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+        22: invokevirtual #116                // Method net/minecraft/world/level/chunk/ChunkAccess.getOrCreateHeightmapUnprimed:(Lnet/minecraft/world/level/levelgen/Heightmap$Types;)Lnet/minecraft/world/level/levelgen/Heightmap;
+        25: astore        10
+        27: aload_1
+        28: getstatic     #122                // Field net/minecraft/world/level/levelgen/Heightmap$Types.WORLD_SURFACE_WG:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+        31: invokevirtual #116                // Method net/minecraft/world/level/chunk/ChunkAccess.getOrCreateHeightmapUnprimed:(Lnet/minecraft/world/level/levelgen/Heightmap$Types;)Lnet/minecraft/world/level/levelgen/Heightmap;
+        34: astore        11
+        36: iconst_0
+        37: istore        12
+        39: iload         12
+        41: aload_1
+        42: invokevirtual #125                // Method net/minecraft/world/level/chunk/ChunkAccess.getHeight:()I
+        45: aload         8
+        47: invokeinterface #94,  1           // InterfaceMethod java/util/List.size:()I
+        52: invokestatic  #99                 // Method java/lang/Math.min:(II)I
+        55: if_icmpge     173
+        58: aload         8
+        60: iload         12
+        62: invokeinterface #126,  2          // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+        67: checkcast     #129                // class net/minecraft/world/level/block/state/BlockState
+        70: astore        13
+        72: aload         13
+        74: ifnonnull     80
+        77: goto          167
+        80: aload_1
+        81: invokevirtual #131                // Method net/minecraft/world/level/chunk/ChunkAccess.getMinY:()I
+        84: iload         12
+        86: iadd
+        87: istore        14
+        89: iconst_0
+        90: istore        15
+        92: iload         15
+        94: bipush        16
+        96: if_icmpge     167
+        99: iconst_0
+       100: istore        16
+       102: iload         16
+       104: bipush        16
+       106: if_icmpge     161
+       109: aload_1
+       110: aload         9
+       112: iload         15
+       114: iload         14
+       116: iload         16
+       118: invokevirtual #134                // Method net/minecraft/core/BlockPos$MutableBlockPos.set:(III)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+       121: aload         13
+       123: invokevirtual #138                // Method net/minecraft/world/level/chunk/ChunkAccess.setBlockState:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/level/block/state/BlockState;
+       126: pop
+       127: aload         10
+       129: iload         15
+       131: iload         14
+       133: iload         16
+       135: aload         13
+       137: invokevirtual #142                // Method net/minecraft/world/level/levelgen/Heightmap.update:(IIILnet/minecraft/world/level/block/state/BlockState;)Z
+       140: pop
+       141: aload         11
+       143: iload         15
+       145: iload         14
+       147: iload         16
+       149: aload         13
+       151: invokevirtual #142                // Method net/minecraft/world/level/levelgen/Heightmap.update:(IIILnet/minecraft/world/level/block/state/BlockState;)Z
+       154: pop
+       155: iinc          16, 1
+       158: goto          102
+       161: iinc          15, 1
+       164: goto          92
+       167: iinc          12, 1
+       170: goto          39
+       173: aload_1
+       174: invokestatic  #148                // Method java/util/concurrent/CompletableFuture.completedFuture:(Ljava/lang/Object;)Ljava/util/concurrent/CompletableFuture;
+       177: areturn
+
+  public int getBaseHeight(int, int, net.minecraft.world.level.levelgen.Heightmap$Types, net.minecraft.world.level.LevelHeightAccessor, net.minecraft.world.level.levelgen.RandomState);
+    Code:
+         0: aload_0
+         1: getfield      #34                 // Field settings:Lnet/minecraft/world/level/levelgen/flat/FlatLevelGeneratorSettings;
+         4: invokevirtual #90                 // Method net/minecraft/world/level/levelgen/flat/FlatLevelGeneratorSettings.getLayers:()Ljava/util/List;
+         7: astore        6
+         9: aload         6
+        11: invokeinterface #94,  1           // InterfaceMethod java/util/List.size:()I
+        16: iconst_1
+        17: isub
+        18: aload         4
+        20: invokeinterface #154,  1          // InterfaceMethod net/minecraft/world/level/LevelHeightAccessor.getMaxY:()I
+        25: invokestatic  #99                 // Method java/lang/Math.min:(II)I
+        28: istore        7
+        30: iload         7
+        32: iflt          90
+        35: aload         6
+        37: iload         7
+        39: invokeinterface #126,  2          // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+        44: checkcast     #129                // class net/minecraft/world/level/block/state/BlockState
+        47: astore        8
+        49: aload         8
+        51: ifnonnull     57
+        54: goto          84
+        57: aload_3
+        58: invokevirtual #157                // Method net/minecraft/world/level/levelgen/Heightmap$Types.isOpaque:()Ljava/util/function/Predicate;
+        61: aload         8
+        63: invokeinterface #161,  2          // InterfaceMethod java/util/function/Predicate.test:(Ljava/lang/Object;)Z
+        68: ifeq          84
+        71: aload         4
+        73: invokeinterface #81,  1           // InterfaceMethod net/minecraft/world/level/LevelHeightAccessor.getMinY:()I
+        78: iload         7
+        80: iadd
+        81: iconst_1
+        82: iadd
+        83: ireturn
+        84: iinc          7, -1
+        87: goto          30
+        90: aload         4
+        92: invokeinterface #81,  1           // InterfaceMethod net/minecraft/world/level/LevelHeightAccessor.getMinY:()I
+        97: ireturn
+
+  public net.minecraft.world.level.NoiseColumn getBaseColumn(int, int, net.minecraft.world.level.LevelHeightAccessor, net.minecraft.world.level.levelgen.RandomState);
+    Code:
+         0: new           #167                // class net/minecraft/world/level/NoiseColumn
+         3: dup
+         4: aload_3
+         5: invokeinterface #81,  1           // InterfaceMethod net/minecraft/world/level/LevelHeightAccessor.getMinY:()I
+        10: aload_0
+        11: getfield      #34                 // Field settings:Lnet/minecraft/world/level/levelgen/flat/FlatLevelGeneratorSettings;
+        14: invokevirtual #90                 // Method net/minecraft/world/level/levelgen/flat/FlatLevelGeneratorSettings.getLayers:()Ljava/util/List;
+        17: invokeinterface #169,  1          // InterfaceMethod java/util/List.stream:()Ljava/util/stream/Stream;
+        22: aload_3
+        23: invokeinterface #87,  1           // InterfaceMethod net/minecraft/world/level/LevelHeightAccessor.getHeight:()I
+        28: i2l
+        29: invokeinterface #173,  3          // InterfaceMethod java/util/stream/Stream.limit:(J)Ljava/util/stream/Stream;
+        34: invokedynamic #177,  0            // InvokeDynamic #3:apply:()Ljava/util/function/Function;
+        39: invokeinterface #178,  2          // InterfaceMethod java/util/stream/Stream.map:(Ljava/util/function/Function;)Ljava/util/stream/Stream;
+        44: invokedynamic #181,  0            // InvokeDynamic #4:apply:()Ljava/util/function/IntFunction;
+        49: invokeinterface #184,  2          // InterfaceMethod java/util/stream/Stream.toArray:(Ljava/util/function/IntFunction;)[Ljava/lang/Object;
+        54: checkcast     #188                // class "[Lnet/minecraft/world/level/block/state/BlockState;"
+        57: invokespecial #190                // Method net/minecraft/world/level/NoiseColumn."<init>":(I[Lnet/minecraft/world/level/block/state/BlockState;)V
+        60: areturn
+
+  public void addDebugScreenInfo(java.util.List<java.lang.String>, net.minecraft.world.level.levelgen.RandomState, net.minecraft.core.BlockPos, net.minecraft.world.level.levelgen.densityfunction.SamplerContext);
+    Code:
+         0: return
+
+  public void spawnOriginalMobs(net.minecraft.server.level.WorldGenRegion);
+    Code:
+         0: return
+
+  public int getMinY();
+    Code:
+         0: iconst_0
+         1: ireturn
+
+  public int getGenDepth();
+    Code:
+         0: sipush        384
+         3: ireturn
+
+  public int getSeaLevel();
+    Code:
+         0: bipush        -63
+         2: ireturn
+
+  private static net.minecraft.world.level.block.state.BlockState[] lambda$getBaseColumn$1(int);
+    Code:
+         0: iload_0
+         1: anewarray     #129                // class net/minecraft/world/level/block/state/BlockState
+         4: areturn
+
+  private static net.minecraft.world.level.block.state.BlockState lambda$getBaseColumn$0(net.minecraft.world.level.block.state.BlockState);
+    Code:
+         0: aload_0
+         1: ifnonnull     13
+         4: getstatic     #195                // Field net/minecraft/world/level/block/Blocks.AIR:Lnet/minecraft/world/level/block/Block;
+         7: invokevirtual #201                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+        10: goto          14
+        13: aload_0
+        14: areturn
+
+  private static java.util.stream.Stream lambda$createState$0(net.minecraft.core.HolderLookup);
+    Code:
+         0: aload_0
+         1: invokeinterface #207,  1          // InterfaceMethod net/minecraft/core/HolderLookup.listElements:()Ljava/util/stream/Stream;
+         6: invokedynamic #212,  0            // InvokeDynamic #5:apply:()Ljava/util/function/Function;
+        11: invokeinterface #178,  2          // InterfaceMethod java/util/stream/Stream.map:(Ljava/util/function/Function;)Ljava/util/stream/Stream;
+        16: areturn
+
+  private static net.minecraft.core.Holder lambda$createState$1(net.minecraft.core.Holder$Reference);
+    Code:
+         0: aload_0
+         1: areturn
+
+  private static com.mojang.datafixers.kinds.App lambda$static$0(com.mojang.serialization.codecs.RecordCodecBuilder$Instance);
+    Code:
+         0: aload_0
+         1: getstatic     #213                // Field net/minecraft/world/level/levelgen/flat/FlatLevelGeneratorSettings.CODEC:Lcom/mojang/serialization/Codec;
+         4: ldc           #216                // String settings
+         6: invokeinterface #217,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+        11: invokedynamic #223,  0            // InvokeDynamic #6:apply:()Ljava/util/function/Function;
+        16: invokevirtual #224                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+        19: invokevirtual #230                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P1;
+        22: aload_0
+        23: aload_0
+        24: invokedynamic #236,  0            // InvokeDynamic #7:apply:()Ljava/util/function/Function;
+        29: invokevirtual #237                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.stable:(Ljava/lang/Object;)Lcom/mojang/datafixers/kinds/App;
+        32: invokevirtual #241                // Method com/mojang/datafixers/Products$P1.apply:(Lcom/mojang/datafixers/kinds/Applicative;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/kinds/App;
+        35: areturn
+
+  static {};
+    Code:
+         0: invokedynamic #246,  0            // InvokeDynamic #8:apply:()Ljava/util/function/Function;
+         5: invokestatic  #247                // Method com/mojang/serialization/codecs/RecordCodecBuilder.mapCodec:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+         8: putstatic     #77                 // Field CODEC:Lcom/mojang/serialization/MapCodec;
+        11: return
+}

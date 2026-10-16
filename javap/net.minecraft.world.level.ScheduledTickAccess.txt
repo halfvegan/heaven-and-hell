@@ -1,0 +1,11 @@
+Compiled from "ScheduledTickAccess.java"
+public interface net.minecraft.world.level.ScheduledTickAccess {
+  public abstract <T> net.minecraft.world.ticks.ScheduledTick<T> createTick(net.minecraft.core.BlockPos, T, int, net.minecraft.world.ticks.TickPriority);
+  public abstract <T> net.minecraft.world.ticks.ScheduledTick<T> createTick(net.minecraft.core.BlockPos, T, int);
+  public abstract net.minecraft.world.ticks.LevelTickAccess<net.minecraft.world.level.block.Block> getBlockTicks();
+  public default void scheduleTick(net.minecraft.core.BlockPos, net.minecraft.world.level.block.Block, int, net.minecraft.world.ticks.TickPriority);
+  public default void scheduleTick(net.minecraft.core.BlockPos, net.minecraft.world.level.block.Block, int);
+  public abstract net.minecraft.world.ticks.LevelTickAccess<net.minecraft.world.level.material.Fluid> getFluidTicks();
+  public default void scheduleTick(net.minecraft.core.BlockPos, net.minecraft.world.level.material.Fluid, int, net.minecraft.world.ticks.TickPriority);
+  public default void scheduleTick(net.minecraft.core.BlockPos, net.minecraft.world.level.material.Fluid, int);
+}

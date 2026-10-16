@@ -1,0 +1,18 @@
+Compiled from "XoroshiroRandomSource.java"
+public class net.minecraft.world.level.levelgen.XoroshiroRandomSource implements net.minecraft.util.RandomSource {
+  public static final com.mojang.serialization.Codec<net.minecraft.world.level.levelgen.XoroshiroRandomSource> CODEC;
+  public net.minecraft.world.level.levelgen.XoroshiroRandomSource(long);
+  public net.minecraft.world.level.levelgen.XoroshiroRandomSource(net.minecraft.world.level.levelgen.RandomSupport$Seed128bit);
+  public net.minecraft.world.level.levelgen.XoroshiroRandomSource(long, long);
+  public net.minecraft.util.RandomSource fork();
+  public net.minecraft.world.level.levelgen.PositionalRandomFactory forkPositional();
+  public void setSeed(long);
+  public int nextInt();
+  public int nextInt(int);
+  public long nextLong();
+  public boolean nextBoolean();
+  public float nextFloat();
+  public double nextDouble();
+  public double nextGaussian();
+  public void consumeCount(int);
+}

@@ -1,0 +1,2315 @@
+Compiled from "AdultAndBabyModelPair.java"
+public final class net.minecraft.client.model.AdultAndBabyModelPair<T extends net.minecraft.client.model.Model<?>> extends java.lang.Record {
+  public net.minecraft.client.model.AdultAndBabyModelPair(T, T);
+  public T getModel(boolean);
+  public final java.lang.String toString();
+  public final int hashCode();
+  public final boolean equals(java.lang.Object);
+  public T adultModel();
+  public T babyModel();
+}
+Compiled from "AnimationUtils.java"
+public class net.minecraft.client.model.AnimationUtils {
+  public net.minecraft.client.model.AnimationUtils();
+  public static void animateCrossbowHold(net.minecraft.client.model.geom.ModelPart, net.minecraft.client.model.geom.ModelPart, net.minecraft.client.model.geom.ModelPart, boolean);
+  public static void animateCrossbowCharge(net.minecraft.client.model.geom.ModelPart, net.minecraft.client.model.geom.ModelPart, float, float, boolean);
+  public static void swingWeaponDown(net.minecraft.client.model.geom.ModelPart, net.minecraft.client.model.geom.ModelPart, net.minecraft.world.entity.HumanoidArm, float, float);
+  public static void bobModelPart(net.minecraft.client.model.geom.ModelPart, float, float);
+  public static void bobArms(net.minecraft.client.model.geom.ModelPart, net.minecraft.client.model.geom.ModelPart, float);
+  public static <T extends net.minecraft.client.renderer.entity.state.UndeadRenderState> void animateZombieArms(net.minecraft.client.model.geom.ModelPart, net.minecraft.client.model.geom.ModelPart, boolean, T);
+}
+Compiled from "ArmedModel.java"
+public interface net.minecraft.client.model.ArmedModel<T extends net.minecraft.client.renderer.entity.state.EntityRenderState> {
+  public abstract void translateToHand(T, net.minecraft.world.entity.HumanoidArm, com.mojang.blaze3d.vertex.PoseStack);
+}
+Compiled from "BabyModelTransform.java"
+public final class net.minecraft.client.model.BabyModelTransform extends java.lang.Record implements net.minecraft.client.model.geom.builders.MeshTransformer {
+  public net.minecraft.client.model.BabyModelTransform(java.util.Set<java.lang.String>);
+  public net.minecraft.client.model.BabyModelTransform(boolean, float, float, java.util.Set<java.lang.String>);
+  public net.minecraft.client.model.BabyModelTransform(boolean, float, float, float, float, float, java.util.Set<java.lang.String>);
+  public net.minecraft.client.model.geom.builders.MeshDefinition apply(net.minecraft.client.model.geom.builders.MeshDefinition);
+  public final java.lang.String toString();
+  public final int hashCode();
+  public final boolean equals(java.lang.Object);
+  public boolean scaleHead();
+  public float babyYHeadOffset();
+  public float babyZHeadOffset();
+  public float babyHeadScale();
+  public float babyBodyScale();
+  public float bodyYOffset();
+  public java.util.Set<java.lang.String> headParts();
+}
+Compiled from "EntityModel.java"
+public abstract class net.minecraft.client.model.EntityModel<T extends net.minecraft.client.renderer.entity.state.EntityRenderState> extends net.minecraft.client.model.Model<T> {
+  public static final float MODEL_Y_OFFSET;
+  protected net.minecraft.client.model.EntityModel(net.minecraft.client.model.geom.ModelPart);
+  protected net.minecraft.client.model.EntityModel(net.minecraft.client.model.geom.ModelPart, java.util.function.Function<net.minecraft.resources.Identifier, net.minecraft.client.renderer.rendertype.RenderType>);
+}
+Compiled from "HeadedModel.java"
+public interface net.minecraft.client.model.HeadedModel {
+  public abstract net.minecraft.client.model.geom.ModelPart getHead();
+  public default void translateToHead(com.mojang.blaze3d.vertex.PoseStack);
+}
+Compiled from "HumanoidModel.java"
+public class net.minecraft.client.model.HumanoidModel$ArmPose extends java.lang.Enum<net.minecraft.client.model.HumanoidModel$ArmPose> {
+  public static final net.minecraft.client.model.HumanoidModel$ArmPose EMPTY;
+  public static final net.minecraft.client.model.HumanoidModel$ArmPose ITEM;
+  public static final net.minecraft.client.model.HumanoidModel$ArmPose BLOCK;
+  public static final net.minecraft.client.model.HumanoidModel$ArmPose BOW_AND_ARROW;
+  public static final net.minecraft.client.model.HumanoidModel$ArmPose THROW_TRIDENT;
+  public static final net.minecraft.client.model.HumanoidModel$ArmPose CROSSBOW_CHARGE;
+  public static final net.minecraft.client.model.HumanoidModel$ArmPose CROSSBOW_HOLD;
+  public static final net.minecraft.client.model.HumanoidModel$ArmPose SPYGLASS;
+  public static final net.minecraft.client.model.HumanoidModel$ArmPose TOOT_HORN;
+  public static final net.minecraft.client.model.HumanoidModel$ArmPose BRUSH;
+  public static final net.minecraft.client.model.HumanoidModel$ArmPose SPEAR;
+  public static net.minecraft.client.model.HumanoidModel$ArmPose[] values();
+  public static net.minecraft.client.model.HumanoidModel$ArmPose valueOf(java.lang.String);
+  public boolean isTwoHanded();
+  public boolean affectsOffhandPose();
+  public <S extends net.minecraft.client.renderer.entity.state.ArmedEntityRenderState> void animateUseItem(S, com.mojang.blaze3d.vertex.PoseStack, float, net.minecraft.world.entity.HumanoidArm, net.minecraft.world.item.ItemStack);
+}
+Compiled from "HumanoidModel.java"
+public class net.minecraft.client.model.HumanoidModel<T extends net.minecraft.client.renderer.entity.state.HumanoidRenderState> extends net.minecraft.client.model.EntityModel<T> implements net.minecraft.client.model.ArmedModel<T>, net.minecraft.client.model.HeadedModel {
+  public static final net.minecraft.client.model.geom.builders.MeshTransformer BABY_TRANSFORMER;
+  public static final float OVERLAY_SCALE;
+  public static final float HAT_OVERLAY_SCALE;
+  public static final float LEGGINGS_OVERLAY_SCALE;
+  public static final float TOOT_HORN_XROT_BASE;
+  public static final float TOOT_HORN_YROT_BASE;
+  protected static final java.util.Map<net.minecraft.world.entity.EquipmentSlot, java.util.Set<java.lang.String>> ADULT_ARMOR_PARTS_PER_SLOT;
+  protected static final java.util.Map<net.minecraft.world.entity.EquipmentSlot, java.util.Set<java.lang.String>> BABY_ARMOR_PARTS_PER_SLOT;
+  public final net.minecraft.client.model.geom.ModelPart head;
+  public final net.minecraft.client.model.geom.ModelPart hat;
+  public final net.minecraft.client.model.geom.ModelPart body;
+  public final net.minecraft.client.model.geom.ModelPart rightArm;
+  public final net.minecraft.client.model.geom.ModelPart leftArm;
+  public final net.minecraft.client.model.geom.ModelPart rightLeg;
+  public final net.minecraft.client.model.geom.ModelPart leftLeg;
+  public net.minecraft.client.model.HumanoidModel(net.minecraft.client.model.geom.ModelPart);
+  public net.minecraft.client.model.HumanoidModel(net.minecraft.client.model.geom.ModelPart, java.util.function.Function<net.minecraft.resources.Identifier, net.minecraft.client.renderer.rendertype.RenderType>);
+  public static net.minecraft.client.model.geom.builders.MeshDefinition createMesh(net.minecraft.client.model.geom.builders.CubeDeformation, float);
+  public static net.minecraft.client.renderer.entity.ArmorModelSet<net.minecraft.client.model.geom.builders.MeshDefinition> createArmorMeshSet(net.minecraft.client.model.geom.builders.CubeDeformation, net.minecraft.client.model.geom.builders.CubeDeformation);
+  public static net.minecraft.client.renderer.entity.ArmorModelSet<net.minecraft.client.model.geom.builders.MeshDefinition> createBabyArmorMeshSet(net.minecraft.client.model.geom.builders.CubeDeformation, net.minecraft.client.model.geom.builders.CubeDeformation, net.minecraft.client.model.geom.PartPose);
+  protected static net.minecraft.client.renderer.entity.ArmorModelSet<net.minecraft.client.model.geom.builders.MeshDefinition> createArmorMeshSet(java.util.function.Function<net.minecraft.client.model.geom.builders.CubeDeformation, net.minecraft.client.model.geom.builders.MeshDefinition>, java.util.Map<net.minecraft.world.entity.EquipmentSlot, java.util.Set<java.lang.String>>, net.minecraft.client.model.geom.builders.CubeDeformation, net.minecraft.client.model.geom.builders.CubeDeformation);
+  public void setupAnim(T);
+  protected void setupSwimAnimation(T, float, float);
+  protected void setupAttackAnimation(T);
+  public void translateToHand(net.minecraft.client.renderer.entity.state.HumanoidRenderState, net.minecraft.world.entity.HumanoidArm, com.mojang.blaze3d.vertex.PoseStack);
+  public net.minecraft.client.model.geom.ModelPart getArm(net.minecraft.world.entity.HumanoidArm);
+  public net.minecraft.client.model.geom.ModelPart getHead();
+  public void setupAnim(java.lang.Object);
+  public void translateToHand(net.minecraft.client.renderer.entity.state.EntityRenderState, net.minecraft.world.entity.HumanoidArm, com.mojang.blaze3d.vertex.PoseStack);
+}
+Compiled from "Model.java"
+public class net.minecraft.client.model.Model$Simple extends net.minecraft.client.model.Model<net.minecraft.util.Unit> {
+  public net.minecraft.client.model.Model$Simple(net.minecraft.client.model.geom.ModelPart, java.util.function.Function<net.minecraft.resources.Identifier, net.minecraft.client.renderer.rendertype.RenderType>);
+  public void setupAnim(net.minecraft.util.Unit);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "Model.java"
+public abstract class net.minecraft.client.model.Model<S> implements net.fabricmc.fabric.api.client.rendering.v1.FabricModel<S> {
+  protected final net.minecraft.client.model.geom.ModelPart root;
+  protected final java.util.function.Function<net.minecraft.resources.Identifier, net.minecraft.client.renderer.rendertype.RenderType> renderType;
+  public net.minecraft.client.model.Model(net.minecraft.client.model.geom.ModelPart, java.util.function.Function<net.minecraft.resources.Identifier, net.minecraft.client.renderer.rendertype.RenderType>);
+  public final java.util.function.Function<net.minecraft.resources.Identifier, net.minecraft.client.renderer.rendertype.RenderType> renderType();
+  public final net.minecraft.client.renderer.rendertype.RenderType renderType(net.minecraft.resources.Identifier);
+  public final void renderToBuffer(com.mojang.blaze3d.vertex.PoseStack, com.mojang.blaze3d.vertex.VertexConsumer, int, int, int);
+  public final net.minecraft.client.model.geom.ModelPart root();
+  public final java.util.List<net.minecraft.client.model.geom.ModelPart> allParts();
+  public void setupAnim(S);
+  public final void resetPose();
+}
+Compiled from "QuadrupedModel.java"
+public class net.minecraft.client.model.QuadrupedModel<T extends net.minecraft.client.renderer.entity.state.LivingEntityRenderState> extends net.minecraft.client.model.EntityModel<T> {
+  protected final net.minecraft.client.model.geom.ModelPart head;
+  protected final net.minecraft.client.model.geom.ModelPart body;
+  protected final net.minecraft.client.model.geom.ModelPart rightHindLeg;
+  protected final net.minecraft.client.model.geom.ModelPart leftHindLeg;
+  protected final net.minecraft.client.model.geom.ModelPart rightFrontLeg;
+  protected final net.minecraft.client.model.geom.ModelPart leftFrontLeg;
+  protected net.minecraft.client.model.QuadrupedModel(net.minecraft.client.model.geom.ModelPart);
+  protected net.minecraft.client.model.QuadrupedModel(net.minecraft.client.model.geom.ModelPart, java.util.function.Function<net.minecraft.resources.Identifier, net.minecraft.client.renderer.rendertype.RenderType>);
+  public static net.minecraft.client.model.geom.builders.MeshDefinition createBodyMesh(int, boolean, boolean, net.minecraft.client.model.geom.builders.CubeDeformation);
+  public static void createLegs(net.minecraft.client.model.geom.builders.PartDefinition, boolean, boolean, int, net.minecraft.client.model.geom.builders.CubeDeformation);
+  public void setupAnim(T);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "VillagerLikeModel.java"
+public interface net.minecraft.client.model.VillagerLikeModel<T extends net.minecraft.client.renderer.entity.state.EntityRenderState> {
+  public abstract void translateToArms(T, com.mojang.blaze3d.vertex.PoseStack);
+}
+Compiled from "BatModel.java"
+public class net.minecraft.client.model.ambient.BatModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.BatRenderState> {
+  public net.minecraft.client.model.ambient.BatModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.BatRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.ambient.package-info {
+}
+Compiled from "AllayModel.java"
+public class net.minecraft.client.model.animal.allay.AllayModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.AllayRenderState> implements net.minecraft.client.model.ArmedModel<net.minecraft.client.renderer.entity.state.AllayRenderState> {
+  public net.minecraft.client.model.animal.allay.AllayModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.AllayRenderState);
+  public void translateToHand(net.minecraft.client.renderer.entity.state.AllayRenderState, net.minecraft.world.entity.HumanoidArm, com.mojang.blaze3d.vertex.PoseStack);
+  public void setupAnim(java.lang.Object);
+  public void translateToHand(net.minecraft.client.renderer.entity.state.EntityRenderState, net.minecraft.world.entity.HumanoidArm, com.mojang.blaze3d.vertex.PoseStack);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.animal.allay.package-info {
+}
+Compiled from "AdultArmadilloModel.java"
+public class net.minecraft.client.model.animal.armadillo.AdultArmadilloModel extends net.minecraft.client.model.animal.armadillo.ArmadilloModel {
+  public net.minecraft.client.model.animal.armadillo.AdultArmadilloModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+}
+Compiled from "ArmadilloModel.java"
+public abstract class net.minecraft.client.model.animal.armadillo.ArmadilloModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.ArmadilloRenderState> {
+  protected static final java.lang.String HEAD_CUBE;
+  protected static final java.lang.String RIGHT_EAR_CUBE;
+  protected static final java.lang.String LEFT_EAR_CUBE;
+  public net.minecraft.client.model.animal.armadillo.ArmadilloModel(net.minecraft.client.model.geom.ModelPart, net.minecraft.client.animation.AnimationDefinition, net.minecraft.client.animation.AnimationDefinition, net.minecraft.client.animation.AnimationDefinition, net.minecraft.client.animation.AnimationDefinition);
+  public void setupAnim(net.minecraft.client.renderer.entity.state.ArmadilloRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "BabyArmadilloModel.java"
+public class net.minecraft.client.model.animal.armadillo.BabyArmadilloModel extends net.minecraft.client.model.animal.armadillo.ArmadilloModel {
+  public net.minecraft.client.model.animal.armadillo.BabyArmadilloModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.animal.armadillo.package-info {
+}
+Compiled from "AdultAxolotlModel.java"
+public class net.minecraft.client.model.animal.axolotl.AdultAxolotlModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.AxolotlRenderState> {
+  public net.minecraft.client.model.animal.axolotl.AdultAxolotlModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.AxolotlRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "BabyAxolotlModel.java"
+public class net.minecraft.client.model.animal.axolotl.BabyAxolotlModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.AxolotlRenderState> {
+  public net.minecraft.client.model.animal.axolotl.BabyAxolotlModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.AxolotlRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.animal.axolotl.package-info {
+}
+Compiled from "AdultBeeModel.java"
+public class net.minecraft.client.model.animal.bee.AdultBeeModel extends net.minecraft.client.model.animal.bee.BeeModel {
+  public net.minecraft.client.model.animal.bee.AdultBeeModel(net.minecraft.client.model.geom.ModelPart);
+  protected void bobUpAndDown(float, float);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+}
+Compiled from "BabyBeeModel.java"
+public class net.minecraft.client.model.animal.bee.BabyBeeModel extends net.minecraft.client.model.animal.bee.BeeModel {
+  public net.minecraft.client.model.animal.bee.BabyBeeModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+}
+Compiled from "BeeModel.java"
+public abstract class net.minecraft.client.model.animal.bee.BeeModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.BeeRenderState> {
+  protected static final java.lang.String BONE;
+  protected static final java.lang.String STINGER;
+  protected static final java.lang.String FRONT_LEGS;
+  protected static final java.lang.String MIDDLE_LEGS;
+  protected static final java.lang.String BACK_LEGS;
+  protected final net.minecraft.client.model.geom.ModelPart bone;
+  public net.minecraft.client.model.animal.bee.BeeModel(net.minecraft.client.model.geom.ModelPart);
+  public void setupAnim(net.minecraft.client.renderer.entity.state.BeeRenderState);
+  protected void bobUpAndDown(float, float);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "BeeStingerModel.java"
+public class net.minecraft.client.model.animal.bee.BeeStingerModel extends net.minecraft.client.model.Model<net.minecraft.util.Unit> {
+  public net.minecraft.client.model.animal.bee.BeeStingerModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.animal.bee.package-info {
+}
+Compiled from "AdultCamelModel.java"
+public class net.minecraft.client.model.animal.camel.AdultCamelModel extends net.minecraft.client.model.animal.camel.CamelModel {
+  public net.minecraft.client.model.animal.camel.AdultCamelModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  protected static net.minecraft.client.model.geom.builders.MeshDefinition createBodyMesh();
+}
+Compiled from "BabyCamelModel.java"
+public class net.minecraft.client.model.animal.camel.BabyCamelModel extends net.minecraft.client.model.animal.camel.CamelModel {
+  public net.minecraft.client.model.animal.camel.BabyCamelModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+}
+Compiled from "CamelModel.java"
+public abstract class net.minecraft.client.model.animal.camel.CamelModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.CamelRenderState> {
+  protected final net.minecraft.client.model.geom.ModelPart head;
+  public net.minecraft.client.model.animal.camel.CamelModel(net.minecraft.client.model.geom.ModelPart, net.minecraft.client.animation.AnimationDefinition, net.minecraft.client.animation.AnimationDefinition, net.minecraft.client.animation.AnimationDefinition, net.minecraft.client.animation.AnimationDefinition, net.minecraft.client.animation.AnimationDefinition, net.minecraft.client.animation.AnimationDefinition);
+  public void setupAnim(net.minecraft.client.renderer.entity.state.CamelRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "CamelSaddleModel.java"
+public class net.minecraft.client.model.animal.camel.CamelSaddleModel extends net.minecraft.client.model.animal.camel.AdultCamelModel {
+  public net.minecraft.client.model.animal.camel.CamelSaddleModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createSaddleLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.CamelRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.animal.camel.package-info {
+}
+Compiled from "AdultChickenModel.java"
+public class net.minecraft.client.model.animal.chicken.AdultChickenModel extends net.minecraft.client.model.animal.chicken.ChickenModel {
+  public net.minecraft.client.model.animal.chicken.AdultChickenModel(net.minecraft.client.model.geom.ModelPart);
+  public void setupAnim(net.minecraft.client.renderer.entity.state.ChickenRenderState);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  protected static net.minecraft.client.model.geom.builders.MeshDefinition createBaseChickenModel();
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "BabyChickenModel.java"
+public class net.minecraft.client.model.animal.chicken.BabyChickenModel extends net.minecraft.client.model.animal.chicken.ChickenModel {
+  public net.minecraft.client.model.animal.chicken.BabyChickenModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+}
+Compiled from "ChickenModel.java"
+public abstract class net.minecraft.client.model.animal.chicken.ChickenModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.ChickenRenderState> {
+  public static final float Y_OFFSET;
+  public net.minecraft.client.model.animal.chicken.ChickenModel(net.minecraft.client.model.geom.ModelPart);
+  public void setupAnim(net.minecraft.client.renderer.entity.state.ChickenRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "ColdChickenModel.java"
+public class net.minecraft.client.model.animal.chicken.ColdChickenModel extends net.minecraft.client.model.animal.chicken.AdultChickenModel {
+  public net.minecraft.client.model.animal.chicken.ColdChickenModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.animal.chicken.package-info {
+}
+Compiled from "BabyCowModel.java"
+public class net.minecraft.client.model.animal.cow.BabyCowModel extends net.minecraft.client.model.animal.cow.CowModel {
+  public net.minecraft.client.model.animal.cow.BabyCowModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+}
+Compiled from "ColdCowModel.java"
+public class net.minecraft.client.model.animal.cow.ColdCowModel extends net.minecraft.client.model.animal.cow.CowModel {
+  public net.minecraft.client.model.animal.cow.ColdCowModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+}
+Compiled from "CowModel.java"
+public class net.minecraft.client.model.animal.cow.CowModel extends net.minecraft.client.model.QuadrupedModel<net.minecraft.client.renderer.entity.state.LivingEntityRenderState> {
+  public static final net.minecraft.client.model.geom.builders.MeshTransformer BABY_TRANSFORMER;
+  public net.minecraft.client.model.animal.cow.CowModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public static net.minecraft.client.model.geom.builders.MeshDefinition createBaseCowModel();
+  public net.minecraft.client.model.geom.ModelPart getHead();
+}
+Compiled from "WarmCowModel.java"
+public class net.minecraft.client.model.animal.cow.WarmCowModel extends net.minecraft.client.model.animal.cow.CowModel {
+  public net.minecraft.client.model.animal.cow.WarmCowModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.animal.cow.package-info {
+}
+Compiled from "BabyDolphinModel.java"
+public class net.minecraft.client.model.animal.dolphin.BabyDolphinModel extends net.minecraft.client.model.animal.dolphin.DolphinModel {
+  public net.minecraft.client.model.animal.dolphin.BabyDolphinModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+}
+Compiled from "DolphinModel.java"
+public class net.minecraft.client.model.animal.dolphin.DolphinModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.DolphinRenderState> {
+  public static final net.minecraft.client.model.geom.builders.MeshTransformer BABY_TRANSFORMER;
+  public net.minecraft.client.model.animal.dolphin.DolphinModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.DolphinRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.animal.dolphin.package-info {
+}
+Compiled from "AbstractEquineModel.java"
+public abstract class net.minecraft.client.model.animal.equine.AbstractEquineModel<T extends net.minecraft.client.renderer.entity.state.EquineRenderState> extends net.minecraft.client.model.EntityModel<T> {
+  protected static final java.lang.String HEAD_PARTS;
+  protected final net.minecraft.client.model.geom.ModelPart body;
+  protected final net.minecraft.client.model.geom.ModelPart headParts;
+  protected final net.minecraft.client.model.geom.ModelPart rightHindLeg;
+  protected final net.minecraft.client.model.geom.ModelPart leftHindLeg;
+  protected final net.minecraft.client.model.geom.ModelPart rightFrontLeg;
+  protected final net.minecraft.client.model.geom.ModelPart leftFrontLeg;
+  public net.minecraft.client.model.animal.equine.AbstractEquineModel(net.minecraft.client.model.geom.ModelPart);
+  public net.minecraft.client.model.animal.equine.AbstractEquineModel(net.minecraft.client.model.geom.ModelPart, net.minecraft.client.model.geom.ModelPart, net.minecraft.client.model.geom.ModelPart, net.minecraft.client.model.geom.ModelPart, net.minecraft.client.model.geom.ModelPart, net.minecraft.client.model.geom.ModelPart, net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.MeshDefinition createBodyMesh(net.minecraft.client.model.geom.builders.CubeDeformation);
+  public void setupAnim(T);
+  protected void offsetLegPositionWhenStanding(float);
+  protected float getLegStandAngle();
+  protected float getLegStandingYOffset();
+  protected float getLegStandingZOffset();
+  protected float getLegStandingXRotOffset();
+  protected float getTailXRotOffset();
+  protected void animateHeadPartsPlacement(float, float);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "BabyDonkeyModel.java"
+public class net.minecraft.client.model.animal.equine.BabyDonkeyModel extends net.minecraft.client.model.animal.equine.DonkeyModel {
+  public net.minecraft.client.model.animal.equine.BabyDonkeyModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBabyLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.DonkeyRenderState);
+  protected void offsetLegPositionWhenStanding(float);
+  protected float getLegStandAngle();
+  protected float getLegStandingYOffset();
+  protected float getLegStandingZOffset();
+  protected float getLegStandingXRotOffset();
+  protected float getTailXRotOffset();
+  protected void animateHeadPartsPlacement(float, float);
+  public void setupAnim(net.minecraft.client.renderer.entity.state.EquineRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "BabyHorseModel.java"
+public class net.minecraft.client.model.animal.equine.BabyHorseModel extends net.minecraft.client.model.animal.equine.HorseModel {
+  public net.minecraft.client.model.animal.equine.BabyHorseModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.MeshDefinition createBabyMesh(net.minecraft.client.model.geom.builders.CubeDeformation);
+  protected float getLegStandingYOffset();
+  protected float getLegStandingZOffset();
+  protected float getTailXRotOffset();
+  protected void animateHeadPartsPlacement(float, float);
+}
+Compiled from "DonkeyModel.java"
+public class net.minecraft.client.model.animal.equine.DonkeyModel extends net.minecraft.client.model.animal.equine.AbstractEquineModel<net.minecraft.client.renderer.entity.state.DonkeyRenderState> {
+  public static final float DONKEY_SCALE;
+  public static final float MULE_SCALE;
+  public net.minecraft.client.model.animal.equine.DonkeyModel(net.minecraft.client.model.geom.ModelPart);
+  public net.minecraft.client.model.animal.equine.DonkeyModel(net.minecraft.client.model.geom.ModelPart, net.minecraft.client.model.geom.ModelPart, net.minecraft.client.model.geom.ModelPart, net.minecraft.client.model.geom.ModelPart, net.minecraft.client.model.geom.ModelPart, net.minecraft.client.model.geom.ModelPart, net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer(float);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createSaddleLayer(float);
+  public void setupAnim(net.minecraft.client.renderer.entity.state.DonkeyRenderState);
+  public void setupAnim(net.minecraft.client.renderer.entity.state.EquineRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "EquineSaddleModel.java"
+public class net.minecraft.client.model.animal.equine.EquineSaddleModel extends net.minecraft.client.model.animal.equine.AbstractEquineModel<net.minecraft.client.renderer.entity.state.EquineRenderState> {
+  public net.minecraft.client.model.animal.equine.EquineSaddleModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createSaddleLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.EquineRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "HorseModel.java"
+public class net.minecraft.client.model.animal.equine.HorseModel extends net.minecraft.client.model.animal.equine.AbstractEquineModel<net.minecraft.client.renderer.entity.state.EquineRenderState> {
+  public net.minecraft.client.model.animal.equine.HorseModel(net.minecraft.client.model.geom.ModelPart);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.animal.equine.package-info {
+}
+Compiled from "AbstractFelineModel.java"
+public abstract class net.minecraft.client.model.animal.feline.AbstractFelineModel<S extends net.minecraft.client.renderer.entity.state.FelineRenderState> extends net.minecraft.client.model.EntityModel<S> {
+  protected static final java.lang.String TAIL_1;
+  protected static final java.lang.String TAIL_2;
+  protected final net.minecraft.client.model.geom.ModelPart leftHindLeg;
+  protected final net.minecraft.client.model.geom.ModelPart rightHindLeg;
+  protected final net.minecraft.client.model.geom.ModelPart leftFrontLeg;
+  protected final net.minecraft.client.model.geom.ModelPart rightFrontLeg;
+  protected final net.minecraft.client.model.geom.ModelPart tail1;
+  protected final net.minecraft.client.model.geom.ModelPart tail2;
+  protected final net.minecraft.client.model.geom.ModelPart head;
+  protected final net.minecraft.client.model.geom.ModelPart body;
+  protected net.minecraft.client.model.animal.feline.AbstractFelineModel(net.minecraft.client.model.geom.ModelPart);
+}
+Compiled from "AdultCatModel.java"
+public class net.minecraft.client.model.animal.feline.AdultCatModel extends net.minecraft.client.model.animal.feline.AdultFelineModel<net.minecraft.client.renderer.entity.state.CatRenderState> {
+  public static final net.minecraft.client.model.geom.builders.MeshTransformer CAT_TRANSFORMER;
+  public static final net.minecraft.client.model.geom.builders.CubeDeformation COLLAR_DEFORMATION;
+  public net.minecraft.client.model.animal.feline.AdultCatModel(net.minecraft.client.model.geom.ModelPart);
+}
+Compiled from "AdultFelineModel.java"
+public class net.minecraft.client.model.animal.feline.AdultFelineModel<T extends net.minecraft.client.renderer.entity.state.FelineRenderState> extends net.minecraft.client.model.animal.feline.AbstractFelineModel<T> {
+  protected static final float BACK_LEG_Y;
+  protected static final float BACK_LEG_Z;
+  protected static final float FRONT_LEG_Y;
+  public net.minecraft.client.model.animal.feline.AdultFelineModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.MeshDefinition createBodyMesh(net.minecraft.client.model.geom.builders.CubeDeformation);
+  public void setupAnim(T);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "AdultOcelotModel.java"
+public class net.minecraft.client.model.animal.feline.AdultOcelotModel extends net.minecraft.client.model.animal.feline.AdultFelineModel<net.minecraft.client.renderer.entity.state.FelineRenderState> {
+  public net.minecraft.client.model.animal.feline.AdultOcelotModel(net.minecraft.client.model.geom.ModelPart);
+}
+Compiled from "BabyCatModel.java"
+public class net.minecraft.client.model.animal.feline.BabyCatModel extends net.minecraft.client.model.animal.feline.BabyFelineModel<net.minecraft.client.renderer.entity.state.CatRenderState> {
+  public static final net.minecraft.client.model.geom.builders.MeshTransformer COLLAR_TRANSFORMER;
+  public net.minecraft.client.model.animal.feline.BabyCatModel(net.minecraft.client.model.geom.ModelPart);
+}
+Compiled from "BabyFelineModel.java"
+public class net.minecraft.client.model.animal.feline.BabyFelineModel<S extends net.minecraft.client.renderer.entity.state.FelineRenderState> extends net.minecraft.client.model.animal.feline.AbstractFelineModel<S> {
+  protected net.minecraft.client.model.animal.feline.BabyFelineModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBabyLayer();
+  public void setupAnim(S);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "BabyOcelotModel.java"
+public class net.minecraft.client.model.animal.feline.BabyOcelotModel extends net.minecraft.client.model.animal.feline.BabyFelineModel<net.minecraft.client.renderer.entity.state.FelineRenderState> {
+  public net.minecraft.client.model.animal.feline.BabyOcelotModel(net.minecraft.client.model.geom.ModelPart);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.animal.feline.package-info {
+}
+Compiled from "CodModel.java"
+public class net.minecraft.client.model.animal.fish.CodModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.LivingEntityRenderState> {
+  public net.minecraft.client.model.animal.fish.CodModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.LivingEntityRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "PufferfishBigModel.java"
+public class net.minecraft.client.model.animal.fish.PufferfishBigModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.EntityRenderState> {
+  public net.minecraft.client.model.animal.fish.PufferfishBigModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.EntityRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "PufferfishMidModel.java"
+public class net.minecraft.client.model.animal.fish.PufferfishMidModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.EntityRenderState> {
+  public net.minecraft.client.model.animal.fish.PufferfishMidModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.EntityRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "PufferfishSmallModel.java"
+public class net.minecraft.client.model.animal.fish.PufferfishSmallModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.EntityRenderState> {
+  public net.minecraft.client.model.animal.fish.PufferfishSmallModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.EntityRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "SalmonModel.java"
+public class net.minecraft.client.model.animal.fish.SalmonModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.SalmonRenderState> {
+  public static final net.minecraft.client.model.geom.builders.MeshTransformer SMALL_TRANSFORMER;
+  public static final net.minecraft.client.model.geom.builders.MeshTransformer LARGE_TRANSFORMER;
+  public net.minecraft.client.model.animal.fish.SalmonModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.SalmonRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "TropicalFishLargeModel.java"
+public class net.minecraft.client.model.animal.fish.TropicalFishLargeModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.TropicalFishRenderState> {
+  public net.minecraft.client.model.animal.fish.TropicalFishLargeModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer(net.minecraft.client.model.geom.builders.CubeDeformation);
+  public void setupAnim(net.minecraft.client.renderer.entity.state.TropicalFishRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "TropicalFishSmallModel.java"
+public class net.minecraft.client.model.animal.fish.TropicalFishSmallModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.TropicalFishRenderState> {
+  public net.minecraft.client.model.animal.fish.TropicalFishSmallModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer(net.minecraft.client.model.geom.builders.CubeDeformation);
+  public void setupAnim(net.minecraft.client.renderer.entity.state.TropicalFishRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.animal.fish.package-info {
+}
+Compiled from "AdultFoxModel.java"
+public class net.minecraft.client.model.animal.fox.AdultFoxModel extends net.minecraft.client.model.animal.fox.FoxModel {
+  public net.minecraft.client.model.animal.fox.AdultFoxModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  protected void setSittingPose(net.minecraft.client.renderer.entity.state.FoxRenderState);
+  protected void setSleepingPose(net.minecraft.client.renderer.entity.state.FoxRenderState);
+  protected void setWalkingPose(net.minecraft.client.renderer.entity.state.FoxRenderState);
+  protected void setCrouchingPose(net.minecraft.client.renderer.entity.state.FoxRenderState);
+  protected void setPouncingPose(net.minecraft.client.renderer.entity.state.FoxRenderState);
+}
+Compiled from "BabyFoxModel.java"
+public class net.minecraft.client.model.animal.fox.BabyFoxModel extends net.minecraft.client.model.animal.fox.FoxModel {
+  public net.minecraft.client.model.animal.fox.BabyFoxModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  protected void setSittingPose(net.minecraft.client.renderer.entity.state.FoxRenderState);
+  protected void setSleepingPose(net.minecraft.client.renderer.entity.state.FoxRenderState);
+  protected void setWalkingPose(net.minecraft.client.renderer.entity.state.FoxRenderState);
+  protected void setCrouchingPose(net.minecraft.client.renderer.entity.state.FoxRenderState);
+}
+Compiled from "FoxModel.java"
+public abstract class net.minecraft.client.model.animal.fox.FoxModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.FoxRenderState> {
+  public final net.minecraft.client.model.geom.ModelPart head;
+  protected final net.minecraft.client.model.geom.ModelPart body;
+  protected final net.minecraft.client.model.geom.ModelPart rightHindLeg;
+  protected final net.minecraft.client.model.geom.ModelPart leftHindLeg;
+  protected final net.minecraft.client.model.geom.ModelPart rightFrontLeg;
+  protected final net.minecraft.client.model.geom.ModelPart leftFrontLeg;
+  protected final net.minecraft.client.model.geom.ModelPart tail;
+  public net.minecraft.client.model.animal.fox.FoxModel(net.minecraft.client.model.geom.ModelPart);
+  public void setupAnim(net.minecraft.client.renderer.entity.state.FoxRenderState);
+  protected void setSittingPose(net.minecraft.client.renderer.entity.state.FoxRenderState);
+  protected void setSleepingPose(net.minecraft.client.renderer.entity.state.FoxRenderState);
+  protected void setWalkingPose(net.minecraft.client.renderer.entity.state.FoxRenderState);
+  protected void setCrouchingPose(net.minecraft.client.renderer.entity.state.FoxRenderState);
+  protected void setPouncingPose(net.minecraft.client.renderer.entity.state.FoxRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.animal.fox.package-info {
+}
+Compiled from "FrogModel.java"
+public class net.minecraft.client.model.animal.frog.FrogModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.FrogRenderState> {
+  public net.minecraft.client.model.animal.frog.FrogModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.FrogRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "TadpoleModel.java"
+public class net.minecraft.client.model.animal.frog.TadpoleModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.LivingEntityRenderState> {
+  public net.minecraft.client.model.animal.frog.TadpoleModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.LivingEntityRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.animal.frog.package-info {
+}
+Compiled from "HappyGhastHarnessModel.java"
+public class net.minecraft.client.model.animal.ghast.HappyGhastHarnessModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.HappyGhastRenderState> {
+  public net.minecraft.client.model.animal.ghast.HappyGhastHarnessModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createHarnessLayer(boolean);
+  public void setupAnim(net.minecraft.client.renderer.entity.state.HappyGhastRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "HappyGhastModel.java"
+public class net.minecraft.client.model.animal.ghast.HappyGhastModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.HappyGhastRenderState> {
+  public static final net.minecraft.client.model.geom.builders.MeshTransformer BABY_TRANSFORMER;
+  public net.minecraft.client.model.animal.ghast.HappyGhastModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer(boolean, net.minecraft.client.model.geom.builders.CubeDeformation);
+  public void setupAnim(net.minecraft.client.renderer.entity.state.HappyGhastRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.animal.ghast.package-info {
+}
+Compiled from "BabyGoatModel.java"
+public class net.minecraft.client.model.animal.goat.BabyGoatModel extends net.minecraft.client.model.animal.goat.GoatModel {
+  public net.minecraft.client.model.animal.goat.BabyGoatModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.GoatRenderState);
+  public void setupAnim(net.minecraft.client.renderer.entity.state.LivingEntityRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "GoatModel.java"
+public class net.minecraft.client.model.animal.goat.GoatModel extends net.minecraft.client.model.QuadrupedModel<net.minecraft.client.renderer.entity.state.GoatRenderState> {
+  public net.minecraft.client.model.animal.goat.GoatModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.GoatRenderState);
+  public void setupAnim(net.minecraft.client.renderer.entity.state.LivingEntityRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.animal.goat.package-info {
+}
+Compiled from "CopperGolemModel.java"
+public class net.minecraft.client.model.animal.golem.CopperGolemModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.CopperGolemRenderState> implements net.minecraft.client.model.ArmedModel<net.minecraft.client.renderer.entity.state.CopperGolemRenderState>, net.minecraft.client.model.HeadedModel {
+  public net.minecraft.client.model.animal.golem.CopperGolemModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createRunningPoseBodyLayer();
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createSittingPoseBodyLayer();
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createStarPoseBodyLayer();
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createEyesLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.CopperGolemRenderState);
+  public void translateToHand(net.minecraft.client.renderer.entity.state.CopperGolemRenderState, net.minecraft.world.entity.HumanoidArm, com.mojang.blaze3d.vertex.PoseStack);
+  public net.minecraft.client.model.geom.ModelPart getHead();
+  public void translateToHead(com.mojang.blaze3d.vertex.PoseStack);
+  public void applyBlockOnAntennaTransform(com.mojang.blaze3d.vertex.PoseStack);
+  public void setupAnim(java.lang.Object);
+  public void translateToHand(net.minecraft.client.renderer.entity.state.EntityRenderState, net.minecraft.world.entity.HumanoidArm, com.mojang.blaze3d.vertex.PoseStack);
+}
+Compiled from "IronGolemModel.java"
+public class net.minecraft.client.model.animal.golem.IronGolemModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.IronGolemRenderState> {
+  public net.minecraft.client.model.animal.golem.IronGolemModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.IronGolemRenderState);
+  public net.minecraft.client.model.geom.ModelPart getFlowerHoldingArm();
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "SnowGolemModel.java"
+public class net.minecraft.client.model.animal.golem.SnowGolemModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.LivingEntityRenderState> {
+  public net.minecraft.client.model.animal.golem.SnowGolemModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.LivingEntityRenderState);
+  public net.minecraft.client.model.geom.ModelPart getHead();
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.animal.golem.package-info {
+}
+Compiled from "BabyLlamaModel.java"
+public class net.minecraft.client.model.animal.llama.BabyLlamaModel extends net.minecraft.client.model.animal.llama.LlamaModel {
+  public net.minecraft.client.model.animal.llama.BabyLlamaModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer(net.minecraft.client.model.geom.builders.CubeDeformation);
+}
+Compiled from "LlamaModel.java"
+public class net.minecraft.client.model.animal.llama.LlamaModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.LlamaRenderState> {
+  public net.minecraft.client.model.animal.llama.LlamaModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer(net.minecraft.client.model.geom.builders.CubeDeformation);
+  public void setupAnim(net.minecraft.client.renderer.entity.state.LlamaRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "LlamaSpitModel.java"
+public class net.minecraft.client.model.animal.llama.LlamaSpitModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.EntityRenderState> {
+  public net.minecraft.client.model.animal.llama.LlamaSpitModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.animal.llama.package-info {
+}
+Compiled from "NautilusArmorModel.java"
+public class net.minecraft.client.model.animal.nautilus.NautilusArmorModel extends net.minecraft.client.model.animal.nautilus.NautilusModel {
+  public net.minecraft.client.model.animal.nautilus.NautilusArmorModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+}
+Compiled from "NautilusModel.java"
+public class net.minecraft.client.model.animal.nautilus.NautilusModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.NautilusRenderState> {
+  protected final net.minecraft.client.model.geom.ModelPart body;
+  protected final net.minecraft.client.model.geom.ModelPart nautilus;
+  public net.minecraft.client.model.animal.nautilus.NautilusModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public static net.minecraft.client.model.geom.builders.MeshDefinition createBodyMesh();
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBabyBodyLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.NautilusRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "NautilusSaddleModel.java"
+public class net.minecraft.client.model.animal.nautilus.NautilusSaddleModel extends net.minecraft.client.model.animal.nautilus.NautilusModel {
+  public net.minecraft.client.model.animal.nautilus.NautilusSaddleModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createSaddleLayer();
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.animal.nautilus.package-info {
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.animal.package-info {
+}
+Compiled from "BabyPandaModel.java"
+public class net.minecraft.client.model.animal.panda.BabyPandaModel extends net.minecraft.client.model.animal.panda.PandaModel {
+  public net.minecraft.client.model.animal.panda.BabyPandaModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  protected void animateSitting(net.minecraft.client.renderer.entity.state.PandaRenderState);
+}
+Compiled from "PandaModel.java"
+public class net.minecraft.client.model.animal.panda.PandaModel extends net.minecraft.client.model.QuadrupedModel<net.minecraft.client.renderer.entity.state.PandaRenderState> {
+  public net.minecraft.client.model.animal.panda.PandaModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.PandaRenderState);
+  protected void animateSitting(net.minecraft.client.renderer.entity.state.PandaRenderState);
+  public void setupAnim(net.minecraft.client.renderer.entity.state.LivingEntityRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.animal.panda.package-info {
+}
+Compiled from "ParrotModel.java"
+public final class net.minecraft.client.model.animal.parrot.ParrotModel$Pose extends java.lang.Enum<net.minecraft.client.model.animal.parrot.ParrotModel$Pose> {
+  public static final net.minecraft.client.model.animal.parrot.ParrotModel$Pose FLYING;
+  public static final net.minecraft.client.model.animal.parrot.ParrotModel$Pose STANDING;
+  public static final net.minecraft.client.model.animal.parrot.ParrotModel$Pose SITTING;
+  public static final net.minecraft.client.model.animal.parrot.ParrotModel$Pose PARTY;
+  public static final net.minecraft.client.model.animal.parrot.ParrotModel$Pose ON_SHOULDER;
+  public static net.minecraft.client.model.animal.parrot.ParrotModel$Pose[] values();
+  public static net.minecraft.client.model.animal.parrot.ParrotModel$Pose valueOf(java.lang.String);
+}
+Compiled from "ParrotModel.java"
+public class net.minecraft.client.model.animal.parrot.ParrotModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.ParrotRenderState> {
+  public net.minecraft.client.model.animal.parrot.ParrotModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.ParrotRenderState);
+  public static net.minecraft.client.model.animal.parrot.ParrotModel$Pose getPose(net.minecraft.world.entity.animal.parrot.Parrot);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.animal.parrot.package-info {
+}
+Compiled from "BabyPigModel.java"
+public class net.minecraft.client.model.animal.pig.BabyPigModel extends net.minecraft.client.model.animal.pig.PigModel {
+  public net.minecraft.client.model.animal.pig.BabyPigModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer(net.minecraft.client.model.geom.builders.CubeDeformation);
+}
+Compiled from "ColdPigModel.java"
+public class net.minecraft.client.model.animal.pig.ColdPigModel extends net.minecraft.client.model.animal.pig.PigModel {
+  public net.minecraft.client.model.animal.pig.ColdPigModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer(net.minecraft.client.model.geom.builders.CubeDeformation);
+}
+Compiled from "PigModel.java"
+public class net.minecraft.client.model.animal.pig.PigModel extends net.minecraft.client.model.QuadrupedModel<net.minecraft.client.renderer.entity.state.LivingEntityRenderState> {
+  public static final net.minecraft.client.model.geom.builders.MeshTransformer BABY_TRANSFORMER;
+  public net.minecraft.client.model.animal.pig.PigModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer(net.minecraft.client.model.geom.builders.CubeDeformation);
+  protected static net.minecraft.client.model.geom.builders.MeshDefinition createBasePigModel(net.minecraft.client.model.geom.builders.CubeDeformation);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.animal.pig.package-info {
+}
+Compiled from "BabyPolarBearModel.java"
+public class net.minecraft.client.model.animal.polarbear.BabyPolarBearModel extends net.minecraft.client.model.animal.polarbear.PolarBearModel {
+  public net.minecraft.client.model.animal.polarbear.BabyPolarBearModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+}
+Compiled from "PolarBearModel.java"
+public class net.minecraft.client.model.animal.polarbear.PolarBearModel extends net.minecraft.client.model.QuadrupedModel<net.minecraft.client.renderer.entity.state.PolarBearRenderState> {
+  public net.minecraft.client.model.animal.polarbear.PolarBearModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.PolarBearRenderState);
+  public void setupAnim(net.minecraft.client.renderer.entity.state.LivingEntityRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.animal.polarbear.package-info {
+}
+Compiled from "AdultRabbitModel.java"
+public class net.minecraft.client.model.animal.rabbit.AdultRabbitModel extends net.minecraft.client.model.animal.rabbit.RabbitModel {
+  public net.minecraft.client.model.animal.rabbit.AdultRabbitModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+}
+Compiled from "BabyRabbitModel.java"
+public class net.minecraft.client.model.animal.rabbit.BabyRabbitModel extends net.minecraft.client.model.animal.rabbit.RabbitModel {
+  public net.minecraft.client.model.animal.rabbit.BabyRabbitModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+}
+Compiled from "RabbitModel.java"
+public abstract class net.minecraft.client.model.animal.rabbit.RabbitModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.RabbitRenderState> {
+  protected static final java.lang.String FRONT_LEGS;
+  protected static final java.lang.String BACK_LEGS;
+  protected static final java.lang.String LEFT_HAUNCH;
+  protected static final java.lang.String RIGHT_HAUNCH;
+  public net.minecraft.client.model.animal.rabbit.RabbitModel(net.minecraft.client.model.geom.ModelPart, net.minecraft.client.animation.AnimationDefinition, net.minecraft.client.animation.AnimationDefinition);
+  public void setupAnim(net.minecraft.client.renderer.entity.state.RabbitRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.animal.rabbit.package-info {
+}
+Compiled from "BabySheepModel.java"
+public class net.minecraft.client.model.animal.sheep.BabySheepModel extends net.minecraft.client.model.animal.sheep.SheepModel {
+  public net.minecraft.client.model.animal.sheep.BabySheepModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+}
+Compiled from "SheepFurModel.java"
+public class net.minecraft.client.model.animal.sheep.SheepFurModel extends net.minecraft.client.model.QuadrupedModel<net.minecraft.client.renderer.entity.state.SheepRenderState> {
+  public net.minecraft.client.model.animal.sheep.SheepFurModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createFurLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.SheepRenderState);
+  public void setupAnim(net.minecraft.client.renderer.entity.state.LivingEntityRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "SheepModel.java"
+public class net.minecraft.client.model.animal.sheep.SheepModel extends net.minecraft.client.model.QuadrupedModel<net.minecraft.client.renderer.entity.state.SheepRenderState> {
+  public net.minecraft.client.model.animal.sheep.SheepModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.SheepRenderState);
+  public void setupAnim(net.minecraft.client.renderer.entity.state.LivingEntityRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.animal.sheep.package-info {
+}
+Compiled from "SnifferModel.java"
+public class net.minecraft.client.model.animal.sniffer.SnifferModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.SnifferRenderState> {
+  public net.minecraft.client.model.animal.sniffer.SnifferModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.SnifferRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "SniffletModel.java"
+public class net.minecraft.client.model.animal.sniffer.SniffletModel extends net.minecraft.client.model.animal.sniffer.SnifferModel {
+  public net.minecraft.client.model.animal.sniffer.SniffletModel(net.minecraft.client.model.geom.ModelPart);
+  public void setupAnim(net.minecraft.client.renderer.entity.state.SnifferRenderState);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.animal.sniffer.package-info {
+}
+Compiled from "BabySquidModel.java"
+public class net.minecraft.client.model.animal.squid.BabySquidModel extends net.minecraft.client.model.animal.squid.SquidModel {
+  public net.minecraft.client.model.animal.squid.BabySquidModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+}
+Compiled from "SquidModel.java"
+public class net.minecraft.client.model.animal.squid.SquidModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.SquidRenderState> {
+  public static final net.minecraft.client.model.geom.builders.MeshTransformer BABY_TRANSFORMER;
+  public net.minecraft.client.model.animal.squid.SquidModel(net.minecraft.client.model.geom.ModelPart);
+  protected static java.lang.String createTentacleName(int);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.SquidRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.animal.squid.package-info {
+}
+Compiled from "AdultTurtleModel.java"
+public class net.minecraft.client.model.animal.turtle.AdultTurtleModel extends net.minecraft.client.model.animal.turtle.TurtleModel {
+  public net.minecraft.client.model.animal.turtle.AdultTurtleModel(net.minecraft.client.model.geom.ModelPart);
+  public void setupAnim(net.minecraft.client.renderer.entity.state.TurtleRenderState);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.LivingEntityRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "BabyTurtleModel.java"
+public class net.minecraft.client.model.animal.turtle.BabyTurtleModel extends net.minecraft.client.model.animal.turtle.TurtleModel {
+  public net.minecraft.client.model.animal.turtle.BabyTurtleModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+}
+Compiled from "TurtleModel.java"
+public abstract class net.minecraft.client.model.animal.turtle.TurtleModel extends net.minecraft.client.model.QuadrupedModel<net.minecraft.client.renderer.entity.state.TurtleRenderState> {
+  public net.minecraft.client.model.animal.turtle.TurtleModel(net.minecraft.client.model.geom.ModelPart, java.util.function.Function<net.minecraft.resources.Identifier, net.minecraft.client.renderer.rendertype.RenderType>);
+  public void setupAnim(net.minecraft.client.renderer.entity.state.TurtleRenderState);
+  public void setupAnim(net.minecraft.client.renderer.entity.state.LivingEntityRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.animal.turtle.package-info {
+}
+Compiled from "AdultWolfModel.java"
+public class net.minecraft.client.model.animal.wolf.AdultWolfModel extends net.minecraft.client.model.animal.wolf.WolfModel {
+  public net.minecraft.client.model.animal.wolf.AdultWolfModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.MeshDefinition createBodyLayer(net.minecraft.client.model.geom.builders.CubeDeformation);
+  protected void setSittingPose(net.minecraft.client.renderer.entity.state.WolfRenderState);
+  protected void shakeOffWater(net.minecraft.client.renderer.entity.state.WolfRenderState);
+}
+Compiled from "BabyWolfModel.java"
+public class net.minecraft.client.model.animal.wolf.BabyWolfModel extends net.minecraft.client.model.animal.wolf.WolfModel {
+  public net.minecraft.client.model.animal.wolf.BabyWolfModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  protected void shakeOffWater(net.minecraft.client.renderer.entity.state.WolfRenderState);
+  protected void setSittingPose(net.minecraft.client.renderer.entity.state.WolfRenderState);
+}
+Compiled from "WolfModel.java"
+public abstract class net.minecraft.client.model.animal.wolf.WolfModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.WolfRenderState> {
+  protected final net.minecraft.client.model.geom.ModelPart head;
+  protected final net.minecraft.client.model.geom.ModelPart body;
+  protected final net.minecraft.client.model.geom.ModelPart rightHindLeg;
+  protected final net.minecraft.client.model.geom.ModelPart leftHindLeg;
+  protected final net.minecraft.client.model.geom.ModelPart rightFrontLeg;
+  protected final net.minecraft.client.model.geom.ModelPart leftFrontLeg;
+  protected final net.minecraft.client.model.geom.ModelPart tail;
+  public net.minecraft.client.model.animal.wolf.WolfModel(net.minecraft.client.model.geom.ModelPart);
+  public void setupAnim(net.minecraft.client.renderer.entity.state.WolfRenderState);
+  protected void shakeOffWater(net.minecraft.client.renderer.entity.state.WolfRenderState);
+  protected void setSittingPose(net.minecraft.client.renderer.entity.state.WolfRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.animal.wolf.package-info {
+}
+Compiled from "EvokerFangsModel.java"
+public class net.minecraft.client.model.effects.EvokerFangsModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.EvokerFangsRenderState> {
+  public net.minecraft.client.model.effects.EvokerFangsModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.EvokerFangsRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "SpearAnimations.java"
+final class net.minecraft.client.model.effects.SpearAnimations$UseParams extends java.lang.Record {
+  public static net.minecraft.client.model.effects.SpearAnimations$UseParams fromKineticWeapon(net.minecraft.world.item.component.KineticWeapon, float);
+  public final java.lang.String toString();
+  public final int hashCode();
+  public final boolean equals(java.lang.Object);
+  public float raiseProgress();
+  public float raiseProgressStart();
+  public float raiseProgressMiddle();
+  public float raiseProgressEnd();
+  public float swayProgress();
+  public float lowerProgress();
+  public float raiseBackProgress();
+  public float swayIntensity();
+  public float swayScaleSlow();
+  public float swayScaleFast();
+}
+Compiled from "SpearAnimations.java"
+public class net.minecraft.client.model.effects.SpearAnimations {
+  public net.minecraft.client.model.effects.SpearAnimations();
+  public static <T extends net.minecraft.client.renderer.entity.state.HumanoidRenderState> void thirdPersonHandUse(net.minecraft.client.model.geom.ModelPart, net.minecraft.client.model.geom.ModelPart, net.minecraft.world.entity.HumanoidArm, net.minecraft.world.item.ItemStack, T);
+  public static <S extends net.minecraft.client.renderer.entity.state.ArmedEntityRenderState> void thirdPersonUseItem(S, com.mojang.blaze3d.vertex.PoseStack, float, net.minecraft.world.entity.HumanoidArm, net.minecraft.world.item.ItemStack);
+  public static <T extends net.minecraft.client.renderer.entity.state.HumanoidRenderState> void thirdPersonAttackHand(net.minecraft.client.model.HumanoidModel<T>, float, net.minecraft.world.entity.HumanoidArm);
+  public static <S extends net.minecraft.client.renderer.entity.state.ArmedEntityRenderState> void thirdPersonAttackItem(S, com.mojang.blaze3d.vertex.PoseStack);
+  public static void firstPersonUse(float, com.mojang.blaze3d.vertex.PoseStack, float, net.minecraft.world.entity.HumanoidArm, net.minecraft.world.item.ItemStack);
+  public static void firstPersonAttack(float, com.mojang.blaze3d.vertex.PoseStack, int, net.minecraft.world.entity.HumanoidArm);
+}
+Compiled from "SpinAttackEffectModel.java"
+public class net.minecraft.client.model.effects.SpinAttackEffectModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.AvatarRenderState> {
+  public net.minecraft.client.model.effects.SpinAttackEffectModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.AvatarRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.effects.package-info {
+}
+Compiled from "EntityModelSet.java"
+public class net.minecraft.client.model.geom.EntityModelSet {
+  public static final net.minecraft.client.model.geom.EntityModelSet EMPTY;
+  public net.minecraft.client.model.geom.EntityModelSet(java.util.Map<net.minecraft.client.model.geom.ModelLayerLocation, net.minecraft.client.model.geom.builders.LayerDefinition>);
+  public net.minecraft.client.model.geom.ModelPart bakeLayer(net.minecraft.client.model.geom.ModelLayerLocation);
+  public static net.minecraft.client.model.geom.EntityModelSet vanilla();
+}
+Compiled from "LayerDefinitions.java"
+public class net.minecraft.client.model.geom.LayerDefinitions {
+  public net.minecraft.client.model.geom.LayerDefinitions();
+  public static java.util.Map<net.minecraft.client.model.geom.ModelLayerLocation, net.minecraft.client.model.geom.builders.LayerDefinition> createRoots();
+}
+Compiled from "ModelLayerLocation.java"
+public final class net.minecraft.client.model.geom.ModelLayerLocation extends java.lang.Record {
+  public net.minecraft.client.model.geom.ModelLayerLocation(net.minecraft.resources.Identifier, java.lang.String);
+  public java.lang.String toString();
+  public final int hashCode();
+  public final boolean equals(java.lang.Object);
+  public net.minecraft.resources.Identifier model();
+  public java.lang.String layer();
+}
+Compiled from "ModelLayers.java"
+public class net.minecraft.client.model.geom.ModelLayers {
+  public static final net.minecraft.client.model.geom.ModelLayerLocation ACACIA_BOAT;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation ACACIA_CHEST_BOAT;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation ALLAY;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation ARMADILLO;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation ARMADILLO_BABY;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation ARMOR_STAND;
+  public static final net.minecraft.client.renderer.entity.ArmorModelSet<net.minecraft.client.model.geom.ModelLayerLocation> ARMOR_STAND_ARMOR;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation ARMOR_STAND_SMALL;
+  public static final net.minecraft.client.renderer.entity.ArmorModelSet<net.minecraft.client.model.geom.ModelLayerLocation> ARMOR_STAND_SMALL_ARMOR;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation ARROW;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation AXOLOTL;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation AXOLOTL_BABY;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation BAMBOO_CHEST_RAFT;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation BAMBOO_RAFT;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation STANDING_BANNER;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation STANDING_BANNER_FLAG;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation WALL_BANNER;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation WALL_BANNER_FLAG;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation BAT;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation BEE;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation BEE_BABY;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation BEE_STINGER;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation BELL;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation BIRCH_BOAT;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation BIRCH_CHEST_BOAT;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation BLAZE;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation BOAT_WATER_PATCH;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation BOGGED;
+  public static final net.minecraft.client.renderer.entity.ArmorModelSet<net.minecraft.client.model.geom.ModelLayerLocation> BOGGED_ARMOR;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation BOGGED_OUTER_LAYER;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation BOOK;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation BREEZE;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation BREEZE_WIND;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation BREEZE_EYES;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation CAMEL;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation CAMEL_BABY;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation CAMEL_SADDLE;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation CAMEL_HUSK_SADDLE;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation CAT;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation CAT_BABY;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation CAT_BABY_COLLAR;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation CAT_COLLAR;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation CAVE_SPIDER;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation CHERRY_BOAT;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation CHERRY_CHEST_BOAT;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation CHEST;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation CHEST_MINECART;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation CHICKEN;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation CHICKEN_BABY;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation COD;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation COLD_CHICKEN;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation COLD_COW;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation COLD_COW_BABY;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation COLD_PIG;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation COMMAND_BLOCK_MINECART;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation CONDUIT_CAGE;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation CONDUIT_EYE;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation CONDUIT_SHELL;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation CONDUIT_WIND;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation COPPER_GOLEM;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation COPPER_GOLEM_EYES;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation COPPER_GOLEM_RUNNING;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation COPPER_GOLEM_SITTING;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation COPPER_GOLEM_STAR;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation ZOMBIE_NAUTILUS_CORAL;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation COW;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation COW_BABY;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation CREAKING;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation CREAKING_EYES;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation CREEPER;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation CREEPER_ARMOR;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation CREEPER_HEAD;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation CUSHION;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation DARK_OAK_BOAT;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation DARK_OAK_CHEST_BOAT;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation DECORATED_POT_BASE;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation DECORATED_POT_SIDES;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation DOLPHIN;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation DOLPHIN_BABY;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation DONKEY;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation DONKEY_BABY;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation DONKEY_SADDLE;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation DOUBLE_CHEST_LEFT;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation DOUBLE_CHEST_RIGHT;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation DRAGON_SKULL;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation DROWNED;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation DROWNED_BABY;
+  public static final net.minecraft.client.renderer.entity.ArmorModelSet<net.minecraft.client.model.geom.ModelLayerLocation> DROWNED_BABY_ARMOR;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation DROWNED_BABY_OUTER_LAYER;
+  public static final net.minecraft.client.renderer.entity.ArmorModelSet<net.minecraft.client.model.geom.ModelLayerLocation> DROWNED_ARMOR;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation DROWNED_OUTER_LAYER;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation ELDER_GUARDIAN;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation ELYTRA;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation ELYTRA_BABY;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation ENDERMAN;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation ENDERMITE;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation ENDER_DRAGON;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation END_CRYSTAL;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation EVOKER;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation EVOKER_FANGS;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation FOX;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation FOX_BABY;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation FROG;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation FURNACE_MINECART;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation GHAST;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation GIANT;
+  public static final net.minecraft.client.renderer.entity.ArmorModelSet<net.minecraft.client.model.geom.ModelLayerLocation> GIANT_ARMOR;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation GLOW_SQUID;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation GLOW_SQUID_BABY;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation GOAT;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation GOAT_BABY;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation GUARDIAN;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation HAPPY_GHAST;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation HAPPY_GHAST_BABY;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation HAPPY_GHAST_HARNESS;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation HAPPY_GHAST_BABY_HARNESS;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation HAPPY_GHAST_ROPES;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation HAPPY_GHAST_BABY_ROPES;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation HOGLIN;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation HOGLIN_BABY;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation HOPPER_MINECART;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation HORSE;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation HORSE_ARMOR;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation HORSE_SADDLE;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation HORSE_BABY;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation HUSK;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation HUSK_BABY;
+  public static final net.minecraft.client.renderer.entity.ArmorModelSet<net.minecraft.client.model.geom.ModelLayerLocation> HUSK_BABY_ARMOR;
+  public static final net.minecraft.client.renderer.entity.ArmorModelSet<net.minecraft.client.model.geom.ModelLayerLocation> HUSK_ARMOR;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation ILLUSIONER;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation IRON_GOLEM;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation JUNGLE_BOAT;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation JUNGLE_CHEST_BOAT;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation LEASH_KNOT;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation LLAMA;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation LLAMA_BABY;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation LLAMA_BABY_DECOR;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation LLAMA_DECOR;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation LLAMA_SPIT;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation MAGMA_CUBE;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation MANGROVE_BOAT;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation MANGROVE_CHEST_BOAT;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation MINECART;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation MOOSHROOM;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation MOOSHROOM_BABY;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation MULE;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation MULE_BABY;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation MULE_SADDLE;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation NAUTILUS;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation NAUTILUS_BABY;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation NAUTILUS_SADDLE;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation NAUTILUS_ARMOR;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation OAK_BOAT;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation OAK_CHEST_BOAT;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation OCELOT;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation OCELOT_BABY;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation PALE_OAK_BOAT;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation PALE_OAK_CHEST_BOAT;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation PANDA;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation PANDA_BABY;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation PARCHED;
+  public static final net.minecraft.client.renderer.entity.ArmorModelSet<net.minecraft.client.model.geom.ModelLayerLocation> PARCHED_ARMOR;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation PARCHED_OUTER_LAYER;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation PARROT;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation PHANTOM;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation PIG;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation PIGLIN;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation PIGLIN_BABY;
+  public static final net.minecraft.client.renderer.entity.ArmorModelSet<net.minecraft.client.model.geom.ModelLayerLocation> PIGLIN_BABY_ARMOR;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation PIGLIN_BRUTE;
+  public static final net.minecraft.client.renderer.entity.ArmorModelSet<net.minecraft.client.model.geom.ModelLayerLocation> PIGLIN_BRUTE_ARMOR;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation PIGLIN_HEAD;
+  public static final net.minecraft.client.renderer.entity.ArmorModelSet<net.minecraft.client.model.geom.ModelLayerLocation> PIGLIN_ARMOR;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation PIG_BABY;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation PIG_SADDLE;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation PILLAGER;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation PLAYER;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation PLAYER_CAPE;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation PLAYER_EARS;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation PLAYER_HEAD;
+  public static final net.minecraft.client.renderer.entity.ArmorModelSet<net.minecraft.client.model.geom.ModelLayerLocation> PLAYER_ARMOR;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation PLAYER_SLIM;
+  public static final net.minecraft.client.renderer.entity.ArmorModelSet<net.minecraft.client.model.geom.ModelLayerLocation> PLAYER_SLIM_ARMOR;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation PLAYER_SPIN_ATTACK;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation POLAR_BEAR;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation POLAR_BEAR_BABY;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation POPLAR_BOAT;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation POPLAR_CHEST_BOAT;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation PUFFERFISH_BIG;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation PUFFERFISH_MEDIUM;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation PUFFERFISH_SMALL;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation RABBIT;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation RABBIT_BABY;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation RAVAGER;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation SALMON;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation SALMON_LARGE;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation SALMON_SMALL;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation SHEEP;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation SHEEP_BABY;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation SHEEP_BABY_WOOL;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation SHEEP_WOOL;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation SHEEP_WOOL_UNDERCOAT;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation SHIELD;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation SHULKER;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation SHULKER_BOX;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation SHULKER_BULLET;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation SILVERFISH;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation SKELETON;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation SKELETON_HORSE;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation SKELETON_HORSE_BABY;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation SKELETON_HORSE_SADDLE;
+  public static final net.minecraft.client.renderer.entity.ArmorModelSet<net.minecraft.client.model.geom.ModelLayerLocation> SKELETON_ARMOR;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation SKELETON_SKULL;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation SLIME;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation SLIME_OUTER;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation SNIFFER;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation SNIFFER_BABY;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation SNOW_GOLEM;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation SPAWNER_MINECART;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation SPIDER;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation SPRUCE_BOAT;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation SPRUCE_CHEST_BOAT;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation SQUID;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation SQUID_BABY;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation STRAY;
+  public static final net.minecraft.client.renderer.entity.ArmorModelSet<net.minecraft.client.model.geom.ModelLayerLocation> STRAY_ARMOR;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation STRAY_OUTER_LAYER;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation STRIDER;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation STRIDER_SADDLE;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation STRIDER_BABY;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation SULFUR_CUBE;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation SULFUR_CUBE_INNER;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation SULFUR_CUBE_SMALL;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation SULFUR_CUBE_SMALL_INNER;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation TADPOLE;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation TNT_MINECART;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation TRADER_LLAMA;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation TRADER_LLAMA_BABY;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation TRIDENT;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation TROPICAL_FISH_LARGE;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation TROPICAL_FISH_LARGE_PATTERN;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation TROPICAL_FISH_SMALL;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation TROPICAL_FISH_SMALL_PATTERN;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation TURTLE;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation TURTLE_BABY;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation UNDEAD_HORSE_ARMOR;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation VEX;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation VILLAGER;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation VILLAGER_NO_HAT;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation VILLAGER_BABY;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation VILLAGER_BABY_NO_HAT;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation VINDICATOR;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation WANDERING_TRADER;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation WARDEN;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation WARDEN_BIOLUMINESCENT;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation WARDEN_PULSATING_SPOTS;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation WARDEN_TENDRILS;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation WARDEN_HEART;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation WARM_COW;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation WARM_COW_BABY;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation WIND_CHARGE;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation WITCH;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation WITHER;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation WITHER_ARMOR;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation WITHER_SKELETON;
+  public static final net.minecraft.client.renderer.entity.ArmorModelSet<net.minecraft.client.model.geom.ModelLayerLocation> WITHER_SKELETON_ARMOR;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation WITHER_SKELETON_SKULL;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation WITHER_SKULL;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation WOLF;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation WOLF_ARMOR;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation WOLF_BABY;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation ZOGLIN;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation ZOGLIN_BABY;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation ZOMBIE;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation ZOMBIE_BABY;
+  public static final net.minecraft.client.renderer.entity.ArmorModelSet<net.minecraft.client.model.geom.ModelLayerLocation> ZOMBIE_BABY_ARMOR;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation ZOMBIE_HEAD;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation ZOMBIE_HORSE;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation ZOMBIE_HORSE_BABY;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation ZOMBIE_HORSE_SADDLE;
+  public static final net.minecraft.client.renderer.entity.ArmorModelSet<net.minecraft.client.model.geom.ModelLayerLocation> ZOMBIE_ARMOR;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation ZOMBIE_VILLAGER;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation ZOMBIE_VILLAGER_NO_HAT;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation ZOMBIE_VILLAGER_BABY;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation ZOMBIE_VILLAGER_BABY_NO_HAT;
+  public static final net.minecraft.client.renderer.entity.ArmorModelSet<net.minecraft.client.model.geom.ModelLayerLocation> ZOMBIE_VILLAGER_BABY_ARMOR;
+  public static final net.minecraft.client.renderer.entity.ArmorModelSet<net.minecraft.client.model.geom.ModelLayerLocation> ZOMBIE_VILLAGER_ARMOR;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation ZOMBIFIED_PIGLIN;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation ZOMBIFIED_PIGLIN_BABY;
+  public static final net.minecraft.client.renderer.entity.ArmorModelSet<net.minecraft.client.model.geom.ModelLayerLocation> ZOMBIFIED_PIGLIN_BABY_ARMOR;
+  public static final net.minecraft.client.renderer.entity.ArmorModelSet<net.minecraft.client.model.geom.ModelLayerLocation> ZOMBIFIED_PIGLIN_ARMOR;
+  public static final net.minecraft.client.model.geom.ModelLayerLocation ZOMBIE_NAUTILUS;
+  public net.minecraft.client.model.geom.ModelLayers();
+  public static java.util.stream.Stream<net.minecraft.client.model.geom.ModelLayerLocation> getKnownLocations();
+}
+Compiled from "ModelPart.java"
+public class net.minecraft.client.model.geom.ModelPart$Cube {
+  public final net.minecraft.client.model.geom.ModelPart$Polygon[] polygons;
+  public final float minX;
+  public final float minY;
+  public final float minZ;
+  public final float maxX;
+  public final float maxY;
+  public final float maxZ;
+  public net.minecraft.client.model.geom.ModelPart$Cube(int, int, float, float, float, float, float, float, float, float, float, boolean, float, float, java.util.Set<net.minecraft.core.Direction>);
+  public void compile(com.mojang.blaze3d.vertex.PoseStack$Pose, com.mojang.blaze3d.vertex.VertexConsumer, int, int, int);
+}
+Compiled from "ModelPart.java"
+public final class net.minecraft.client.model.geom.ModelPart$Polygon extends java.lang.Record {
+  public net.minecraft.client.model.geom.ModelPart$Polygon(net.minecraft.client.model.geom.ModelPart$Vertex[], float, float, float, float, float, float, boolean, net.minecraft.core.Direction);
+  public net.minecraft.client.model.geom.ModelPart$Polygon(net.minecraft.client.model.geom.ModelPart$Vertex[], org.joml.Vector3fc);
+  public final java.lang.String toString();
+  public final int hashCode();
+  public final boolean equals(java.lang.Object);
+  public net.minecraft.client.model.geom.ModelPart$Vertex[] vertices();
+  public org.joml.Vector3fc normal();
+}
+Compiled from "ModelPart.java"
+public final class net.minecraft.client.model.geom.ModelPart$Vertex extends java.lang.Record {
+  public static final float SCALE_FACTOR;
+  public net.minecraft.client.model.geom.ModelPart$Vertex(float, float, float, float, float);
+  public net.minecraft.client.model.geom.ModelPart$Vertex remap(float, float);
+  public float worldX();
+  public float worldY();
+  public float worldZ();
+  public final java.lang.String toString();
+  public final int hashCode();
+  public final boolean equals(java.lang.Object);
+  public float x();
+  public float y();
+  public float z();
+  public float u();
+  public float v();
+}
+Compiled from "ModelPart.java"
+public interface net.minecraft.client.model.geom.ModelPart$Visitor {
+  public abstract void visit(com.mojang.blaze3d.vertex.PoseStack$Pose, java.lang.String, int, net.minecraft.client.model.geom.ModelPart$Cube);
+}
+Compiled from "ModelPart.java"
+public final class net.minecraft.client.model.geom.ModelPart {
+  public static final float DEFAULT_SCALE;
+  public float x;
+  public float y;
+  public float z;
+  public float xRot;
+  public float yRot;
+  public float zRot;
+  public float xScale;
+  public float yScale;
+  public float zScale;
+  public boolean visible;
+  public boolean skipDraw;
+  public net.minecraft.client.model.geom.ModelPart(java.util.List<net.minecraft.client.model.geom.ModelPart$Cube>, java.util.Map<java.lang.String, net.minecraft.client.model.geom.ModelPart>);
+  public net.minecraft.client.model.geom.PartPose storePose();
+  public net.minecraft.client.model.geom.PartPose getInitialPose();
+  public void setInitialPose(net.minecraft.client.model.geom.PartPose);
+  public void resetPose();
+  public void loadPose(net.minecraft.client.model.geom.PartPose);
+  public boolean hasChild(java.lang.String);
+  public net.minecraft.client.model.geom.ModelPart getChild(java.lang.String);
+  public void setPos(float, float, float);
+  public void setRotation(float, float, float);
+  public void render(com.mojang.blaze3d.vertex.PoseStack, com.mojang.blaze3d.vertex.VertexConsumer, int, int);
+  public void render(com.mojang.blaze3d.vertex.PoseStack, com.mojang.blaze3d.vertex.VertexConsumer, int, int, int);
+  public void rotateBy(org.joml.Quaternionf);
+  public void getExtentsForGui(com.mojang.blaze3d.vertex.PoseStack, java.util.function.Consumer<org.joml.Vector3fc>);
+  public void visit(com.mojang.blaze3d.vertex.PoseStack, net.minecraft.client.model.geom.ModelPart$Visitor);
+  public void translateAndRotate(com.mojang.blaze3d.vertex.PoseStack);
+  public net.minecraft.client.model.geom.ModelPart$Cube getRandomCube(net.minecraft.util.RandomSource);
+  public boolean isEmpty();
+  public void offsetPos(org.joml.Vector3f);
+  public void offsetRotation(org.joml.Vector3f);
+  public void offsetScale(org.joml.Vector3f);
+  public java.util.List<net.minecraft.client.model.geom.ModelPart> getAllParts();
+  public java.util.function.Function<java.lang.String, net.minecraft.client.model.geom.ModelPart> createPartLookup();
+}
+Compiled from "PartNames.java"
+public class net.minecraft.client.model.geom.PartNames {
+  public static final java.lang.String LEFT_FIN;
+  public static final java.lang.String RIGHT_FIN;
+  public static final java.lang.String TOP_FIN;
+  public static final java.lang.String BOTTOM_FIN;
+  public static final java.lang.String TAIL_FIN;
+  public static final java.lang.String LEFT_BLUE_FIN;
+  public static final java.lang.String RIGHT_BLUE_FIN;
+  public static final java.lang.String LEFT_ARM;
+  public static final java.lang.String RIGHT_ARM;
+  public static final java.lang.String LEFT_WING;
+  public static final java.lang.String RIGHT_WING;
+  public static final java.lang.String LEFT_WING_BASE;
+  public static final java.lang.String RIGHT_WING_BASE;
+  public static final java.lang.String LEFT_WING_TIP;
+  public static final java.lang.String RIGHT_WING_TIP;
+  public static final java.lang.String LEFT_EAR;
+  public static final java.lang.String RIGHT_EAR;
+  public static final java.lang.String LEFT_LEG;
+  public static final java.lang.String RIGHT_LEG;
+  public static final java.lang.String LEFT_HIND_LEG;
+  public static final java.lang.String RIGHT_HIND_LEG;
+  public static final java.lang.String LEFT_MID_LEG;
+  public static final java.lang.String RIGHT_MID_LEG;
+  public static final java.lang.String LEFT_FRONT_LEG;
+  public static final java.lang.String RIGHT_FRONT_LEG;
+  public static final java.lang.String LEFT_HIND_FOOT;
+  public static final java.lang.String RIGHT_HIND_FOOT;
+  public static final java.lang.String LEFT_FRONT_FOOT;
+  public static final java.lang.String RIGHT_FRONT_FOOT;
+  public static final java.lang.String FEET;
+  public static final java.lang.String LEFT_HIND_LEG_TIP;
+  public static final java.lang.String RIGHT_HIND_LEG_TIP;
+  public static final java.lang.String LEFT_FRONT_LEG_TIP;
+  public static final java.lang.String RIGHT_FRONT_LEG_TIP;
+  public static final java.lang.String LEFT_LID;
+  public static final java.lang.String RIGHT_LID;
+  public static final java.lang.String LEFT_CHEST;
+  public static final java.lang.String RIGHT_CHEST;
+  public static final java.lang.String LEFT_HORN;
+  public static final java.lang.String RIGHT_HORN;
+  public static final java.lang.String LEFT_EYE;
+  public static final java.lang.String RIGHT_EYE;
+  public static final java.lang.String JAW;
+  public static final java.lang.String NOSE;
+  public static final java.lang.String ARMS;
+  public static final java.lang.String TAIL;
+  public static final java.lang.String CUBE;
+  public static final java.lang.String BEAK;
+  public static final java.lang.String BACK_FIN;
+  public static final java.lang.String MANE;
+  public static final java.lang.String NECK;
+  public static final java.lang.String MOUTH;
+  public static final java.lang.String UPPER_MOUTH;
+  public static final java.lang.String INNER_MOUTH;
+  public static final java.lang.String LOWER_MOUTH;
+  public static final java.lang.String HEAD;
+  public static final java.lang.String HAT;
+  public static final java.lang.String BODY;
+  public static final java.lang.String UPPER_BODY;
+  public static final java.lang.String INNER_BODY;
+  public static final java.lang.String WAIST;
+  public static final java.lang.String HAT_RIM;
+  public static final java.lang.String GOGGLES;
+  public static final java.lang.String JACKET;
+  public static final java.lang.String HARNESS;
+  public static final java.lang.String SHELL;
+  public static final java.lang.String TOP_GILLS;
+  public static final java.lang.String LEFT_GILLS;
+  public static final java.lang.String RIGHT_GILLS;
+  public static final java.lang.String ROOT;
+  public static final java.lang.String CROAKING_BODY;
+  public static final java.lang.String TONGUE;
+  public static final java.lang.String TONGUE_R1;
+  public static final java.lang.String LEFT_HAND;
+  public static final java.lang.String RIGHT_HAND;
+  public static final java.lang.String LEFT_FOOT;
+  public static final java.lang.String RIGHT_FOOT;
+  public static final java.lang.String EYES;
+  public static final java.lang.String RIGHT_TENDRIL;
+  public static final java.lang.String LEFT_TENDRIL;
+  public static final java.lang.String RIGHT_RIBCAGE;
+  public static final java.lang.String LEFT_RIBCAGE;
+  public static final java.lang.String WIND_BODY;
+  public static final java.lang.String WIND_TOP;
+  public static final java.lang.String WIND_MID;
+  public static final java.lang.String WIND_BOTTOM;
+  public static final java.lang.String RODS;
+  public static final java.lang.String MUSHROOMS;
+  public static final java.lang.String BONE;
+  public static final java.lang.String LEFT_PADDLE;
+  public static final java.lang.String RIGHT_PADDLE;
+  public static final java.lang.String BOTTOM;
+  public static final java.lang.String CHEST_BOTTOM;
+  public static final java.lang.String CHEST_LID;
+  public static final java.lang.String CHEST_LOCK;
+  public static final java.lang.String YELLOW_CORAL;
+  public static final java.lang.String YELLOW_CORAL_FIRST;
+  public static final java.lang.String YELLOW_CORAL_SECOND;
+  public static final java.lang.String PINK_CORAL;
+  public static final java.lang.String PINK_CORAL_SECOND;
+  public static final java.lang.String BLUE_CORAL;
+  public static final java.lang.String BLUE_CORAL_FIRST;
+  public static final java.lang.String BLUE_CORAL_SECOND;
+  public static final java.lang.String RED_CORAL;
+  public static final java.lang.String RED_CORAL_FIRST;
+  public static final java.lang.String RED_CORAL_SECOND;
+  public net.minecraft.client.model.geom.PartNames();
+  public static java.lang.String tentacle(int);
+}
+Compiled from "PartPose.java"
+public final class net.minecraft.client.model.geom.PartPose extends java.lang.Record {
+  public static final net.minecraft.client.model.geom.PartPose ZERO;
+  public net.minecraft.client.model.geom.PartPose(float, float, float, float, float, float, float, float, float);
+  public static net.minecraft.client.model.geom.PartPose offset(float, float, float);
+  public static net.minecraft.client.model.geom.PartPose rotation(float, float, float);
+  public static net.minecraft.client.model.geom.PartPose offsetAndRotation(float, float, float, float, float, float);
+  public net.minecraft.client.model.geom.PartPose translated(float, float, float);
+  public net.minecraft.client.model.geom.PartPose withScale(float);
+  public net.minecraft.client.model.geom.PartPose scaled(float);
+  public net.minecraft.client.model.geom.PartPose scaled(float, float, float);
+  public final java.lang.String toString();
+  public final int hashCode();
+  public final boolean equals(java.lang.Object);
+  public float x();
+  public float y();
+  public float z();
+  public float xRot();
+  public float yRot();
+  public float zRot();
+  public float xScale();
+  public float yScale();
+  public float zScale();
+}
+Compiled from "CubeDefinition.java"
+public final class net.minecraft.client.model.geom.builders.CubeDefinition {
+  public net.minecraft.client.model.geom.builders.CubeDefinition(java.lang.String, float, float, float, float, float, float, float, float, net.minecraft.client.model.geom.builders.CubeDeformation, boolean, float, float, java.util.Set<net.minecraft.core.Direction>);
+  public net.minecraft.client.model.geom.ModelPart$Cube bake(int, int);
+}
+Compiled from "CubeDeformation.java"
+public class net.minecraft.client.model.geom.builders.CubeDeformation {
+  public static final net.minecraft.client.model.geom.builders.CubeDeformation NONE;
+  public net.minecraft.client.model.geom.builders.CubeDeformation(float, float, float);
+  public net.minecraft.client.model.geom.builders.CubeDeformation(float);
+  public net.minecraft.client.model.geom.builders.CubeDeformation extend(float);
+  public net.minecraft.client.model.geom.builders.CubeDeformation extend(float, float, float);
+}
+Compiled from "CubeListBuilder.java"
+public class net.minecraft.client.model.geom.builders.CubeListBuilder {
+  public net.minecraft.client.model.geom.builders.CubeListBuilder();
+  public net.minecraft.client.model.geom.builders.CubeListBuilder texOffs(int, int);
+  public net.minecraft.client.model.geom.builders.CubeListBuilder mirror();
+  public net.minecraft.client.model.geom.builders.CubeListBuilder mirror(boolean);
+  public net.minecraft.client.model.geom.builders.CubeListBuilder addBox(java.lang.String, float, float, float, int, int, int, net.minecraft.client.model.geom.builders.CubeDeformation, int, int);
+  public net.minecraft.client.model.geom.builders.CubeListBuilder addBox(java.lang.String, float, float, float, int, int, int, int, int);
+  public net.minecraft.client.model.geom.builders.CubeListBuilder addBox(float, float, float, float, float, float);
+  public net.minecraft.client.model.geom.builders.CubeListBuilder addBox(float, float, float, float, float, float, java.util.Set<net.minecraft.core.Direction>);
+  public net.minecraft.client.model.geom.builders.CubeListBuilder addBox(java.lang.String, float, float, float, float, float, float);
+  public net.minecraft.client.model.geom.builders.CubeListBuilder addBox(java.lang.String, float, float, float, float, float, float, net.minecraft.client.model.geom.builders.CubeDeformation);
+  public net.minecraft.client.model.geom.builders.CubeListBuilder addBox(float, float, float, float, float, float, boolean);
+  public net.minecraft.client.model.geom.builders.CubeListBuilder addBox(float, float, float, float, float, float, net.minecraft.client.model.geom.builders.CubeDeformation, float, float);
+  public net.minecraft.client.model.geom.builders.CubeListBuilder addBox(float, float, float, float, float, float, net.minecraft.client.model.geom.builders.CubeDeformation);
+  public java.util.List<net.minecraft.client.model.geom.builders.CubeDefinition> getCubes();
+  public static net.minecraft.client.model.geom.builders.CubeListBuilder create();
+}
+Compiled from "LayerDefinition.java"
+public class net.minecraft.client.model.geom.builders.LayerDefinition {
+  public net.minecraft.client.model.geom.builders.LayerDefinition apply(net.minecraft.client.model.geom.builders.MeshTransformer);
+  public net.minecraft.client.model.geom.ModelPart bakeRoot();
+  public static net.minecraft.client.model.geom.builders.LayerDefinition create(net.minecraft.client.model.geom.builders.MeshDefinition, int, int);
+}
+Compiled from "MaterialDefinition.java"
+public class net.minecraft.client.model.geom.builders.MaterialDefinition {
+  public net.minecraft.client.model.geom.builders.MaterialDefinition(int, int);
+}
+Compiled from "MeshDefinition.java"
+public class net.minecraft.client.model.geom.builders.MeshDefinition {
+  public net.minecraft.client.model.geom.builders.MeshDefinition();
+  public net.minecraft.client.model.geom.builders.PartDefinition getRoot();
+  public net.minecraft.client.model.geom.builders.MeshDefinition transformed(java.util.function.UnaryOperator<net.minecraft.client.model.geom.PartPose>);
+  public net.minecraft.client.model.geom.builders.MeshDefinition apply(net.minecraft.client.model.geom.builders.MeshTransformer);
+}
+Compiled from "MeshTransformer.java"
+public interface net.minecraft.client.model.geom.builders.MeshTransformer {
+  public static final net.minecraft.client.model.geom.builders.MeshTransformer IDENTITY;
+  public static net.minecraft.client.model.geom.builders.MeshTransformer scaling(float);
+  public abstract net.minecraft.client.model.geom.builders.MeshDefinition apply(net.minecraft.client.model.geom.builders.MeshDefinition);
+}
+Compiled from "PartDefinition.java"
+public class net.minecraft.client.model.geom.builders.PartDefinition {
+  public net.minecraft.client.model.geom.builders.PartDefinition addOrReplaceChild(java.lang.String, net.minecraft.client.model.geom.builders.CubeListBuilder, net.minecraft.client.model.geom.PartPose);
+  public net.minecraft.client.model.geom.builders.PartDefinition addOrReplaceChild(java.lang.String, net.minecraft.client.model.geom.builders.PartDefinition);
+  public net.minecraft.client.model.geom.builders.PartDefinition clearRecursively();
+  public net.minecraft.client.model.geom.builders.PartDefinition clearChild(java.lang.String);
+  public void retainPartsAndChildren(java.util.Set<java.lang.String>);
+  public void retainExactParts(java.util.Set<java.lang.String>);
+  public net.minecraft.client.model.geom.ModelPart bake(int, int);
+  public net.minecraft.client.model.geom.builders.PartDefinition getChild(java.lang.String);
+  public java.util.Set<java.util.Map$Entry<java.lang.String, net.minecraft.client.model.geom.builders.PartDefinition>> getChildren();
+  public net.minecraft.client.model.geom.builders.PartDefinition transformed(java.util.function.UnaryOperator<net.minecraft.client.model.geom.PartPose>);
+}
+Compiled from "UVPair.java"
+public final class net.minecraft.client.model.geom.builders.UVPair extends java.lang.Record {
+  public net.minecraft.client.model.geom.builders.UVPair(float, float);
+  public java.lang.String toString();
+  public static long pack(float, float);
+  public static float unpackU(long);
+  public static float unpackV(long);
+  public final int hashCode();
+  public final boolean equals(java.lang.Object);
+  public float u();
+  public float v();
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.geom.builders.package-info {
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.geom.package-info {
+}
+Compiled from "BlazeModel.java"
+public class net.minecraft.client.model.monster.blaze.BlazeModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.LivingEntityRenderState> {
+  public net.minecraft.client.model.monster.blaze.BlazeModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.LivingEntityRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.monster.blaze.package-info {
+}
+Compiled from "BreezeModel.java"
+public class net.minecraft.client.model.monster.breeze.BreezeModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.BreezeRenderState> {
+  public net.minecraft.client.model.monster.breeze.BreezeModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createWindLayer();
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createEyesLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.BreezeRenderState);
+  public net.minecraft.client.model.geom.ModelPart head();
+  public net.minecraft.client.model.geom.ModelPart eyes();
+  public net.minecraft.client.model.geom.ModelPart rods();
+  public net.minecraft.client.model.geom.ModelPart wind();
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.monster.breeze.package-info {
+}
+Compiled from "CreakingModel.java"
+public class net.minecraft.client.model.monster.creaking.CreakingModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.CreakingRenderState> {
+  public net.minecraft.client.model.monster.creaking.CreakingModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createEyesLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.CreakingRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.monster.creaking.package-info {
+}
+Compiled from "CreeperModel.java"
+public class net.minecraft.client.model.monster.creeper.CreeperModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.CreeperRenderState> {
+  public net.minecraft.client.model.monster.creeper.CreeperModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer(net.minecraft.client.model.geom.builders.CubeDeformation);
+  public void setupAnim(net.minecraft.client.renderer.entity.state.CreeperRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.monster.creeper.package-info {
+}
+Compiled from "EnderDragonModel.java"
+public class net.minecraft.client.model.monster.dragon.EnderDragonModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.EnderDragonRenderState> {
+  public net.minecraft.client.model.monster.dragon.EnderDragonModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.EnderDragonRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.monster.dragon.package-info {
+}
+Compiled from "EndermanModel.java"
+public class net.minecraft.client.model.monster.enderman.EndermanModel<T extends net.minecraft.client.renderer.entity.state.EndermanRenderState> extends net.minecraft.client.model.HumanoidModel<T> {
+  public net.minecraft.client.model.monster.enderman.EndermanModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public void setupAnim(T);
+  public void setupAnim(net.minecraft.client.renderer.entity.state.HumanoidRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.monster.enderman.package-info {
+}
+Compiled from "EndermiteModel.java"
+public class net.minecraft.client.model.monster.endermite.EndermiteModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.EntityRenderState> {
+  public net.minecraft.client.model.monster.endermite.EndermiteModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.EntityRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.monster.endermite.package-info {
+}
+Compiled from "GhastModel.java"
+public class net.minecraft.client.model.monster.ghast.GhastModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.GhastRenderState> {
+  public net.minecraft.client.model.monster.ghast.GhastModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.GhastRenderState);
+  public static void animateTentacles(net.minecraft.client.renderer.entity.state.EntityRenderState, net.minecraft.client.model.geom.ModelPart[]);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.monster.ghast.package-info {
+}
+Compiled from "GuardianModel.java"
+public class net.minecraft.client.model.monster.guardian.GuardianModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.GuardianRenderState> {
+  public static final net.minecraft.client.model.geom.builders.MeshTransformer ELDER_GUARDIAN_SCALE;
+  public net.minecraft.client.model.monster.guardian.GuardianModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createElderGuardianLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.GuardianRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "GuardianParticleModel.java"
+public class net.minecraft.client.model.monster.guardian.GuardianParticleModel extends net.minecraft.client.model.Model<net.minecraft.util.Unit> {
+  public net.minecraft.client.model.monster.guardian.GuardianParticleModel(net.minecraft.client.model.geom.ModelPart);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.monster.guardian.package-info {
+}
+Compiled from "BabyHoglinModel.java"
+public class net.minecraft.client.model.monster.hoglin.BabyHoglinModel extends net.minecraft.client.model.monster.hoglin.HoglinModel {
+  public net.minecraft.client.model.monster.hoglin.BabyHoglinModel(net.minecraft.client.model.geom.ModelPart);
+  protected void animateHeadbutt(float);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+}
+Compiled from "HoglinModel.java"
+public class net.minecraft.client.model.monster.hoglin.HoglinModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.HoglinRenderState> {
+  protected final net.minecraft.client.model.geom.ModelPart head;
+  public net.minecraft.client.model.monster.hoglin.HoglinModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.HoglinRenderState);
+  protected void animateHeadbutt(float);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.monster.hoglin.package-info {
+}
+Compiled from "IllagerModel.java"
+public class net.minecraft.client.model.monster.illager.IllagerModel<S extends net.minecraft.client.renderer.entity.state.IllagerRenderState> extends net.minecraft.client.model.EntityModel<S> implements net.minecraft.client.model.ArmedModel<S>, net.minecraft.client.model.HeadedModel {
+  public net.minecraft.client.model.monster.illager.IllagerModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public void setupAnim(S);
+  public net.minecraft.client.model.geom.ModelPart getHat();
+  public net.minecraft.client.model.geom.ModelPart getHead();
+  public void translateToHand(net.minecraft.client.renderer.entity.state.IllagerRenderState, net.minecraft.world.entity.HumanoidArm, com.mojang.blaze3d.vertex.PoseStack);
+  public void setupAnim(java.lang.Object);
+  public void translateToHand(net.minecraft.client.renderer.entity.state.EntityRenderState, net.minecraft.world.entity.HumanoidArm, com.mojang.blaze3d.vertex.PoseStack);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.monster.illager.package-info {
+}
+Compiled from "ZombieNautilusCoralModel.java"
+public class net.minecraft.client.model.monster.nautilus.ZombieNautilusCoralModel extends net.minecraft.client.model.animal.nautilus.NautilusModel {
+  public net.minecraft.client.model.monster.nautilus.ZombieNautilusCoralModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.NautilusRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.monster.nautilus.package-info {
+}
+Compiled from "PhantomModel.java"
+public class net.minecraft.client.model.monster.phantom.PhantomModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.PhantomRenderState> {
+  public net.minecraft.client.model.monster.phantom.PhantomModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.PhantomRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.monster.phantom.package-info {
+}
+Compiled from "AbstractPiglinModel.java"
+public abstract class net.minecraft.client.model.monster.piglin.AbstractPiglinModel<S extends net.minecraft.client.renderer.entity.state.HumanoidRenderState> extends net.minecraft.client.model.HumanoidModel<S> {
+  protected static final float ADULT_EAR_ANGLE_IN_DEGREES;
+  protected static final float BABY_EAR_ANGLE_IN_DEGREES;
+  public final net.minecraft.client.model.geom.ModelPart rightEar;
+  public final net.minecraft.client.model.geom.ModelPart leftEar;
+  public net.minecraft.client.model.monster.piglin.AbstractPiglinModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.renderer.entity.ArmorModelSet<net.minecraft.client.model.geom.builders.MeshDefinition> createArmorMeshSet(net.minecraft.client.model.geom.builders.CubeDeformation, net.minecraft.client.model.geom.builders.CubeDeformation);
+  public static net.minecraft.client.model.geom.builders.PartDefinition addHead(net.minecraft.client.model.geom.builders.CubeDeformation, net.minecraft.client.model.geom.builders.MeshDefinition);
+  public static net.minecraft.client.renderer.entity.ArmorModelSet<net.minecraft.client.model.geom.builders.MeshDefinition> createBabyArmorMeshSet(net.minecraft.client.model.geom.builders.CubeDeformation, net.minecraft.client.model.geom.builders.CubeDeformation, net.minecraft.client.model.geom.PartPose);
+  public void setupAnim(S);
+  protected abstract float getDefaultEarAngleInDegrees();
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "AdultPiglinModel.java"
+public class net.minecraft.client.model.monster.piglin.AdultPiglinModel extends net.minecraft.client.model.monster.piglin.PiglinModel {
+  public net.minecraft.client.model.monster.piglin.AdultPiglinModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  protected float getDefaultEarAngleInDegrees();
+}
+Compiled from "AdultZombifiedPiglinModel.java"
+public class net.minecraft.client.model.monster.piglin.AdultZombifiedPiglinModel extends net.minecraft.client.model.monster.piglin.ZombifiedPiglinModel {
+  public net.minecraft.client.model.monster.piglin.AdultZombifiedPiglinModel(net.minecraft.client.model.geom.ModelPart);
+  protected float getDefaultEarAngleInDegrees();
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+}
+Compiled from "BabyPiglinModel.java"
+public class net.minecraft.client.model.monster.piglin.BabyPiglinModel extends net.minecraft.client.model.monster.piglin.PiglinModel {
+  public net.minecraft.client.model.monster.piglin.BabyPiglinModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  protected float getDefaultEarAngleInDegrees();
+}
+Compiled from "BabyZombifiedPiglinModel.java"
+public class net.minecraft.client.model.monster.piglin.BabyZombifiedPiglinModel extends net.minecraft.client.model.monster.piglin.ZombifiedPiglinModel {
+  public net.minecraft.client.model.monster.piglin.BabyZombifiedPiglinModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  protected float getDefaultEarAngleInDegrees();
+}
+Compiled from "PiglinModel.java"
+public abstract class net.minecraft.client.model.monster.piglin.PiglinModel extends net.minecraft.client.model.monster.piglin.AbstractPiglinModel<net.minecraft.client.renderer.entity.state.PiglinRenderState> {
+  public net.minecraft.client.model.monster.piglin.PiglinModel(net.minecraft.client.model.geom.ModelPart);
+  public void setupAnim(net.minecraft.client.renderer.entity.state.PiglinRenderState);
+  protected void setupAttackAnimation(net.minecraft.client.renderer.entity.state.PiglinRenderState);
+  public void setupAnim(net.minecraft.client.renderer.entity.state.HumanoidRenderState);
+  protected void setupAttackAnimation(net.minecraft.client.renderer.entity.state.HumanoidRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "ZombifiedPiglinModel.java"
+public abstract class net.minecraft.client.model.monster.piglin.ZombifiedPiglinModel extends net.minecraft.client.model.monster.piglin.AbstractPiglinModel<net.minecraft.client.renderer.entity.state.ZombifiedPiglinRenderState> {
+  public net.minecraft.client.model.monster.piglin.ZombifiedPiglinModel(net.minecraft.client.model.geom.ModelPart);
+  protected void setupAttackAnimation(net.minecraft.client.renderer.entity.state.ZombifiedPiglinRenderState);
+  protected void setupAttackAnimation(net.minecraft.client.renderer.entity.state.HumanoidRenderState);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.monster.piglin.package-info {
+}
+Compiled from "RavagerModel.java"
+public class net.minecraft.client.model.monster.ravager.RavagerModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.RavagerRenderState> {
+  public net.minecraft.client.model.monster.ravager.RavagerModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.RavagerRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.monster.ravager.package-info {
+}
+Compiled from "ShulkerModel.java"
+public class net.minecraft.client.model.monster.shulker.ShulkerModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.ShulkerRenderState> {
+  public static final java.lang.String LID;
+  public net.minecraft.client.model.monster.shulker.ShulkerModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBoxLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.ShulkerRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.monster.shulker.package-info {
+}
+Compiled from "SilverfishModel.java"
+public class net.minecraft.client.model.monster.silverfish.SilverfishModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.EntityRenderState> {
+  public net.minecraft.client.model.monster.silverfish.SilverfishModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.EntityRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.monster.silverfish.package-info {
+}
+Compiled from "BoggedModel.java"
+public class net.minecraft.client.model.monster.skeleton.BoggedModel extends net.minecraft.client.model.monster.skeleton.SkeletonModel<net.minecraft.client.renderer.entity.state.BoggedRenderState> {
+  public net.minecraft.client.model.monster.skeleton.BoggedModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.BoggedRenderState);
+  public void setupAnim(net.minecraft.client.renderer.entity.state.SkeletonRenderState);
+  public void setupAnim(net.minecraft.client.renderer.entity.state.HumanoidRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "SkeletonModel.java"
+public class net.minecraft.client.model.monster.skeleton.SkeletonModel<S extends net.minecraft.client.renderer.entity.state.SkeletonRenderState> extends net.minecraft.client.model.HumanoidModel<S> {
+  public net.minecraft.client.model.monster.skeleton.SkeletonModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  protected static void createDefaultSkeletonMesh(net.minecraft.client.model.geom.builders.PartDefinition);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createSingleModelDualBodyLayer();
+  public void setupAnim(S);
+  public void translateToHand(net.minecraft.client.renderer.entity.state.SkeletonRenderState, net.minecraft.world.entity.HumanoidArm, com.mojang.blaze3d.vertex.PoseStack);
+  public void setupAnim(net.minecraft.client.renderer.entity.state.HumanoidRenderState);
+  public void translateToHand(net.minecraft.client.renderer.entity.state.EntityRenderState, net.minecraft.world.entity.HumanoidArm, com.mojang.blaze3d.vertex.PoseStack);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.monster.skeleton.package-info {
+}
+Compiled from "MagmaCubeModel.java"
+public class net.minecraft.client.model.monster.slime.MagmaCubeModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.SlimeRenderState> {
+  public net.minecraft.client.model.monster.slime.MagmaCubeModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.SlimeRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "SlimeModel.java"
+public class net.minecraft.client.model.monster.slime.SlimeModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.EntityRenderState> {
+  public net.minecraft.client.model.monster.slime.SlimeModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createOuterBodyLayer();
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createInnerBodyLayer();
+}
+Compiled from "SmallSulfurCubeModel.java"
+public class net.minecraft.client.model.monster.slime.SmallSulfurCubeModel extends net.minecraft.client.model.monster.slime.SulfurCubeModel {
+  public net.minecraft.client.model.monster.slime.SmallSulfurCubeModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createOuterBodyLayer();
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createInnerBodyLayer();
+}
+Compiled from "SulfurCubeModel.java"
+public class net.minecraft.client.model.monster.slime.SulfurCubeModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.SulfurCubeRenderState> implements net.minecraft.client.model.HeadedModel {
+  public net.minecraft.client.model.monster.slime.SulfurCubeModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createOuterBodyLayer();
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createInnerBodyLayer();
+  public net.minecraft.client.model.geom.ModelPart getHead();
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.monster.slime.package-info {
+}
+Compiled from "SpiderModel.java"
+public class net.minecraft.client.model.monster.spider.SpiderModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.LivingEntityRenderState> {
+  public net.minecraft.client.model.monster.spider.SpiderModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createSpiderBodyLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.LivingEntityRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.monster.spider.package-info {
+}
+Compiled from "AdultStriderModel.java"
+public class net.minecraft.client.model.monster.strider.AdultStriderModel extends net.minecraft.client.model.monster.strider.StriderModel {
+  public net.minecraft.client.model.monster.strider.AdultStriderModel(net.minecraft.client.model.geom.ModelPart);
+  protected void customAnimations(float, float, float);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+}
+Compiled from "BabyStriderModel.java"
+public class net.minecraft.client.model.monster.strider.BabyStriderModel extends net.minecraft.client.model.monster.strider.StriderModel {
+  public net.minecraft.client.model.monster.strider.BabyStriderModel(net.minecraft.client.model.geom.ModelPart);
+  protected void customAnimations(float, float, float);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+}
+Compiled from "StriderModel.java"
+public abstract class net.minecraft.client.model.monster.strider.StriderModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.StriderRenderState> {
+  protected static final float SPEED;
+  protected final net.minecraft.client.model.geom.ModelPart rightLeg;
+  protected final net.minecraft.client.model.geom.ModelPart leftLeg;
+  protected final net.minecraft.client.model.geom.ModelPart body;
+  public net.minecraft.client.model.monster.strider.StriderModel(net.minecraft.client.model.geom.ModelPart);
+  public void setupAnim(net.minecraft.client.renderer.entity.state.StriderRenderState);
+  protected abstract void customAnimations(float, float, float);
+  public void animateBristle(float, float, net.minecraft.client.model.geom.ModelPart, net.minecraft.client.model.geom.ModelPart, net.minecraft.client.model.geom.ModelPart, java.util.function.BiConsumer<net.minecraft.client.model.geom.ModelPart, java.lang.Float>);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.monster.strider.package-info {
+}
+Compiled from "VexModel.java"
+public class net.minecraft.client.model.monster.vex.VexModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.VexRenderState> implements net.minecraft.client.model.ArmedModel<net.minecraft.client.renderer.entity.state.VexRenderState> {
+  public net.minecraft.client.model.monster.vex.VexModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.VexRenderState);
+  public void translateToHand(net.minecraft.client.renderer.entity.state.VexRenderState, net.minecraft.world.entity.HumanoidArm, com.mojang.blaze3d.vertex.PoseStack);
+  public void setupAnim(java.lang.Object);
+  public void translateToHand(net.minecraft.client.renderer.entity.state.EntityRenderState, net.minecraft.world.entity.HumanoidArm, com.mojang.blaze3d.vertex.PoseStack);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.monster.vex.package-info {
+}
+Compiled from "WardenModel.java"
+public class net.minecraft.client.model.monster.warden.WardenModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.WardenRenderState> {
+  protected final net.minecraft.client.model.geom.ModelPart bone;
+  protected final net.minecraft.client.model.geom.ModelPart body;
+  protected final net.minecraft.client.model.geom.ModelPart head;
+  protected final net.minecraft.client.model.geom.ModelPart rightTendril;
+  protected final net.minecraft.client.model.geom.ModelPart leftTendril;
+  protected final net.minecraft.client.model.geom.ModelPart leftLeg;
+  protected final net.minecraft.client.model.geom.ModelPart leftArm;
+  protected final net.minecraft.client.model.geom.ModelPart leftRibcage;
+  protected final net.minecraft.client.model.geom.ModelPart rightArm;
+  protected final net.minecraft.client.model.geom.ModelPart rightLeg;
+  protected final net.minecraft.client.model.geom.ModelPart rightRibcage;
+  public net.minecraft.client.model.monster.warden.WardenModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createTendrilsLayer();
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createHeartLayer();
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBioluminescentLayer();
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createPulsatingSpotsLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.WardenRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.monster.warden.package-info {
+}
+Compiled from "WitchModel.java"
+public class net.minecraft.client.model.monster.witch.WitchModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.WitchRenderState> implements net.minecraft.client.model.HeadedModel, net.minecraft.client.model.VillagerLikeModel<net.minecraft.client.renderer.entity.state.WitchRenderState> {
+  protected final net.minecraft.client.model.geom.ModelPart nose;
+  public net.minecraft.client.model.monster.witch.WitchModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.WitchRenderState);
+  public net.minecraft.client.model.geom.ModelPart getNose();
+  public net.minecraft.client.model.geom.ModelPart getHead();
+  public void translateToArms(net.minecraft.client.renderer.entity.state.WitchRenderState, com.mojang.blaze3d.vertex.PoseStack);
+  public void setupAnim(java.lang.Object);
+  public void translateToArms(net.minecraft.client.renderer.entity.state.EntityRenderState, com.mojang.blaze3d.vertex.PoseStack);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.monster.witch.package-info {
+}
+Compiled from "WitherBossModel.java"
+public class net.minecraft.client.model.monster.wither.WitherBossModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.WitherRenderState> {
+  public net.minecraft.client.model.monster.wither.WitherBossModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer(net.minecraft.client.model.geom.builders.CubeDeformation);
+  public void setupAnim(net.minecraft.client.renderer.entity.state.WitherRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.monster.wither.package-info {
+}
+Compiled from "BabyDrownedModel.java"
+public class net.minecraft.client.model.monster.zombie.BabyDrownedModel extends net.minecraft.client.model.monster.zombie.DrownedModel {
+  public net.minecraft.client.model.monster.zombie.BabyDrownedModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer(net.minecraft.client.model.geom.builders.CubeDeformation);
+}
+Compiled from "BabyZombieModel.java"
+public class net.minecraft.client.model.monster.zombie.BabyZombieModel<S extends net.minecraft.client.renderer.entity.state.ZombieRenderState> extends net.minecraft.client.model.monster.zombie.ZombieModel<S> {
+  public net.minecraft.client.model.monster.zombie.BabyZombieModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer(net.minecraft.client.model.geom.builders.CubeDeformation);
+}
+Compiled from "BabyZombieVillagerModel.java"
+public class net.minecraft.client.model.monster.zombie.BabyZombieVillagerModel<S extends net.minecraft.client.renderer.entity.state.ZombieVillagerRenderState> extends net.minecraft.client.model.monster.zombie.ZombieVillagerModel<S> {
+  public net.minecraft.client.model.monster.zombie.BabyZombieVillagerModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createNoHatLayer();
+}
+Compiled from "DrownedModel.java"
+public class net.minecraft.client.model.monster.zombie.DrownedModel extends net.minecraft.client.model.monster.zombie.ZombieModel<net.minecraft.client.renderer.entity.state.ZombieRenderState> {
+  public net.minecraft.client.model.monster.zombie.DrownedModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer(net.minecraft.client.model.geom.builders.CubeDeformation);
+  protected void setupAttackAnimation(net.minecraft.client.renderer.entity.state.ZombieRenderState);
+  protected void setupSwimAnimation(net.minecraft.client.renderer.entity.state.ZombieRenderState, float, float);
+  protected void setupAttackAnimation(net.minecraft.client.renderer.entity.state.HumanoidRenderState);
+  protected void setupSwimAnimation(net.minecraft.client.renderer.entity.state.HumanoidRenderState, float, float);
+}
+Compiled from "GiantZombieModel.java"
+public class net.minecraft.client.model.monster.zombie.GiantZombieModel extends net.minecraft.client.model.HumanoidModel<net.minecraft.client.renderer.entity.state.ZombieRenderState> {
+  public net.minecraft.client.model.monster.zombie.GiantZombieModel(net.minecraft.client.model.geom.ModelPart);
+  protected void setupAttackAnimation(net.minecraft.client.renderer.entity.state.ZombieRenderState);
+  protected void setupAttackAnimation(net.minecraft.client.renderer.entity.state.HumanoidRenderState);
+}
+Compiled from "ZombieModel.java"
+public class net.minecraft.client.model.monster.zombie.ZombieModel<S extends net.minecraft.client.renderer.entity.state.ZombieRenderState> extends net.minecraft.client.model.HumanoidModel<S> {
+  public net.minecraft.client.model.monster.zombie.ZombieModel(net.minecraft.client.model.geom.ModelPart);
+  protected void setupAttackAnimation(S);
+  protected void setupAttackAnimation(net.minecraft.client.renderer.entity.state.HumanoidRenderState);
+}
+Compiled from "ZombieVillagerModel.java"
+public class net.minecraft.client.model.monster.zombie.ZombieVillagerModel<S extends net.minecraft.client.renderer.entity.state.ZombieVillagerRenderState> extends net.minecraft.client.model.HumanoidModel<S> implements net.minecraft.client.model.VillagerLikeModel<S> {
+  public net.minecraft.client.model.monster.zombie.ZombieVillagerModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createNoHatLayer();
+  public static net.minecraft.client.renderer.entity.ArmorModelSet<net.minecraft.client.model.geom.builders.LayerDefinition> createArmorLayerSet(net.minecraft.client.model.geom.builders.CubeDeformation, net.minecraft.client.model.geom.builders.CubeDeformation);
+  protected void setupAttackAnimation(S);
+  public void translateToArms(net.minecraft.client.renderer.entity.state.ZombieVillagerRenderState, com.mojang.blaze3d.vertex.PoseStack);
+  protected void setupAttackAnimation(net.minecraft.client.renderer.entity.state.HumanoidRenderState);
+  public void translateToArms(net.minecraft.client.renderer.entity.state.EntityRenderState, com.mojang.blaze3d.vertex.PoseStack);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.monster.zombie.package-info {
+}
+Compiled from "BabyVillagerModel.java"
+public class net.minecraft.client.model.npc.BabyVillagerModel extends net.minecraft.client.model.npc.VillagerModel {
+  public net.minecraft.client.model.npc.BabyVillagerModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.MeshDefinition createNoHatModel();
+  public static net.minecraft.client.model.geom.builders.MeshDefinition createBodyModel();
+}
+Compiled from "VillagerModel.java"
+public class net.minecraft.client.model.npc.VillagerModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.VillagerRenderState> implements net.minecraft.client.model.HeadedModel, net.minecraft.client.model.VillagerLikeModel<net.minecraft.client.renderer.entity.state.VillagerRenderState> {
+  public net.minecraft.client.model.npc.VillagerModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.MeshDefinition createBodyModel();
+  public static net.minecraft.client.model.geom.builders.MeshDefinition createNoHatModel();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.VillagerRenderState);
+  public net.minecraft.client.model.geom.ModelPart getHead();
+  public void translateToArms(net.minecraft.client.renderer.entity.state.VillagerRenderState, com.mojang.blaze3d.vertex.PoseStack);
+  public void setupAnim(java.lang.Object);
+  public void translateToArms(net.minecraft.client.renderer.entity.state.EntityRenderState, com.mojang.blaze3d.vertex.PoseStack);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.npc.package-info {
+}
+Compiled from "ArmorStandArmorModel.java"
+public class net.minecraft.client.model.object.armorstand.ArmorStandArmorModel extends net.minecraft.client.model.HumanoidModel<net.minecraft.client.renderer.entity.state.ArmorStandRenderState> {
+  public net.minecraft.client.model.object.armorstand.ArmorStandArmorModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.renderer.entity.ArmorModelSet<net.minecraft.client.model.geom.builders.LayerDefinition> createArmorLayerSet(net.minecraft.client.model.geom.builders.CubeDeformation, net.minecraft.client.model.geom.builders.CubeDeformation);
+  public void setupAnim(net.minecraft.client.renderer.entity.state.ArmorStandRenderState);
+  public void setupAnim(net.minecraft.client.renderer.entity.state.HumanoidRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "ArmorStandModel.java"
+public class net.minecraft.client.model.object.armorstand.ArmorStandModel extends net.minecraft.client.model.object.armorstand.ArmorStandArmorModel {
+  public net.minecraft.client.model.object.armorstand.ArmorStandModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.ArmorStandRenderState);
+  public void translateToHand(net.minecraft.client.renderer.entity.state.ArmorStandRenderState, net.minecraft.world.entity.HumanoidArm, com.mojang.blaze3d.vertex.PoseStack);
+  public void setupAnim(net.minecraft.client.renderer.entity.state.HumanoidRenderState);
+  public void translateToHand(net.minecraft.client.renderer.entity.state.EntityRenderState, net.minecraft.world.entity.HumanoidArm, com.mojang.blaze3d.vertex.PoseStack);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.object.armorstand.package-info {
+}
+Compiled from "BannerFlagModel.java"
+public class net.minecraft.client.model.object.banner.BannerFlagModel extends net.minecraft.client.model.Model<java.lang.Float> {
+  public net.minecraft.client.model.object.banner.BannerFlagModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createFlagLayer(boolean);
+  public void setupAnim(java.lang.Float);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "BannerModel.java"
+public class net.minecraft.client.model.object.banner.BannerModel extends net.minecraft.client.model.Model<net.minecraft.util.Unit> {
+  public static final int BANNER_WIDTH;
+  public static final int BANNER_HEIGHT;
+  public static final java.lang.String FLAG;
+  public net.minecraft.client.model.object.banner.BannerModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer(boolean);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.object.banner.package-info {
+}
+Compiled from "BellModel.java"
+public final class net.minecraft.client.model.object.bell.BellModel$State extends java.lang.Record {
+  public net.minecraft.client.model.object.bell.BellModel$State(float, net.minecraft.core.Direction);
+  public final java.lang.String toString();
+  public final int hashCode();
+  public final boolean equals(java.lang.Object);
+  public float ticks();
+  public net.minecraft.core.Direction shakeDirection();
+}
+Compiled from "BellModel.java"
+public class net.minecraft.client.model.object.bell.BellModel extends net.minecraft.client.model.Model<net.minecraft.client.model.object.bell.BellModel$State> {
+  public net.minecraft.client.model.object.bell.BellModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public void setupAnim(net.minecraft.client.model.object.bell.BellModel$State);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.object.bell.package-info {
+}
+Compiled from "AbstractBoatModel.java"
+public abstract class net.minecraft.client.model.object.boat.AbstractBoatModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.BoatRenderState> {
+  public net.minecraft.client.model.object.boat.AbstractBoatModel(net.minecraft.client.model.geom.ModelPart);
+  public void setupAnim(net.minecraft.client.renderer.entity.state.BoatRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "BoatModel.java"
+public class net.minecraft.client.model.object.boat.BoatModel extends net.minecraft.client.model.object.boat.AbstractBoatModel {
+  public net.minecraft.client.model.object.boat.BoatModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBoatModel();
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createChestBoatModel();
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createWaterPatch();
+}
+Compiled from "RaftModel.java"
+public class net.minecraft.client.model.object.boat.RaftModel extends net.minecraft.client.model.object.boat.AbstractBoatModel {
+  public net.minecraft.client.model.object.boat.RaftModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createRaftModel();
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createChestRaftModel();
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.object.boat.package-info {
+}
+Compiled from "BookModel.java"
+public final class net.minecraft.client.model.object.book.BookModel$State extends java.lang.Record {
+  public net.minecraft.client.model.object.book.BookModel$State(float, float, float);
+  public static net.minecraft.client.model.object.book.BookModel$State forAnimation(float, float, float, float);
+  public final java.lang.String toString();
+  public final int hashCode();
+  public final boolean equals(java.lang.Object);
+  public float openness();
+  public float pageFlip1();
+  public float pageFlip2();
+}
+Compiled from "BookModel.java"
+public class net.minecraft.client.model.object.book.BookModel extends net.minecraft.client.model.Model<net.minecraft.client.model.object.book.BookModel$State> {
+  public net.minecraft.client.model.object.book.BookModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public void setupAnim(net.minecraft.client.model.object.book.BookModel$State);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.object.book.package-info {
+}
+Compiled from "MinecartModel.java"
+public class net.minecraft.client.model.object.cart.MinecartModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.MinecartRenderState> {
+  public net.minecraft.client.model.object.cart.MinecartModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.object.cart.package-info {
+}
+Compiled from "ChestModel.java"
+public class net.minecraft.client.model.object.chest.ChestModel extends net.minecraft.client.model.Model<java.lang.Float> {
+  public net.minecraft.client.model.object.chest.ChestModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createSingleBodyLayer();
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createDoubleBodyRightLayer();
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createDoubleBodyLeftLayer();
+  public void setupAnim(java.lang.Float);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.object.chest.package-info {
+}
+Compiled from "EndCrystalModel.java"
+public class net.minecraft.client.model.object.crystal.EndCrystalModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.EndCrystalRenderState> {
+  public final net.minecraft.client.model.geom.ModelPart base;
+  public final net.minecraft.client.model.geom.ModelPart outerGlass;
+  public final net.minecraft.client.model.geom.ModelPart innerGlass;
+  public final net.minecraft.client.model.geom.ModelPart cube;
+  public net.minecraft.client.model.object.crystal.EndCrystalModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.EndCrystalRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.object.crystal.package-info {
+}
+Compiled from "CushionModel.java"
+public class net.minecraft.client.model.object.cushion.CushionModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.CushionRenderState> {
+  public net.minecraft.client.model.object.cushion.CushionModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.object.cushion.package-info {
+}
+Compiled from "ElytraModel.java"
+public class net.minecraft.client.model.object.equipment.ElytraModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.HumanoidRenderState> {
+  public static final net.minecraft.client.model.geom.builders.MeshTransformer BABY_TRANSFORMER;
+  public net.minecraft.client.model.object.equipment.ElytraModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.HumanoidRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "ShieldModel.java"
+public class net.minecraft.client.model.object.equipment.ShieldModel extends net.minecraft.client.model.Model<net.minecraft.util.Unit> {
+  public net.minecraft.client.model.object.equipment.ShieldModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createLayer();
+  public net.minecraft.client.model.geom.ModelPart plate();
+  public net.minecraft.client.model.geom.ModelPart handle();
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.object.equipment.package-info {
+}
+Compiled from "LeashKnotModel.java"
+public class net.minecraft.client.model.object.leash.LeashKnotModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.EntityRenderState> {
+  public net.minecraft.client.model.object.leash.LeashKnotModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.object.leash.package-info {
+}
+Compiled from "ArrowModel.java"
+public class net.minecraft.client.model.object.projectile.ArrowModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.ArrowRenderState> {
+  public net.minecraft.client.model.object.projectile.ArrowModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.ArrowRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "ShulkerBulletModel.java"
+public class net.minecraft.client.model.object.projectile.ShulkerBulletModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.ShulkerBulletRenderState> {
+  public net.minecraft.client.model.object.projectile.ShulkerBulletModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.ShulkerBulletRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "TridentModel.java"
+public class net.minecraft.client.model.object.projectile.TridentModel extends net.minecraft.client.model.Model<net.minecraft.util.Unit> {
+  public static final net.minecraft.resources.Identifier TEXTURE;
+  public net.minecraft.client.model.object.projectile.TridentModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createLayer();
+}
+Compiled from "WindChargeModel.java"
+public class net.minecraft.client.model.object.projectile.WindChargeModel extends net.minecraft.client.model.EntityModel<net.minecraft.client.renderer.entity.state.EntityRenderState> {
+  public net.minecraft.client.model.object.projectile.WindChargeModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createBodyLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.EntityRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.object.projectile.package-info {
+}
+Compiled from "DragonHeadModel.java"
+public class net.minecraft.client.model.object.skull.DragonHeadModel extends net.minecraft.client.model.object.skull.SkullModelBase {
+  public net.minecraft.client.model.object.skull.DragonHeadModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createHeadLayer();
+  public void setupAnim(net.minecraft.client.model.object.skull.SkullModelBase$State);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "PiglinHeadModel.java"
+public class net.minecraft.client.model.object.skull.PiglinHeadModel extends net.minecraft.client.model.object.skull.SkullModelBase {
+  public net.minecraft.client.model.object.skull.PiglinHeadModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.MeshDefinition createHeadModel();
+  public void setupAnim(net.minecraft.client.model.object.skull.SkullModelBase$State);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "SkullModel.java"
+public class net.minecraft.client.model.object.skull.SkullModel extends net.minecraft.client.model.object.skull.SkullModelBase {
+  protected final net.minecraft.client.model.geom.ModelPart head;
+  public net.minecraft.client.model.object.skull.SkullModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.MeshDefinition createHeadModel();
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createHumanoidHeadLayer();
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createMobHeadLayer();
+  public void setupAnim(net.minecraft.client.model.object.skull.SkullModelBase$State);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "SkullModelBase.java"
+public class net.minecraft.client.model.object.skull.SkullModelBase$State {
+  public float animationPos;
+  public float yRot;
+  public float xRot;
+  public net.minecraft.client.model.object.skull.SkullModelBase$State();
+}
+Compiled from "SkullModelBase.java"
+public abstract class net.minecraft.client.model.object.skull.SkullModelBase extends net.minecraft.client.model.Model<net.minecraft.client.model.object.skull.SkullModelBase$State> {
+  public net.minecraft.client.model.object.skull.SkullModelBase(net.minecraft.client.model.geom.ModelPart);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.object.skull.package-info {
+}
+Compiled from "CopperGolemStatueModel.java"
+public class net.minecraft.client.model.object.statue.CopperGolemStatueModel extends net.minecraft.client.model.Model<net.minecraft.util.Unit> {
+  public net.minecraft.client.model.object.statue.CopperGolemStatueModel(net.minecraft.client.model.geom.ModelPart);
+  public void setupAnim(net.minecraft.util.Unit);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.object.statue.package-info {
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.package-info {
+}
+Compiled from "PlayerCapeModel.java"
+public class net.minecraft.client.model.player.PlayerCapeModel extends net.minecraft.client.model.player.PlayerModel {
+  public net.minecraft.client.model.player.PlayerCapeModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createCapeLayer();
+  public void setupAnim(net.minecraft.client.renderer.entity.state.AvatarRenderState);
+  public void setupAnim(net.minecraft.client.renderer.entity.state.HumanoidRenderState);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "PlayerEarsModel.java"
+public class net.minecraft.client.model.player.PlayerEarsModel extends net.minecraft.client.model.player.PlayerModel {
+  public net.minecraft.client.model.player.PlayerEarsModel(net.minecraft.client.model.geom.ModelPart);
+  public static net.minecraft.client.model.geom.builders.LayerDefinition createEarsLayer();
+}
+Compiled from "PlayerModel.java"
+public class net.minecraft.client.model.player.PlayerModel extends net.minecraft.client.model.HumanoidModel<net.minecraft.client.renderer.entity.state.AvatarRenderState> {
+  protected static final java.lang.String LEFT_SLEEVE;
+  protected static final java.lang.String RIGHT_SLEEVE;
+  protected static final java.lang.String LEFT_PANTS;
+  protected static final java.lang.String RIGHT_PANTS;
+  public final net.minecraft.client.model.geom.ModelPart leftSleeve;
+  public final net.minecraft.client.model.geom.ModelPart rightSleeve;
+  public final net.minecraft.client.model.geom.ModelPart leftPants;
+  public final net.minecraft.client.model.geom.ModelPart rightPants;
+  public final net.minecraft.client.model.geom.ModelPart jacket;
+  public net.minecraft.client.model.player.PlayerModel(net.minecraft.client.model.geom.ModelPart, boolean);
+  public static net.minecraft.client.model.geom.builders.MeshDefinition createMesh(net.minecraft.client.model.geom.builders.CubeDeformation, boolean);
+  public static net.minecraft.client.renderer.entity.ArmorModelSet<net.minecraft.client.model.geom.builders.MeshDefinition> createArmorMeshSet(net.minecraft.client.model.geom.builders.CubeDeformation, net.minecraft.client.model.geom.builders.CubeDeformation);
+  public void setupAnim(net.minecraft.client.renderer.entity.state.AvatarRenderState);
+  public void translateToHand(net.minecraft.client.renderer.entity.state.AvatarRenderState, net.minecraft.world.entity.HumanoidArm, com.mojang.blaze3d.vertex.PoseStack);
+  public net.minecraft.client.model.geom.ModelPart getRandomBodyPart(net.minecraft.util.RandomSource);
+  public void setupAnim(net.minecraft.client.renderer.entity.state.HumanoidRenderState);
+  public void translateToHand(net.minecraft.client.renderer.entity.state.EntityRenderState, net.minecraft.world.entity.HumanoidArm, com.mojang.blaze3d.vertex.PoseStack);
+  public void setupAnim(java.lang.Object);
+}
+Compiled from "package-info.java"
+interface net.minecraft.client.model.player.package-info {
+}

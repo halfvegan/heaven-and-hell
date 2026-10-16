@@ -1,0 +1,21 @@
+
+> Configure project :
+Fabric Loom: 1.18.4
+
+> Task :compileJava
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+
+> Task :processResources
+> Task :classes
+> Task :compileClientJava
+> Task :processClientResources NO-SOURCE
+> Task :processIncludeJars
+> Task :jar
+> Task :assemble
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/assemble-1792137214781.json
+
+[Incubating] Problems report is available at: file:///home/runner/work/heaven-and-hell/heaven-and-hell/build/reports/problems/problems-report.html
+
+BUILD SUCCESSFUL in 15s
+5 actionable tasks: 5 executed

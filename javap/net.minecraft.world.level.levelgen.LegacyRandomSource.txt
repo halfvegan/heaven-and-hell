@@ -1,0 +1,9 @@
+Compiled from "LegacyRandomSource.java"
+public class net.minecraft.world.level.levelgen.LegacyRandomSource implements net.minecraft.world.level.levelgen.BitRandomSource {
+  public net.minecraft.world.level.levelgen.LegacyRandomSource(long);
+  public net.minecraft.util.RandomSource fork();
+  public net.minecraft.world.level.levelgen.PositionalRandomFactory forkPositional();
+  public void setSeed(long);
+  public int next(int);
+  public double nextGaussian();
+}

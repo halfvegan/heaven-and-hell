@@ -1,0 +1,8 @@
+Compiled from "Nameable.java"
+public interface net.minecraft.world.Nameable {
+  public abstract net.minecraft.network.chat.Component getName();
+  public default java.lang.String getPlainTextName();
+  public default boolean hasCustomName();
+  public default net.minecraft.network.chat.Component getDisplayName();
+  public default net.minecraft.network.chat.Component getCustomName();
+}
