@@ -235,7 +235,7 @@ public class PoolClientTests implements FabricClientGameTest {
 	/**
 	 * Runs a little screenshot script, one step per line: {@code cmd <command>}, {@code view <name> <dimension> x y z
 	 * tx ty tz [ticks]}, {@code wait <ticks>}, {@code shot <name>}, {@code hud on|off}, {@code camera first|back|front},
-	 * {@code inventory <name>}, {@code gui <scale>}, {@code fade}, {@code lifeguard} (the behaviour checks),
+	 * {@code inventory <name>}, {@code gui <scale>}, {@code window <w> <h>}, {@code fov <degrees>}, {@code fovfx <scale>}, {@code fade}, {@code lifeguard} (the behaviour checks),
 	 * {@code opendoor x y z} and {@code drain x y z}. Lines starting with # are comments.
 	 */
 	private static void runScript(ClientGameTestContext context, TestSingleplayerContext sp, TestServerContext server, Path script) {
@@ -292,6 +292,15 @@ public class PoolClientTests implements FabricClientGameTest {
 						ServerLevel pool = s.getLevel(Pool.DIMENSION);
 						PoolTravel.openDoor(pool, door, pool.getBlockState(door));
 					});
+				}
+				case "window" -> context.getInput().resizeWindow(Integer.parseInt(a[1]), Integer.parseInt(a[2]));
+				case "fov" -> {
+					int fov = Integer.parseInt(a[1]);
+					context.runOnClient(c -> c.options.fov().set(fov));
+				}
+				case "fovfx" -> {
+					double scale = Double.parseDouble(a[1]);
+					context.runOnClient(c -> c.options.fovEffectScale().set(scale));
 				}
 				case "gui" -> {
 					int scale = Integer.parseInt(a[1]);
